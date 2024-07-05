@@ -4,20 +4,12 @@ import LinkCard from "@/components/Cards/LinkCard";
 import CardSection from "@/components/Sections/CardSection";
 import SkillSection from "@/components/Sections/SkillSection";
 import { Typewriter } from "nextjs-simple-typewriter";
+import readJSON from "@/utils/ReadJSON";
 
 export const revalidate = 60 * 60 * 24;
 
-async function readSkills() {
-  const file = await fs.readFile(
-    process.cwd() + "/src/app/skills.json",
-    "utf8"
-  );
-  const techStack: ITechSkill[] = JSON.parse(file);
-  return techStack;
-}
-
 export default async function Home() {
-  const techStack = await readSkills();
+  const techStack: ITechSkill[] = await readJSON("src/app/skills.json");
 
   const pages = [
     {

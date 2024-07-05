@@ -28,7 +28,7 @@ export default function RootLayout({
         }
       >
         <Providers>
-          <main className="lg:max-w-4xl mx-auto">
+          <main className="lg:max-w-4xl mx-auto min-h-screen">
             <Header></Header>
             {children}
             <Footer></Footer>
