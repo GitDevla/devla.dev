@@ -5,12 +5,16 @@ import CardSection from "@/components/Sections/CardSection";
 import SkillSection from "@/components/Sections/SkillSection";
 import { Typewriter } from "nextjs-simple-typewriter";
 import readJSON from "@/utils/ReadJSON";
+import SkillCard from "@/components/Cards/SkillCard";
+import DiscordStatusDot from "@/components/DiscordStatusDot";
 
 export const revalidate = 60 * 60 * 24;
 
 export default async function Home() {
   const techStack: ITechSkill[] = await readJSON("src/app/skills.json");
-
+  const techCards = techStack.map((tech, i) => (
+    <SkillCard key={i} Tech={tech} />
+  ));
   const pages = [
     {
       name: "About Me",
@@ -78,13 +82,16 @@ export default async function Home() {
             />
           </p>
         </div>
-        <Image
-          className="rounded-full w-44 h-44 mr-6"
-          src="https://placehold.co/400"
-          width={200}
-          height={200}
-          alt="Picture of the author"
-        />
+        <div className="relative">
+          <Image
+            className="rounded-full w-44 h-44 mr-6"
+            src="https://placehold.co/400"
+            width={200}
+            height={200}
+            alt="Picture of the author"
+          />
+          <DiscordStatusDot className="absolute bottom-4 right-7 p-2 bg-background-dark rounded-full"></DiscordStatusDot>
+        </div>
       </section>
       <CardSection title="Pages">
         {pages.map((page, i) => (
@@ -98,7 +105,7 @@ export default async function Home() {
         ))}
       </CardSection>
 
-      <SkillSection techStack={techStack}></SkillSection>
+      <SkillSection techStack={techStack} techCards={techCards}></SkillSection>
     </>
   );
 }
