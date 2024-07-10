@@ -1,11 +1,12 @@
 "use client";
 import { useState } from "react";
-import SkillCard from "../Cards/SkillCard";
 
 export default function SkillSection({
   techStack,
+  techCards,
 }: {
   techStack: ITechSkill[];
+  techCards: JSX.Element[];
 }) {
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
   const categories = [
@@ -26,7 +27,7 @@ export default function SkillSection({
             <span
               className={
                 hoveredCategory === category
-                  ? "text-highlight-light dark:text-highlight-dark"
+                  ? "text-highlight-light dark:text-highlight-dark "
                   : ""
               }
             >
@@ -35,12 +36,12 @@ export default function SkillSection({
           </div>
         ))}
       </div>
-      <div className="grid grid-rows-3 h-[calc(100%/3)] overflow-hidden grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-2 gap-y-2">
+      <div className="grid grid-rows-3 h-[calc(100%/3)] overflow-hidden grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-2 gap-y-2 ">
+        {/* todo this is cheese af*/}
         {techStack.map(
           (tech, i) =>
-            (!hoveredCategory || tech.category.includes(hoveredCategory)) && (
-              <SkillCard key={i} Tech={tech} />
-            )
+            (!hoveredCategory || tech.category.includes(hoveredCategory)) &&
+            techCards[i]
         )}
       </div>
     </section>

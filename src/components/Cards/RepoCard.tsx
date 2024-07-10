@@ -1,6 +1,12 @@
 import Link from "next/link";
+import SimpleIcon from "../SimpleIcon";
+import ExpandingPill from "../ExpandingPill";
+import SkillPill from "./SkillPill";
 
 export default function RepoCard({ repo }: Readonly<{ repo: IRepo }>) {
+  const languagesExpanded = repo.languages.map((lang, i) => (
+    <SkillPill key={i} name={lang}></SkillPill>
+  ));
   return (
     <Link className="block" href={repo.href}>
       <div className="border border-gray-200 dark:border-gray-800 p-4 rounded-lg bg-accentbackground-light dark:bg-accentbackground-dark">
@@ -17,16 +23,18 @@ export default function RepoCard({ repo }: Readonly<{ repo: IRepo }>) {
           </div>
         </div>
         {repo.description && <p className="text-sm">{repo.description}</p>}
-        <div>
-          {repo.languages.map((lang, i) => (
-            <span
-              key={i}
-              className="text-xs bg-gray-200 dark:bg-gray-800 p-1 rounded-lg mr-1"
+        <span className="flex">
+          Language:{" "}
+          {languagesExpanded.length <= 1 ? (
+            <SkillPill name={repo.mainLanguage}></SkillPill>
+          ) : (
+            <ExpandingPill
+              defaultText={<SkillPill name={repo.mainLanguage}></SkillPill>}
             >
-              {lang}
-            </span>
-          ))}
-        </div>
+              {languagesExpanded}
+            </ExpandingPill>
+          )}
+        </span>
       </div>
     </Link>
   );

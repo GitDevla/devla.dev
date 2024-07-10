@@ -5,6 +5,7 @@ interface IRepo {
   href: string;
   archived: boolean;
 
+  mainLanguage: string;
   languages: string[];
 
   stars: number;
