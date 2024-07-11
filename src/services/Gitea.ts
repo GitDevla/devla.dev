@@ -9,7 +9,7 @@ export default async function pullGiteaRepos() {
   }
 
   const githubresp = await fetch(
-    "https://hira.devla.dev/api/v1/orgs/Egyetem/repos"
+    `${process.env.GITEA_URL}/api/v1/orgs/${process.env.GITEA_ID}/repos`
   );
   let data = await githubresp.json();
 

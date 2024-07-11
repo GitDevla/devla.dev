@@ -4,7 +4,7 @@ import { useState } from "react";
 
 async function fetchStatus() {
   const response = await fetch(
-    "https://api.lanyard.rest/v1/users/363301732836704257"
+    `https://api.lanyard.rest/v1/users/${process.env.NEXT_PUBLIC_DISCORD_ID}`
   );
   const data = (await response.json()) as ILanyardResponse;
   return data;

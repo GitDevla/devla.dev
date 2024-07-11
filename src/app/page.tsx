@@ -1,4 +1,3 @@
-import { promises as fs } from "fs";
 import Image from "next/image";
 import LinkCard from "@/components/Cards/LinkCard";
 import CardSection from "@/components/Sections/CardSection";
@@ -45,12 +44,12 @@ export default async function Home() {
     {
       name: "Github",
       description: "Personal Github page",
-      href: "https://github.com/GitDevla",
+      href: `https://github.com/${process.env.GITHUB_ID}`,
     },
     {
       name: "Gitea",
       description: "Self-hosted Github for more throwaway projects",
-      href: "https://hira.devla.dev",
+      href: `${process.env.GITEA_URL}/${process.env.GITEA_ID}`,
     },
   ];
 

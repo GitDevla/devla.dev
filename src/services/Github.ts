@@ -7,7 +7,9 @@ export default async function pullGithubRepos() {
   if (isDevelopment) {
     return await mockData();
   }
-  const githubresp = await fetch("https://api.github.com/users/GitDevla/repos");
+  const githubresp = await fetch(
+    `https://api.github.com/users/${process.env.GITHUB_ID}/repos`
+  );
   const data = await githubresp.json();
 
   let repos: IRepo[] = [];
