@@ -1,6 +1,11 @@
 import MusicCard from "@/components/Cards/MusicCard";
+import { Metadata } from "next";
 
 export const revalidate = 60 * 60 * 24 * 7;
+
+export const metadata: Metadata = {
+  title: "Music",
+};
 
 async function fetchData() {
   let response = await fetch("http://192.168.1.5:8000/?type=music");

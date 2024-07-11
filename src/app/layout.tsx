@@ -11,7 +11,10 @@ const inter = Fira_Code({
 });
 
 export const metadata: Metadata = {
-  title: "Devla - Home",
+  title: {
+    template: "Devla | %s",
+    default: "Devla | Home",
+  },
 };
 
 export default function RootLayout({
@@ -24,7 +27,7 @@ export default function RootLayout({
       <body
         className={
           inter.className +
-          " min-h-screen tracking-wide bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark mx-auto px-4"
+          " min-h-screen tracking-wide bg-background-light dark:bg-background-dark transition-colors text-text-light dark:text-text-dark mx-auto px-4"
         }
       >
         <Providers>

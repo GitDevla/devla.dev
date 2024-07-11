@@ -6,7 +6,7 @@ import { Metadata } from "next";
 export const revalidate = 60 * 60 * 24;
 
 export const metadata: Metadata = {
-  title: "Devla - Repositories",
+  title: "Repositories",
 };
 
 async function pullRepos() {

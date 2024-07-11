@@ -6,6 +6,7 @@ import { Typewriter } from "nextjs-simple-typewriter";
 import readJSON from "@/utils/ReadJSON";
 import SkillCard from "@/components/Cards/SkillCard";
 import DiscordStatusDot from "@/components/DiscordStatusDot";
+import { Metadata } from "next";
 
 export const revalidate = 60 * 60 * 24;
 
