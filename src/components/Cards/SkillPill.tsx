@@ -2,7 +2,7 @@ import SimpleIcon from "../SimpleIcon";
 
 export default function SkillPill({ name }: Readonly<{ name: string }>) {
   return (
-    <div className="text-xs bg-gray-900 p-1 px-2 flex items-center rounded-full mr-1 gap-1 border">
+    <div className="text-xs bg-accentbackground p-1 px-2 flex items-center rounded-full mr-1 gap-1 border border-primaryText">
       <SimpleIcon
         name={name}
         height={16}

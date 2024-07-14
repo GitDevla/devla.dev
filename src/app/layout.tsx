@@ -27,7 +27,7 @@ export default function RootLayout({
       <body
         className={
           inter.className +
-          " min-h-screen tracking-wide bg-background-light dark:bg-background-dark transition-colors text-text-light dark:text-text-dark mx-auto px-4"
+          " min-h-screen tracking-wide bg-background text-primaryText transition-colors mx-auto px-4"
         }
       >
         <Providers>

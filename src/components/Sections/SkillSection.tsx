@@ -9,9 +9,11 @@ export default function SkillSection({
   techCards: JSX.Element[];
 }) {
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
-  const categories = [
+  let categories = [
     ...new Set(techStack.flatMap((tech: ITechSkill) => tech.category)),
   ];
+  categories = categories.sort((a, b) => a.localeCompare(b));
+
   return (
     <section className="my-10">
       <h2 className="mb-3 text-1xl  font-bold uppercase">Tech Stack</h2>
@@ -21,15 +23,11 @@ export default function SkillSection({
             key={i}
             onMouseEnter={() => setHoveredCategory(category)}
             className={
-              "p-4 w-[11%] text-center rounded-full uppercase text-xs font-semibold text-secondaryText-light dark:text-secondaryText-dark bg-accentbackground-light dark:bg-accentbackground-dark"
+              "p-4 w-[11%] text-center rounded-full uppercase text-xs font-semibold text-secondaryText bg-accentbackground"
             }
           >
             <span
-              className={
-                hoveredCategory === category
-                  ? "text-highlight-light dark:text-highlight-dark "
-                  : ""
-              }
+              className={hoveredCategory === category ? "text-highlight" : ""}
             >
               {category}
             </span>

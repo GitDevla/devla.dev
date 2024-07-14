@@ -6,13 +6,15 @@ import { Typewriter } from "nextjs-simple-typewriter";
 import readJSON from "@/utils/ReadJSON";
 import SkillCard from "@/components/Cards/SkillCard";
 import DiscordStatusDot from "@/components/DiscordStatusDot";
-import { Metadata } from "next";
 
 export const revalidate = 60 * 60 * 24;
 
 export default async function Home() {
   const techStack: ITechSkill[] = await readJSON("src/app/skills.json");
-  const techCards = techStack.map((tech, i) => (
+  const orderedTechStack = techStack.sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
+  const techCards = orderedTechStack.map((tech, i) => (
     <SkillCard key={i} Tech={tech} />
   ));
   const pages = [
@@ -90,7 +92,7 @@ export default async function Home() {
             height={200}
             alt="Picture of the author"
           />
-          <DiscordStatusDot className="absolute bottom-4 right-7 p-2 bg-background-dark rounded-full"></DiscordStatusDot>
+          <DiscordStatusDot className="absolute bottom-4 right-7 p-2 bg-background rounded-full"></DiscordStatusDot>
         </div>
       </section>
       <CardSection title="Pages">

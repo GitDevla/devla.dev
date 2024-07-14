@@ -1,5 +1,4 @@
 import Link from "next/link";
-import SimpleIcon from "../SimpleIcon";
 import ExpandingPill from "../ExpandingPill";
 import SkillPill from "./SkillPill";
 
@@ -9,7 +8,7 @@ export default function RepoCard({ repo }: Readonly<{ repo: IRepo }>) {
   ));
   return (
     <Link className="block" href={repo.href}>
-      <div className="border border-gray-200 dark:border-gray-800 p-4 rounded-lg bg-accentbackground-light dark:bg-accentbackground-dark">
+      <div className="border border-gray-200 dark:border-gray-800 p-4 rounded-lg bg-accentbackground ">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <h2 className="text-lg font-bold">{repo.name}</h2>
@@ -23,18 +22,20 @@ export default function RepoCard({ repo }: Readonly<{ repo: IRepo }>) {
           </div>
         </div>
         {repo.description && <p className="text-sm">{repo.description}</p>}
-        <span className="flex">
-          Language:{" "}
-          {languagesExpanded.length <= 1 ? (
-            <SkillPill name={repo.mainLanguage}></SkillPill>
-          ) : (
-            <ExpandingPill
-              defaultText={<SkillPill name={repo.mainLanguage}></SkillPill>}
-            >
-              {languagesExpanded}
-            </ExpandingPill>
-          )}
-        </span>
+        {repo.mainLanguage != "" && (
+          <span className="flex">
+            Language:{" "}
+            {languagesExpanded.length <= 1 ? (
+              <SkillPill name={repo.mainLanguage}></SkillPill>
+            ) : (
+              <ExpandingPill
+                defaultText={<SkillPill name={repo.mainLanguage}></SkillPill>}
+              >
+                {languagesExpanded}
+              </ExpandingPill>
+            )}
+          </span>
+        )}
       </div>
     </Link>
   );

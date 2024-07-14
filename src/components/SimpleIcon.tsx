@@ -1,5 +1,24 @@
 import Image from "next/image";
 
+function typoFix(name: string) {
+  switch (name) {
+    case "html":
+      return "html5";
+    case "css":
+      return "css3";
+    case "shell":
+      return "gnubash";
+    case "dockerfile":
+      return "docker";
+    case "scss":
+      return "sass";
+    case "batchfile":
+      return "gnubash";
+    default:
+      return name;
+  }
+}
+
 export default async function SimpleIcon({
   name,
   width = 32,
@@ -15,8 +34,11 @@ export default async function SimpleIcon({
 }) {
   if (!name) return null;
   name = name.toLowerCase();
+  name = typoFix(name);
   if (hideIfNotFound) {
-    let exists = await fetch("https://cdn.simpleicons.org/" + name + "/fff");
+    let exists = await fetch(
+      "https://cdn.simpleicons.org/" + name + "/000/fff"
+    );
     if (!exists.ok) return null;
   }
   return (
@@ -24,7 +46,7 @@ export default async function SimpleIcon({
       <Image
         height={height}
         width={width}
-        src={"https://cdn.simpleicons.org/" + name + "/fff"}
+        src={"https://cdn.simpleicons.org/" + name + "/000/fff"}
         alt={"Simple Icon - " + name}
       />
     </div>

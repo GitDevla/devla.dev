@@ -9,7 +9,7 @@ export default async function pullGiteaRepos() {
   }
 
   const githubresp = await fetch(
-    `${process.env.GITEA_URL}/api/v1/orgs/${process.env.GITEA_ID}/repos`
+    `${process.env.GITEA_URL}/api/v1/users/${process.env.GITEA_ID}/repos`
   );
   let data = await githubresp.json();
 

@@ -1,7 +1,7 @@
 import MusicCard from "@/components/Cards/MusicCard";
 import { Metadata } from "next";
 
-export const revalidate = 60 * 60 * 24 * 7;
+export const revalidate = 60 * 60 * 24;
 
 export const metadata: Metadata = {
   title: "Music",
@@ -78,8 +78,7 @@ export default async function MusicPage() {
       </h2>
       <div>Soon...</div>
       <p className="float-end">
-        Last Updated:{" "}
-        {`${currentTime.getMonth()}/${currentTime.getDate()} ${currentTime.getHours()}:${currentTime.getMinutes()}`}
+        Last Updated: {`${currentTime.getMonth()}/${currentTime.getDate()}`}
       </p>
     </>
   );

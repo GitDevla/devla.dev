@@ -41,16 +41,16 @@ export default function MusicCard({
               }}
               className="absolute left-1/2 -translate-x-1/2 bg-cover bg-center h-full w-auto aspect-video"
             ></div>
-            <div className="absolute flex justify-center items-center h-full w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-6xl">
+            <div className="absolute flex justify-center items-center h-full w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-6xl text-white">
               ▶
             </div>
           </div>
           <div className="sm:px-6 content-center">
-            <h3 className="text-lg font-medium leading-6 text-primaryText-dark">
+            <h3 className="text-lg font-medium leading-6 text-white">
               {title}
             </h3>
             {!small && (
-              <p className="mt-1 max-w-2xl text-sm text-gray-300">
+              <p className="mt-1 max-w-2xl text-sm text-gray-400">
                 Author:{" "}
                 <a href={author_url} target="_blank">
                   {author_name}
@@ -58,7 +58,7 @@ export default function MusicCard({
               </p>
             )}
           </div>
-          <div className="absolute bottom-1 right-1">x{times}</div>
+          <div className="absolute bottom-1 right-1 text-white">x{times}</div>
         </div>
       </Link>
     </div>

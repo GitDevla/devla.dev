@@ -29,6 +29,28 @@ body {
 
 @layer components {
   .card {
-    @apply block w-full p-3 bg-accentbackground-light dark:bg-accentbackground-dark border border-gray-200 rounded-lg hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-700;
+    @apply block w-full p-3 bg-accentbackground  border border-gray-200 rounded-lg hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-700;
   }
+}
+
+* {
+  @apply transition-colors;
+}
+
+@layer base {
+
+  :root {
+    --background: 244 244 242;
+    --accentbackground: 232 232 232;
+    --primaryText:  73 84 100;
+    --secondaryText: 17 24 39;
+    --highlight: 59 130 246;
+  }
+
+  :root[class~="dark"] {
+    --background: 17 24 39;
+    --accentbackground: 31 41 55;
+    --primaryText: 243 244 246;
+    --secondaryText: 156 163 175;
+    --highlight: 96 165 250;  }
 }

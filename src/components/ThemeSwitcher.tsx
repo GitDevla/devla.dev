@@ -12,7 +12,7 @@ export default function ThemeSwitcher() {
 
   return (
     <div
-      className="flex justify-center items-center p-2 w-20 h-10 rounded-full bg-accentbackground-light dark:bg-accentbackground-dark"
+      className="flex justify-center items-center p-2 w-20 h-10 rounded-full bg-accentbackground"
       onClick={() => setTheme(resolvedTheme === "light" ? "dark" : "light")}
     >
       <p>{mounted ? (resolvedTheme === "light" ? "☾" : "☼") : " "}</p>
