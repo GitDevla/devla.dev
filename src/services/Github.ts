@@ -1,5 +1,5 @@
 import { IGithubResponse } from "@/types/IGithubResponse";
-import readJSON from "@/utils/ReadJSON";
+import { readJSON } from "@/utils/ReadJSON";
 
 const isDevelopment = process.env.NODE_ENV === "development";
 
@@ -24,7 +24,7 @@ export default async function pullGithubRepos() {
       description: repo.description || "",
       href: repo.html_url,
       archived: repo.archived,
-      mainLanguage: repo.language,
+      mainLanguage: repo.language || "",
       languages: langs,
       stars: repo.stargazers_count,
       forks: repo.forks,

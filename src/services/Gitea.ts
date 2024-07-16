@@ -1,5 +1,5 @@
 import { IGiteaResponse } from "@/types/IGiteaResponse";
-import readJSON from "@/utils/ReadJSON";
+import { readJSON } from "@/utils/ReadJSON";
 
 const isDevelopment = process.env.NODE_ENV === "development";
 
@@ -26,7 +26,7 @@ export default async function pullGiteaRepos() {
       description: repo.description || "",
       href: repo.html_url,
       archived: repo.archived,
-      mainLanguage: repo.language,
+      mainLanguage: repo.language || "",
       languages: langs,
       stars: repo.stars_count,
       forks: repo.forks_count,
@@ -47,7 +47,7 @@ async function mockData() {
   )) as IGiteaResponse[];
   let repos: IRepo[] = [];
   for (const repo of data) {
-    let langs = ["typescript", "javascript", "html", "css"];
+    let langs = ["typescript", "javascript", "html", "css", "react", "nextjs"];
     repos.push({
       source: "gitea",
       name: repo.name,

@@ -21,14 +21,14 @@ export default async function ReposPage() {
   const repos = await pullRepos();
   return (
     <>
-      <h1 className="">Repos</h1>
+      <h1 className="mb-3 text-2xl font-bold uppercase">Repositories</h1>
       <p>Collection of all my published repositories.</p>
       <p>
         Total: {repos.length} (Github:{" "}
         {repos.filter((r) => r.source === "github").length}, Gitea:{" "}
         {repos.filter((r) => r.source === "gitea").length})
       </p>
-      <div className="grid grid-cols-1 gap-5 mt-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-6">
         {repos.map((repo, i) => (
           <RepoCard repo={repo} key={i}></RepoCard>
         ))}

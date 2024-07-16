@@ -82,5 +82,17 @@
     "icon": "cloudflare",
     "category": ["devops"],
     "href": "https://www.cloudflare.com"
+  },
+  {
+    "name": "React",
+    "icon": "react",
+    "category": ["frontend"],
+    "href": "https://reactjs.org"
+  },
+  {
+    "name": "Sass",
+    "icon": "sass",
+    "category": ["frontend"],
+    "href": "https://sass-lang.com"
   }
 ]
