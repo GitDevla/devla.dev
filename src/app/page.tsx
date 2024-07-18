@@ -3,20 +3,14 @@ import LinkCard from "@/components/Cards/LinkCard";
 import CardSection from "@/components/Sections/CardSection";
 import SkillSection from "@/components/Sections/SkillSection";
 import { Typewriter } from "nextjs-simple-typewriter";
-import readJSON from "@/utils/ReadJSON";
+import { readStatic } from "@/utils/ReadJSON";
 import SkillCard from "@/components/Cards/SkillCard";
 import DiscordStatusDot from "@/components/DiscordStatusDot";
 
 export const revalidate = 60 * 60 * 24;
 
 export default async function Home() {
-  const techStack: ITechSkill[] = await readJSON("src/app/skills.json");
-  const orderedTechStack = techStack.sort((a, b) =>
-    a.name.localeCompare(b.name)
-  );
-  const techCards = orderedTechStack.map((tech, i) => (
-    <SkillCard key={i} Tech={tech} />
-  ));
+  const techStack: ITechSkill[] = await readStatic("skills.json");
   const pages = [
     {
       name: "About Me",
@@ -58,11 +52,11 @@ export default async function Home() {
 
   return (
     <>
-      <section className="flex justify-between items-center">
-        <div className="text-lg">
+      <section className="flex justify-between items-center flex-col-reverse md:flex-row">
+        <div className="text-lg  text-center md:text-left">
           <h1 className="text-xl">Hi, I am Devla.</h1>
           <p>
-            I&apos;m a second-year undergraduate <br />
+            I'm a second-year undergraduate <br />
             whom enjoys{" "}
             <Typewriter
               words={[
@@ -76,13 +70,17 @@ export default async function Home() {
                 "watching anime",
               ]}
               loop={0}
-              cursor
-              cursorStyle="|"
               typeSpeed={60}
               deleteSpeed={40}
               delaySpeed={800}
             />
+            <span className="animate-blink">|</span>
           </p>
+          <blockquote className="ml-2 mt-4 text-sm italic font-thin text-secondaryText">
+            <p>
+              "Let's fall and fall into the vortex of this hole-dwelling life."
+            </p>
+          </blockquote>
         </div>
         <div className="relative">
           <Image
@@ -107,7 +105,7 @@ export default async function Home() {
         ))}
       </CardSection>
 
-      <SkillSection techStack={techStack} techCards={techCards}></SkillSection>
+      <SkillSection techStack={techStack}></SkillSection>
     </>
   );
 }
