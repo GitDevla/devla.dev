@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 
 function typoFix(name: string) {
@@ -19,7 +20,7 @@ function typoFix(name: string) {
   }
 }
 
-export default async function SimpleIcon({
+export default function SimpleIcon({
   name,
   width = 32,
   height = 32,
@@ -35,19 +36,20 @@ export default async function SimpleIcon({
   if (!name) return null;
   name = name.toLowerCase();
   name = typoFix(name);
-  if (hideIfNotFound) {
-    let exists = await fetch(
-      "https://cdn.simpleicons.org/" + name + "/000/fff"
-    );
-    if (!exists.ok) return null;
-  }
+
   return (
-    <div className={className}>
+    <div className={`${className}`}>
       <Image
         height={height}
         width={width}
         src={"https://cdn.simpleicons.org/" + name + "/000/fff"}
         alt={"Simple Icon - " + name}
+        onError={(e) => {
+          e.preventDefault();
+          //@ts-ignore
+          e.currentTarget.parentElement.style.display = "none";
+          return false;
+        }}
       />
     </div>
   );
