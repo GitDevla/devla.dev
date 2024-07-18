@@ -1,14 +1,7 @@
 "use client";
 
-import { useState } from "react";
-
-async function fetchStatus() {
-  const response = await fetch(
-    `https://api.lanyard.rest/v1/users/${process.env.NEXT_PUBLIC_DISCORD_ID}`
-  );
-  const data = (await response.json()) as ILanyardResponse;
-  return data;
-}
+import pullDiscordStatus from "@/services/Discord";
+import { useEffect, useState } from "react";
 
 export default function DiscordStatusDot({
   className,
@@ -17,16 +10,20 @@ export default function DiscordStatusDot({
 }) {
   const [status, setStatus] = useState("offline");
 
-  fetchStatus().then((data) => {
-    setStatus(data.data.discord_status);
-  });
+  useEffect(() => {
+    pullDiscordStatus().then((data) => {
+      setStatus(data.data.discord_status);
+    });
 
-  //   setInterval(() => {
-  //     fetchStatus().then((data) => {
-  //       if (status != data.data.discord_status)
-  //         setStatus(data.data.discord_status);
-  //     });
-  //   }, 10000);
+    const interval = setInterval(() => {
+      pullDiscordStatus().then((data) => {
+        if (status != data.data.discord_status)
+          setStatus(data.data.discord_status);
+      });
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   let color;
   switch (status) {
