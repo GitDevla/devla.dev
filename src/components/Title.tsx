@@ -1,15 +1,24 @@
 "use client";
 
-import { Metadata } from "next";
+import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
-// is this lazy?
-
 export function Title() {
-  const pathname = usePathname();
+  let pathname = usePathname();
+  let isHome = pathname === "/";
+  if (isHome) {
+    pathname = "";
+  }
+  pathname = "~" + pathname;
   return (
-    <div>
-      <p>{pathname}</p>
-    </div>
+    <Link href={"/"}>
+      <div className="group flex ">
+        <div className="mr-[1ch]">anon@devla.dev:{pathname}$</div>
+        <div className="max-w-[0ch] group-hover:max-w-[4ch] transition-all ease-steps4 duration-400  overflow-hidden whitespace-nowrap">
+          cd ~
+        </div>
+        <div className="animate-blink">_</div>
+      </div>
+    </Link>
   );
 }
