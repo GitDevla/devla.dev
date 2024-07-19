@@ -4,10 +4,9 @@ import CardSection from "@/components/Sections/CardSection";
 import SkillSection from "@/components/Sections/SkillSection";
 import { Typewriter } from "nextjs-simple-typewriter";
 import { readStatic } from "@/utils/ReadJSON";
-import SkillCard from "@/components/Cards/SkillCard";
 import DiscordStatusDot from "@/components/DiscordStatusDot";
 
-export const revalidate = 60 * 60 * 24;
+export const revalidate = 60 * 60 * 9;
 
 export default async function Home() {
   const techStack: ITechSkill[] = await readStatic("skills.json");

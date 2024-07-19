@@ -3,7 +3,7 @@ import pullGiteaRepos from "@/services/Gitea";
 import pullGithubRepos from "@/services/Github";
 import { Metadata } from "next";
 
-export const revalidate = 60 * 60 * 24;
+export const revalidate = 60 * 60 * 9;
 
 export const metadata: Metadata = {
   title: "Repositories",

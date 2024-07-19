@@ -1,11 +1,15 @@
 import Markdown from "markdown-to-jsx";
 import { getMDContent } from "@/utils/Markdown";
+import { notFound } from "next/navigation";
 
-const revalidate = 60 * 60 * 24;
+export const revalidate = 60 * 60 * 9;
 
 export default async function BlogPage(props: any) {
   const slug = props.params.slug;
   const post = await getMDContent(slug);
+  if (!post) {
+    return notFound();
+  }
   return (
     <div>
       <div className="my-12 text-center">

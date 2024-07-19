@@ -1,7 +1,7 @@
 import MusicCard from "@/components/Cards/MusicCard";
 import { Metadata } from "next";
 
-export const revalidate = 60 * 60 * 24;
+export const revalidate = 60 * 60 * 9;
 
 export const metadata: Metadata = {
   title: "Music",

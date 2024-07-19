@@ -2,9 +2,13 @@ import { getMDContent } from "@/utils/Markdown";
 import Markdown from "markdown-to-jsx";
 import Link from "next/link";
 import Image from "next/image";
+import matter from "gray-matter";
 
 export default async function ProjectCard({ post }: { post: any }) {
-  let { content } = await getMDContent(post.slug);
+  let { content } = (await getMDContent(
+    post.slug
+  )) as matter.GrayMatterFile<string>;
+
   return (
     <div className="group p-4 mt-6 rounded-md shadow-sm grid grid-cols-[4fr_1fr] even:grid-cols-[1fr_4fr]">
       <div className="order-1 group-even:order-2 p-5">

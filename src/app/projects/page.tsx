@@ -1,7 +1,7 @@
 import ProjectCard from "@/components/Project";
 import { fetchMarkdownPosts } from "@/utils/Markdown";
 
-const revalidate = 60 * 60 * 24;
+export const revalidate = 60 * 60 * 9;
 
 async function fetchProjectMD() {
   const postMetadata = await fetchMarkdownPosts();
@@ -14,6 +14,9 @@ export default async function ProjectsPage() {
     <>
       <h1 className="mb-3 text-2xl font-bold uppercase">Projects</h1>
       <div>
+        {postMetadata.length === 0 && (
+          <p className="text-center text-secondaryText">No projects found</p>
+        )}
         {postMetadata.map((post, i) => (
           <ProjectCard post={post} key={i}></ProjectCard>
         ))}
