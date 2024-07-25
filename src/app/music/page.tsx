@@ -1,4 +1,6 @@
+import ArtistCard from "@/components/Cards/ArtistCard";
 import MusicCard from "@/components/Cards/MusicCard";
+import pullPostToPArtists, { pullPostToPMusic } from "@/services/postToP";
 import { Metadata } from "next";
 
 export const revalidate = 60 * 60 * 9;
@@ -8,30 +10,18 @@ export const metadata: Metadata = {
 };
 
 async function fetchData() {
-  let response = await fetch("http://192.168.1.5:8000/?type=music");
+  let today = new Date();
+  let lastWeek = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
+  let response = await fetch(
+    `http://192.168.1.5:8000/music?from=${today.toISOString()}&to=${lastWeek.toISOString()}&limit=4`
+  );
   let data = await response.json();
   return data;
 }
 
-async function fetchMusic() {
-  const data = await fetchData();
-  const ytData = await Promise.all(
-    data.map(async (music: any) => {
-      const [ytid, times] = music;
-      const ytData = await fetch(
-        `https://www.youtube.com/oembed?url=http%3A//youtube.com/watch%3Fv%3D${ytid}&format=json`
-      );
-      const ytJson = await ytData.json();
-      const { title, author_name, author_url, thumbnail_url } = ytJson;
-      const ytUrl = `https://music.youtube.com/watch?v=${ytid}`;
-      return { title, author_name, author_url, ytUrl, thumbnail_url, times };
-    })
-  );
-  return ytData;
-}
-
 export default async function MusicPage() {
-  const data = await fetchMusic();
+  const data = await pullPostToPMusic();
+  const artistData = await pullPostToPArtists();
   const currentTime = new Date();
   return (
     <>
@@ -76,7 +66,11 @@ export default async function MusicPage() {
       <h2 className="mb-3 text-1xl font-bold uppercase mt-5">
         TOP 3 artists of the week
       </h2>
-      <div>Soon...</div>
+      <div className="grid md:grid-cols-3 gap-5 justify-items-center">
+        {artistData.map((artist, i) => (
+          <ArtistCard key={i} artist={artist} />
+        ))}
+      </div>
       <p className="float-end">
         Last Updated: {`${currentTime.getMonth()}/${currentTime.getDate()}`}
       </p>

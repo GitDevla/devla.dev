@@ -21,13 +21,13 @@ export default function MusicCard({
               style={{
                 backgroundImage: `url(${thumbnail_url})`,
               }}
-              className="absolute left-1/2 -top-[17%] -translate-x-1/2 bg-cover bg-center w-[124%] h-[134%] aspect-video"
+              className="absolute left-1/2 -top-[17%] -translate-x-1/2 bg-cover bg-center w-[175%] h-[134%] aspect-video"
             ></div>
           </div>
         </div>
         <div
           className={`overflow-hidden ${
-            small && "grid grid-cols-[1fr_3fr]"
+            small && "grid grid-cols-[1fr_3fr] gap-3"
           } content-center p-4`}
         >
           <div
@@ -45,18 +45,20 @@ export default function MusicCard({
               ▶
             </div>
           </div>
-          <div className="sm:px-6 content-center">
-            <h3 className="text-lg font-medium leading-6 text-white">
+          <div className="content-center">
+            <h3
+              className={`text-lg font-medium leading-6 text-white line-clamp-2 break-all ${
+                small && "text-base"
+              }`}
+            >
               {title}
             </h3>
-            {!small && (
-              <p className="mt-1 max-w-2xl text-sm text-gray-400">
-                Author:{" "}
-                <a href={author_url} target="_blank">
-                  {author_name}
-                </a>
-              </p>
-            )}
+            <p className="mt-1 max-w-2xl text-sm text-gray-400 break-all">
+              by{" "}
+              <a href={author_url} target="_blank">
+                {author_name.replace(" - Topic", "")}
+              </a>
+            </p>
           </div>
           <div className="absolute bottom-1 right-1 text-white">x{times}</div>
         </div>
