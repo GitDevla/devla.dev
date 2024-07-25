@@ -4,6 +4,7 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Providers from "./providers";
+import GlobalSearchServer from "@/components/GlobalSearchServer";
 
 const inter = Fira_Code({
   weight: "400",
@@ -27,12 +28,13 @@ export default function RootLayout({
       <body
         className={
           inter.className +
-          " min-h-screen tracking-wide bg-background text-primaryText transition-colors mx-auto px-4"
+          " min-h-screen tracking-wide bg-background text-primaryText transition-colors mx-auto px-4 scroll-smooth"
         }
       >
         <Providers>
           <main className="lg:max-w-4xl mx-auto min-h-screen">
             <Header></Header>
+            <GlobalSearchServer></GlobalSearchServer>
             {children}
             <Footer></Footer>
           </main>
