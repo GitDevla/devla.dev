@@ -9,7 +9,7 @@ export default function RepoCard({ repo }: Readonly<{ repo: IRepo }>) {
     .map((lang, i) => <SkillPill key={i} name={lang}></SkillPill>);
   return (
     <Link href={repo.href}>
-      <div className="border-secondaryText border p-4 pb-6 rounded-lg h-full flex flex-col justify-between relative">
+      <div className="card p-4 pb-6 rounded-lg h-full flex flex-col justify-between relative">
         <div className="absolute right-2 flex items-center">
           {repo.stars > 0 && <div>✨{repo.stars}</div>}
         </div>

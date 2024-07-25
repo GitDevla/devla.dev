@@ -51,31 +51,33 @@ export default async function Home() {
 
   return (
     <>
-      <section className="flex justify-between items-center flex-col-reverse md:flex-row">
-        <div className="text-lg  text-center md:text-left">
-          <h1 className="text-xl">Hi, I am Devla.</h1>
-          <p>
-            I'm a second-year undergraduate <br />
-            whom enjoys{" "}
-            <Typewriter
-              words={[
-                "Coding",
-                "Frontend",
-                "developing Backends",
-                "writing Scripts",
-                "managing my Home Server",
-                "breaking stuff",
-                "listening to music",
-                "watching anime",
-              ]}
-              loop={0}
-              typeSpeed={60}
-              deleteSpeed={40}
-              delaySpeed={800}
-            />
-            <span className="animate-blink">|</span>
-          </p>
-          <blockquote className="ml-2 mt-4 text-sm italic font-thin text-secondaryText">
+      <section className="flex justify-between flex-col-reverse md:flex-row px-4 items-center md:items-stretch ">
+        <div className="text-lg  text-center md:text-left flex flex-col justify-between">
+          <div className="mt-8">
+            <h1 className="text-2xl font-bold">Hi, I am Devla.</h1>
+            <p>
+              I'm a second-year undergraduate <br />
+              whom enjoys{" "}
+              <Typewriter
+                words={[
+                  "Coding",
+                  "Frontend",
+                  "developing Backends",
+                  "writing Scripts",
+                  "managing my Home Server",
+                  "breaking stuff",
+                  "listening to music",
+                  "watching anime",
+                ]}
+                loop={0}
+                typeSpeed={60}
+                deleteSpeed={40}
+                delaySpeed={800}
+              />
+              <span className="animate-blink">|</span>
+            </p>
+          </div>
+          <blockquote className="ml-2 text-sm italic font-thin text-secondaryText">
             <p>
               "Let's fall and fall into the vortex of this hole-dwelling life."
             </p>
@@ -83,13 +85,13 @@ export default async function Home() {
         </div>
         <div className="relative">
           <Image
-            className="rounded-full w-44 h-44 mr-6"
+            className="rounded-full w-44 h-44"
             src="https://placehold.co/400"
             width={200}
             height={200}
             alt="Picture of the author"
           />
-          <DiscordStatusDot className="absolute bottom-4 right-7 p-2 bg-background rounded-full"></DiscordStatusDot>
+          <DiscordStatusDot className="absolute bottom-3 right-1 p-2 bg-background rounded-full"></DiscordStatusDot>
         </div>
       </section>
       <CardSection title="Pages">

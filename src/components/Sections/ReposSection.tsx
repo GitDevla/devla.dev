@@ -45,15 +45,15 @@ export default function ReposSection({ repos }: { repos: IRepo[] }) {
 
   return (
     <div>
-      <div className="grid grid-cols-[4fr_1fr] mt-4 px-6 gap-6">
+      <div className="grid grid-cols-[4fr_1fr] my-4 px-6 gap-6">
         <input
-          className="border border-primaryText p-1 rounded-md bg-background"
+          className="card p-1"
           type="text"
           placeholder="Search..."
           onChange={(e) => setFilter(e.target.value)}
         />
         <select
-          className="border border-primaryText p-1 rounded-md bg-background"
+          className="card p-1"
           value={orderByStrategy}
           onChange={(e) => setOrderByStrategy(e.target.value)}
         >
@@ -63,9 +63,9 @@ export default function ReposSection({ repos }: { repos: IRepo[] }) {
           <option value="stars">Stars</option>
         </select>
       </div>
-      <div className="mt-2">
+      <div>
         {shownRepos.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-3 gap-y-4">
             {shownRepos.map((repo, i) => (
               <RepoCard repo={repo} key={i}></RepoCard>
             ))}
