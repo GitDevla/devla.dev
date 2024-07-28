@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import RepoCard from "../Cards/RepoCard";
+import { useSearchParams } from "next/navigation";
 
 function matchesFilter(repos: IRepo, filter: string) {
   filter = filter.toLowerCase();
   return (
     repos.name.toLowerCase().includes(filter) ||
-    repos.description.toLowerCase().includes(filter)
+    repos.description.toLowerCase().includes(filter) ||
+    repos.languages.some((l) => l.toLowerCase().includes(filter))
   );
 }
 
@@ -36,7 +38,9 @@ function orderBy(a: IRepo, b: IRepo, strategy: string) {
 }
 
 export default function ReposSection({ repos }: { repos: IRepo[] }) {
-  const [filter, setFilter] = useState("");
+  const searchParams = useSearchParams();
+  const query = searchParams.get("q");
+  const [filter, setFilter] = useState(query || "");
   const [orderByStrategy, setOrderByStrategy] = useState("default");
 
   let shownRepos = repos
@@ -50,6 +54,7 @@ export default function ReposSection({ repos }: { repos: IRepo[] }) {
           className="card p-1"
           type="text"
           placeholder="Search..."
+          value={filter}
           onChange={(e) => setFilter(e.target.value)}
         />
         <select
@@ -65,7 +70,7 @@ export default function ReposSection({ repos }: { repos: IRepo[] }) {
       </div>
       <div>
         {shownRepos.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-3 gap-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-5">
             {shownRepos.map((repo, i) => (
               <RepoCard repo={repo} key={i}></RepoCard>
             ))}
