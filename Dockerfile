@@ -1,4 +1,4 @@
-FROM node:18-alpine AS base
+FROM --platform=linux/arm64 node:18-alpine AS base
 
 # Install dependencies only when needed
 FROM base AS deps
@@ -55,6 +55,7 @@ RUN chown nextjs:nodejs .next
 # https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/.env.local ./.env.local
 
 USER nextjs
 

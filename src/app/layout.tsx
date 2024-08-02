@@ -28,11 +28,11 @@ export default function RootLayout({
       <body
         className={
           inter.className +
-          " min-h-screen tracking-wide bg-background text-primaryText transition-colors mx-auto px-4 scroll-smooth"
+          " mx-auto min-h-screen scroll-smooth bg-background px-4 tracking-wide text-primaryText transition-colors"
         }
       >
         <Providers>
-          <main className="lg:max-w-4xl mx-auto min-h-screen">
+          <main className="mx-auto min-h-screen max-w-4xl">
             <Header></Header>
             <GlobalSearchServer></GlobalSearchServer>
             {children}

@@ -12,7 +12,7 @@ export default function LinkCard({
   return (
     <Link href={href}>
       <div className="card h-full transition-colors">
-        <h3 className="mb-1 font-bold">{name}</h3>
+        <h3 className="font-bold">{name}</h3>
         <p className="text-sm text-secondaryText">{desctiption}</p>
       </div>
     </Link>

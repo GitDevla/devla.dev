@@ -1,27 +1,34 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ArtistCard({ artist }: { artist: any }) {
   const { name, ytUrl, thumbnail_url } = artist;
   return (
     <div
-      className={`group relative w-full h-full content-center transition-transform hover:scale-105 overflow-hidden border border-gray-800 rounded-lg`}
+      className={`group relative h-full w-full content-center overflow-hidden rounded-lg border border-gray-800 transition-transform hover:scale-105`}
     >
       <Link href={ytUrl} target="_blank">
         <div
           style={{
             backgroundImage: `url(${thumbnail_url})`,
           }}
-          className="absolute -z-10 filter blur-sm group-hover:blur transition-all brightness-50 overflow-hidden bg-cover bg-center size-full"
+          className="absolute left-0 top-0 -z-10 size-full overflow-hidden bg-cover bg-center blur-sm brightness-50 filter transition-all group-hover:blur"
         ></div>
         <div
-          className={`overflow-hidden grid grid-cols-[1fr_3fr] content-center p-2`}
+          className={`grid grid-cols-[1fr_3fr] content-center overflow-hidden p-2`}
         >
-          <img src={thumbnail_url} className="rounded-full" />
-          <div className="sm:px-6 content-center">
+          <Image
+            alt="thumbnail"
+            src={thumbnail_url}
+            className="rounded-full"
+            width={88}
+            height={88}
+          />
+          <div className="my-auto sm:px-6">
             <h3
-              className={`text-lg font-medium leading-6 text-white line-clamp-1 `}
+              className={`line-clamp-1 text-lg font-medium leading-6 text-white`}
             >
-              {name}
+              {name.replace(" - Topic", "")}
             </h3>
           </div>
         </div>

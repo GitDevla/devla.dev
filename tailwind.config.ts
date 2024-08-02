@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-import colors from "tailwindcss/colors";
 
 const config: Config = {
   darkMode: "class",
@@ -12,6 +11,21 @@ const config: Config = {
         primaryText: "rgb(var(--primaryText) / <alpha-value>)",
         secondaryText: "rgb(var(--secondaryText) / <alpha-value>)",
         highlight: "rgb(var(--highlight) / <alpha-value>)",
+        border: "rgb(var(--border) / <alpha-value>)",
+      },
+
+      transitionTimingFunction: {
+        steps4: "steps(4, jump-start)",
+      },
+
+      keyframes: {
+        blinking: {
+          "0%,100%": { opacity: "1" },
+          "50%": { opacity: "0" },
+        },
+      },
+      animation: {
+        blink: "blinking 1.5s infinite",
       },
     },
   },

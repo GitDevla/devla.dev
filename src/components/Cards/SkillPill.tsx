@@ -2,15 +2,15 @@ import SimpleIcon from "../SimpleIcon";
 
 export default function SkillPill({ name }: Readonly<{ name: string }>) {
   return (
-    <div className="text-xs bg-accentbackground p-1 px-2 flex items-center rounded-full mr-1 gap-1 border border-primaryText">
+    <div className="mr-1 flex items-center gap-1 rounded-full border border-primaryText bg-accentbackground p-1 px-2 text-xs">
       <SimpleIcon
         name={name}
         height={16}
         width={16}
         hideIfNotFound={true}
-        className="w-[16px] h-[16px]"
+        className="h-[16px] w-[16px]"
       ></SimpleIcon>
-      <span className="uppercase font-thin">{name}</span>
+      <span className="font-thin uppercase">{name}</span>
     </div>
   );
 }

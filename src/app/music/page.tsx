@@ -2,77 +2,78 @@ import ArtistCard from "@/components/Cards/ArtistCard";
 import MusicCard from "@/components/Cards/MusicCard";
 import pullPostToPArtists, { pullPostToPMusic } from "@/services/postToP";
 import { Metadata } from "next";
+import Link from "next/link";
 
-export const revalidate = 60 * 60 * 9;
+export const revalidate = 60 * 60 * 24 * 3;
 
 export const metadata: Metadata = {
   title: "Music",
 };
 
-async function fetchData() {
-  let today = new Date();
-  let lastWeek = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
-  let response = await fetch(
-    `http://192.168.1.5:8000/music?from=${today.toISOString()}&to=${lastWeek.toISOString()}&limit=4`
-  );
-  let data = await response.json();
-  return data;
-}
-
 export default async function MusicPage() {
-  const data = await pullPostToPMusic();
-  const artistData = await pullPostToPArtists();
-  const currentTime = new Date();
+  const [musicData, artistData] = await Promise.all([
+    pullPostToPMusic(),
+    pullPostToPArtists(),
+  ]);
   return (
     <>
-      <h1 className="mb-3 text-2xl font-bold uppercase">Music</h1>
-      <p>
-        Collection of my most played songs and artists on Youtube & Youtube
-        Music.
-      </p>
-      <p>
-        If you are intrested in the inner workings check out my postToP project.
-      </p>
-      <h2 className="mb-3 text-1xl font-bold uppercase mt-5">
-        Currently Listening to
-      </h2>
-      <div>Soon...</div>
-      <h2 className="mb-3 text-1xl font-bold uppercase mt-5">
-        TOP 4 songs of the week
-      </h2>
-      <div>
-        <div className="grid grid-cols-1 lg:grid-rows-3 gap-5 mt-6 lg:grid-cols-[5fr_4fr] w-full">
-          <MusicCard
-            music={data[0]}
-            className="lg:row-start-1 lg:row-end-4"
-          ></MusicCard>
-          <MusicCard
-            music={data[1]}
-            className="lg:row-start-1 lg:row-end-2"
-            small={true}
-          ></MusicCard>
-          <MusicCard
-            music={data[2]}
-            className="lg:row-start-2 lg:row-end-3"
-            small={true}
-          ></MusicCard>
-          <MusicCard
-            music={data[3]}
-            className="lg:row-start-3 lg:row-end-4"
-            small={true}
-          ></MusicCard>
+      <section>
+        <h1 className="header">Music</h1>
+        <p>
+          Collection of my most played songs and artists on{" "}
+          <Link href={"https://www.youtube.com/"} className="link">
+            Youtube
+          </Link>{" "}
+          &{" "}
+          <Link href={"https://music.youtube.com/"} className="link">
+            Youtube Music
+          </Link>
+          .
+        </p>
+      </section>
+      <section className="mb-4">
+        <h2 className="subheader">Currently Listening to</h2>
+        <div>Soon...</div>
+      </section>
+      <section className="mb-4">
+        <h2 className="subheader">TOP 4 songs of the week</h2>
+        <div>
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-[5fr_4fr] md:grid-rows-3">
+            <MusicCard
+              music={musicData[0]}
+              className="md:row-start-1 md:row-end-4"
+            ></MusicCard>
+            <MusicCard
+              music={musicData[1]}
+              className="md:row-start-1 md:row-end-2"
+              small={true}
+            ></MusicCard>
+            <MusicCard
+              music={musicData[2]}
+              className="md:row-start-2 md:row-end-3"
+              small={true}
+            ></MusicCard>
+            <MusicCard
+              music={musicData[3]}
+              className="md:row-start-3 md:row-end-4"
+              small={true}
+            ></MusicCard>
+          </div>
         </div>
-      </div>
-      <h2 className="mb-3 text-1xl font-bold uppercase mt-5">
-        TOP 3 artists of the week
-      </h2>
-      <div className="grid md:grid-cols-3 gap-5 justify-items-center">
-        {artistData.map((artist, i) => (
-          <ArtistCard key={i} artist={artist} />
-        ))}
-      </div>
+      </section>
+      <section>
+        <h2 className="subheader">TOP 3 artists of the week</h2>
+        <div className="grid gap-5 md:grid-cols-3">
+          {artistData.map((artist, i) => (
+            <ArtistCard key={i} artist={artist} />
+          ))}
+        </div>
+      </section>
       <p className="float-end">
-        Last Updated: {`${currentTime.getMonth()}/${currentTime.getDate()}`}
+        by{" "}
+        <Link href={"/blog/postToP"} className="link">
+          postToP
+        </Link>
       </p>
     </>
   );

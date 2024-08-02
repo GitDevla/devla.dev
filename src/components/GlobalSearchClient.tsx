@@ -42,15 +42,15 @@ export default function GlobalSearchClient({
   return (
     shown && (
       <div
-        className="fixed z-50 top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex justify-center items-center"
+        className="fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-gray-800 bg-opacity-50"
         onClick={(e) => {
           if (e.target === e.currentTarget) setShown(false);
         }}
       >
-        <div className="p-4 rounded-lg w-96 bg-background">
+        <div className="w-96 rounded-lg bg-background p-4">
           <input
             type="text"
-            className="w-full p-2 border border-gray-300 rounded-lg bg-background"
+            className="w-full rounded-lg border border-gray-300 bg-background p-2"
             placeholder="Search..."
             ref={input}
             autoFocus
@@ -58,9 +58,8 @@ export default function GlobalSearchClient({
             onKeyDown={(e) => {
               if (e.key === "Enter") {
                 const page = pages.find((p) =>
-                  p.title.toLowerCase().includes(search.toLocaleLowerCase())
+                  p.title.toLowerCase().includes(search.toLocaleLowerCase()),
                 );
-                console.log(page);
                 if (page) {
                   router.push(page.href);
                   setShown(false);
@@ -71,7 +70,9 @@ export default function GlobalSearchClient({
           <ul className="group">
             {pages
               .filter((p) =>
-                p.title.toLowerCase().includes(search.toLocaleLowerCase() || "")
+                p.title
+                  .toLowerCase()
+                  .includes(search.toLocaleLowerCase() || ""),
               )
               .map((page, i) => (
                 <Link
@@ -80,7 +81,7 @@ export default function GlobalSearchClient({
                   onClick={() => setShown(false)}
                   className="first:bg-accentbackground hover:!bg-accentbackground first:group-hover:bg-inherit"
                 >
-                  <li className="border mb-2 rounded-lg p-2 bg-inherit">
+                  <li className="mb-2 rounded-lg border bg-inherit p-2">
                     <span className="capitalize">{page.title}</span>
                   </li>
                 </Link>

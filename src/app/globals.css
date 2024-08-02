@@ -26,10 +26,31 @@ body {
   }
 }
 
-
 @layer components {
   .card {
-    @apply block w-full p-3 bg-accentbackground  border border-gray-200 rounded-lg hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-700;
+    @apply block size-full rounded-lg border border-border bg-accentbackground p-3 hover:bg-opacity-55;
+  }
+
+  .header {
+    @apply mb-3 text-2xl font-bold uppercase;
+  }
+
+  .subheader {
+    @apply mb-2 text-base font-bold uppercase;
+  }
+
+  .link {
+    @apply text-highlight underline;
+  }
+
+  section {
+    @apply mb-7;
+  }
+
+  body::-webkit-scrollbar {
+    display: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
 
@@ -38,13 +59,13 @@ body {
 }
 
 @layer base {
-
   :root {
     --background: 244 244 242;
-    --accentbackground: 232 232 232;
-    --primaryText:  73 84 100;
+    --accentbackground: 222 222 222;
+    --primaryText: 73 84 100;
     --secondaryText: 17 24 39;
     --highlight: 59 130 246;
+    --border: 229 231 235;
   }
 
   :root[class~="dark"] {
@@ -52,5 +73,7 @@ body {
     --accentbackground: 31 41 55;
     --primaryText: 243 244 246;
     --secondaryText: 156 163 175;
-    --highlight: 96 165 250;  }
+    --highlight: 96 165 250;
+    --border: 55 65 81;
+  }
 }

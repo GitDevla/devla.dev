@@ -12,7 +12,7 @@ export default async function ProjectsPage() {
   const postMetadata = await fetchProjectMD();
   return (
     <>
-      <h1 className="mb-3 text-2xl font-bold uppercase">Projects</h1>
+      <h1 className="header">Projects</h1>
       <div>
         {postMetadata.length === 0 && (
           <p className="text-center text-secondaryText">No projects found</p>

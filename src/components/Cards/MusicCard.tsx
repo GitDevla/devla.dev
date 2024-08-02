@@ -1,59 +1,50 @@
 import Link from "next/link";
+import YoutubeThumbnail from "../YoutubeThumbnail";
 
 export default function MusicCard({
   music,
   className,
   small = false,
 }: {
-  music: any;
+  music: IPostToPMusic;
   className?: string;
   small?: boolean;
 }) {
   const { title, author_name, author_url, ytUrl, times, thumbnail_url } = music;
   return (
     <div
-      className={`group relative ${className} w-full h-full content-center transition-transform hover:scale-105 overflow-hidden border border-gray-800 rounded-lg`}
+      className={`group relative ${className} h-full w-full content-center overflow-hidden rounded-lg border border-gray-800 transition-transform hover:scale-105`}
     >
       <Link href={ytUrl} target="_blank">
-        <div className="absolute top-0 left-0 size-full -z-10 filter blur-sm group-hover:blur transition-all brightness-50 p-4 overflow-hidden">
-          <div>
-            <div
-              style={{
-                backgroundImage: `url(${thumbnail_url})`,
-              }}
-              className="absolute left-1/2 -top-[17%] -translate-x-1/2 bg-cover bg-center w-[175%] h-[134%] aspect-video"
-            ></div>
-          </div>
-        </div>
+        <YoutubeThumbnail
+          thumbnail_url={thumbnail_url}
+          className="-z-10 blur-sm brightness-50 filter transition-all group-hover:blur"
+          lowRes
+        />
         <div
           className={`overflow-hidden ${
             small && "grid grid-cols-[1fr_3fr] gap-3"
           } content-center p-4`}
         >
           <div
-            className={`aspect-square  relative ${
-              small ? "w-full" : "w-1/2 mb-6"
-            } overflow-hidden rounded-lg m-auto `}
+            className={`relative aspect-square ${
+              small ? "w-full" : "mb-6 w-1/2"
+            } m-auto overflow-hidden rounded-lg`}
           >
-            <div
-              style={{
-                backgroundImage: `url(${thumbnail_url})`,
-              }}
-              className="absolute left-1/2 -translate-x-1/2 bg-cover bg-center h-full w-auto aspect-video"
-            ></div>
-            <div className="absolute flex justify-center items-center h-full w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-6xl text-white">
+            <YoutubeThumbnail thumbnail_url={thumbnail_url} lowRes={small} />
+            <div className="absolute flex h-full w-full items-center justify-center text-6xl text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               ▶
             </div>
           </div>
-          <div className="content-center">
+          <div className="flex flex-col justify-center break-all">
             <h3
-              className={`text-lg font-medium leading-6 text-white line-clamp-2 break-all ${
-                small && "text-base"
+              className={`line-clamp-2 text-white ${
+                small ? "text-base" : "text-lg"
               }`}
             >
               {title}
             </h3>
-            <p className="mt-1 max-w-2xl text-sm text-gray-400 break-all">
+            <p className="mt-1 line-clamp-1 text-sm text-gray-400">
               by{" "}
               <a href={author_url} target="_blank">
                 {author_name.replace(" - Topic", "")}

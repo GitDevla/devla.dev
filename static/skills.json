@@ -94,5 +94,11 @@
     "icon": "sass",
     "category": ["frontend"],
     "href": "https://sass-lang.com"
+  },
+  {
+    "name": "Python",
+    "icon": "python",
+    "category": ["languages"],
+    "href": "https://www.python.org"
   }
 ]

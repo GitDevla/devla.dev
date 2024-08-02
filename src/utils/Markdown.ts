@@ -26,6 +26,14 @@ export async function getMDMetadata(fileName: string) {
 
 export async function getMDContent(filename: string) {
   const file = `${folder}${filename}.md`;
+  const fileExists = await fs
+    .access(file)
+    .then(() => true)
+    .catch(() => false);
+
+  if (!fileExists) {
+    return null;
+  }
   const content = await fs.readFile(file, "utf8");
   const matterResult = matter(content);
   return matterResult;

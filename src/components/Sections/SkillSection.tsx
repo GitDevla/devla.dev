@@ -13,7 +13,7 @@ function orderByNumberOfOccurrences(techStack: ITechSkill[]) {
     });
   });
   return categories.sort(
-    (a, b) => (categoryCount.get(b) || 0) - (categoryCount.get(a) || 0)
+    (a, b) => (categoryCount.get(b) || 0) - (categoryCount.get(a) || 0),
   );
 }
 
@@ -26,13 +26,13 @@ export default function SkillSection({
   let categories = orderByNumberOfOccurrences(techStack);
   techStack = techStack.sort((a, b) => a.name.localeCompare(b.name));
   return (
-    <section className="my-10">
-      <h2 className="mb-3 text-1xl  font-bold uppercase">Tech Stack</h2>
-      <div className="flex  gap-y-1 flex-wrap justify-evenly mb-5 w-full">
+    <section>
+      <h2 className="subheader">Tech Stack</h2>
+      <div className="mb-5 flex w-full flex-wrap justify-evenly gap-y-1">
         <div
           onMouseEnter={() => setHoveredCategory(null)}
           className={
-            "p-4 w-full max-w-28 text-center rounded-full uppercase text-xs font-semibold text-secondaryText bg-accentbackground"
+            "w-full max-w-28 rounded-full bg-accentbackground p-4 text-center text-xs font-semibold uppercase text-secondaryText"
           }
         >
           <span className={!hoveredCategory ? "text-highlight" : ""}>All</span>
@@ -42,7 +42,7 @@ export default function SkillSection({
             key={i}
             onMouseEnter={() => setHoveredCategory(category)}
             className={
-              "p-4 w-full max-w-28 text-center rounded-full uppercase text-xs font-semibold text-secondaryText bg-accentbackground"
+              "w-full max-w-28 rounded-full bg-accentbackground p-4 text-center text-xs font-semibold uppercase text-secondaryText"
             }
           >
             <span
@@ -53,12 +53,12 @@ export default function SkillSection({
           </div>
         ))}
       </div>
-      <div className="grid h-[calc(100%/3)] overflow-hidden grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-2 gap-y-2 ">
+      <div className="grid h-[calc(100%/3)] grid-cols-2 gap-x-2 gap-y-2 overflow-hidden md:grid-cols-3 lg:grid-cols-5">
         {techStack.map(
           (tech, i) =>
             (!hoveredCategory || tech.category.includes(hoveredCategory)) && (
               <SkillCard key={i} Tech={tech}></SkillCard>
-            )
+            ),
         )}
       </div>
     </section>

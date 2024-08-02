@@ -49,16 +49,16 @@ export default function ReposSection({ repos }: { repos: IRepo[] }) {
 
   return (
     <div>
-      <div className="grid grid-cols-[4fr_1fr] my-4 px-6 gap-6">
+      <div className="my-4 grid grid-cols-[2fr_1fr] md:grid-cols-[3fr_1fr] md:gap-6 md:px-6">
         <input
-          className="card p-1"
+          className="card w-full p-1"
           type="text"
           placeholder="Search..."
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
         />
         <select
-          className="card p-1"
+          className="card w-full p-1"
           value={orderByStrategy}
           onChange={(e) => setOrderByStrategy(e.target.value)}
         >
@@ -70,13 +70,13 @@ export default function ReposSection({ repos }: { repos: IRepo[] }) {
       </div>
       <div>
         {shownRepos.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-5">
+          <div className="grid grid-cols-1 gap-x-4 gap-y-5 md:grid-cols-2">
             {shownRepos.map((repo, i) => (
               <RepoCard repo={repo} key={i}></RepoCard>
             ))}
           </div>
         ) : (
-          <p className="text-secondaryText text-center">
+          <p className="text-center text-secondaryText">
             No repositories match the search
           </p>
         )}

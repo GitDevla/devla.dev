@@ -9,33 +9,31 @@ export default function RepoCard({ repo }: Readonly<{ repo: IRepo }>) {
     .map((lang, i) => <SkillPill key={i} name={lang}></SkillPill>);
   return (
     <Link href={repo.href}>
-      <div className="card p-4 pb-6 rounded-lg h-full flex flex-col justify-between relative">
+      <div className="card relative flex h-full flex-col justify-between rounded-lg pb-6">
         <div className="absolute right-2 flex items-center">
           {repo.stars > 0 && <div>✨{repo.stars}</div>}
         </div>
         <div className="flex items-center">
-          <h2 className="text-lg font-bold line-clamp-1">{repo.name}</h2>
+          <h3 className="line-clamp-1 text-lg font-bold">{repo.name}</h3>
           {repo.archived && (
             <p className="ml-1 text-secondaryText">(Archived)</p>
           )}
         </div>
 
-        <div className="line-clamp-1 h-[1lh]">
+        <div className="line-clamp-2 text-base text-secondaryText">
           {repo.description ? (
-            <p className="text-sm text-secondaryText">{repo.description}</p>
+            <p className="">{repo.description}</p>
           ) : (
-            <p className="text-sm text-secondaryText font-thin italic">
-              No description was given
-            </p>
+            <p className="font-thin italic">No description was given</p>
           )}
         </div>
         <div>
-          <p>
+          <p className="mt-3 text-xs text-secondaryText">
             Last Updated:{" "}
-            {moment.utc(repo.updated_at).local().startOf("seconds").fromNow()}
+            {moment.utc(repo.updated_at).local().startOf("days").fromNow()}
           </p>
         </div>
-        <div className="flex absolute -bottom-3 left-2 w-full">
+        <div className="absolute -bottom-3 left-2 flex w-full">
           {repo.mainLanguage != "" && (
             <ExpandingPill
               defaultText={<SkillPill name={repo.mainLanguage}></SkillPill>}

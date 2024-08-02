@@ -10,8 +10,10 @@ export const metadata: Metadata = {
 };
 
 async function pullRepos() {
-  let githubRepos = await pullGithubRepos();
-  let giteaRepos = await pullGiteaRepos();
+  let [githubRepos, giteaRepos] = await Promise.all([
+    pullGithubRepos(),
+    pullGiteaRepos(),
+  ]);
   let repos = githubRepos.concat(giteaRepos);
   return repos;
 }
@@ -20,7 +22,7 @@ export default async function ReposPage() {
   const repos = await pullRepos();
   return (
     <>
-      <h1 className="mb-3 text-2xl font-bold uppercase">Repositories</h1>
+      <h1 className="header">Repositories</h1>
       <p>Collection of all my published repositories.</p>
       <p>
         Total: {repos.length} (Github:{" "}

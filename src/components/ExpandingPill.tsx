@@ -9,7 +9,7 @@ export default function ExpandingPill({
     <div className="relative w-full gap-1">
       <div className="group flex">
         {defaultText}
-        <div className="flex gap-1 transition-all w-0 overflow-hidden max-w-0 group-hover:max-w-full group-hover:w-full">
+        <div className="flex w-0 max-w-0 gap-1 overflow-hidden transition-all group-hover:w-full group-hover:max-w-full">
           {children.map((child, i) => (
             <div key={i}>{child}</div>
           ))}
