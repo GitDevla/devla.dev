@@ -6,9 +6,9 @@ export default function Header() {
   return (
     <nav className="mb-5 flex items-center justify-between p-3 md:px-5">
       <div className="flex items-center">
-        <p className="hidden md:block">
+        <div className="hidden md:block">
           <Title></Title>
-        </p>
+        </div>
 
         <Link className="block md:hidden" href={"/"}>
           Go Home

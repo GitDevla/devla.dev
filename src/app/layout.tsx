@@ -30,6 +30,7 @@ export default function RootLayout({
           inter.className +
           " mx-auto min-h-screen scroll-smooth bg-background px-4 tracking-wide text-primaryText transition-colors"
         }
+        suppressHydrationWarning
       >
         <Providers>
           <main className="mx-auto min-h-screen max-w-4xl">

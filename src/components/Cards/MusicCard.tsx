@@ -45,10 +45,7 @@ export default function MusicCard({
               {title}
             </h3>
             <p className="mt-1 line-clamp-1 text-sm text-gray-400">
-              by{" "}
-              <a href={author_url} target="_blank">
-                {author_name.replace(" - Topic", "")}
-              </a>
+              by {author_name.replace(" - Topic", "")}
             </p>
           </div>
           <div className="absolute bottom-1 right-1 text-white">x{times}</div>
