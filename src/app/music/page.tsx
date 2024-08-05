@@ -2,9 +2,14 @@ import ArtistCard from "@/components/Cards/ArtistCard";
 import MusicCard from "@/components/Cards/MusicCard";
 import pullPostToPArtists, { pullPostToPMusic } from "@/services/postToP";
 import { Metadata } from "next";
+import { revalidatePath } from "next/cache";
 import Link from "next/link";
+import cron from "node-cron";
 
-export const revalidate = 60 * 60 * 24 * 3;
+// export const revalidate = 60 * 60 * 24 * 3;
+cron.schedule("0 5 * * 1", async () => {
+  revalidatePath("/music");
+});
 
 export const metadata: Metadata = {
   title: "Music",

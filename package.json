@@ -4,7 +4,7 @@
   "private": true,
   "author": "Devla",
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -17,6 +17,7 @@
     "next": "^14.2.5",
     "next-themes": "^0.3.0",
     "nextjs-simple-typewriter": "^5.2.2",
+    "node-cron": "^3.0.3",
     "react": "^18",
     "react-dom": "^18",
     "sharp": "^0.33.4"
@@ -24,6 +25,7 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.13",
     "@types/node": "^20",
+    "@types/node-cron": "^3.0.11",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",

@@ -1,19 +1,25 @@
 import { readJSON } from "@/utils/ReadJSON";
+import moment from "moment";
 
 const isDevelopment = process.env.NODE_ENV === "development";
 
+// I fucking love timezones & notations
 function LastWeekSunday() {
-  let t = new Date();
-  t.setDate(t.getDate() - t.getDay());
-  t.setHours(23, 59, 59, 999);
-  return t;
+  return moment()
+    .utcOffset(0)
+    .subtract(1, "weeks")
+    .isoWeekday(7)
+    .endOf("day")
+    .toDate();
 }
 
 function LastWeekMonday() {
-  let t = new Date();
-  t.setDate(t.getDate() - t.getDay() - 6);
-  t.setHours(0, 0, 0, 0);
-  return t;
+  return moment()
+    .utcOffset(0)
+    .subtract(1, "weeks")
+    .isoWeekday(1)
+    .startOf("day")
+    .toDate();
 }
 
 export default async function pullPostToPArtists(): Promise<IPostToPArtist[]> {
@@ -25,22 +31,22 @@ export default async function pullPostToPArtists(): Promise<IPostToPArtist[]> {
   let response = await fetch(
     `${
       process.env.postToP_URL
-    }artist?from=${lastWeekSunday.toISOString()}&to=${lastWeekMonday.toISOString()}&limit=3`,
+    }artist?from=${lastWeekSunday.toUTCString()}&to=${lastWeekMonday.toUTCString()}&limit=3`,
   );
   let data = await response.json();
   const ytData = await Promise.all(
     data.map(async (artist: any) => {
-      const [ytid] = artist;
+      const { artistID } = artist;
       let ytData;
-      if ((ytid as String).startsWith("@")) {
+      if ((artistID as String).startsWith("@")) {
         ytData = await fetch(
-          `https://yt.lemnoslife.com/noKey/channels?part=snippet&forHandle=${ytid.slice(
+          `https://yt.lemnoslife.com/noKey/channels?part=snippet&forHandle=${artistID.slice(
             1,
           )}`,
         );
       } else {
         ytData = await fetch(
-          `https://yt.lemnoslife.com/noKey/channels?part=snippet&id=${ytid}`,
+          `https://yt.lemnoslife.com/noKey/channels?part=snippet&id=${artistID}`,
         );
       }
       const data = (await ytData.json()) as IYTArtistResponse;
@@ -63,18 +69,18 @@ export async function pullPostToPMusic(): Promise<IPostToPMusic[]> {
   let response = await fetch(
     `${
       process.env.postToP_URL
-    }music?from=${lastWeekSunday.toISOString()}&to=${lastWeekMonday.toISOString()}&limit=4`,
+    }music?from=${lastWeekSunday.toUTCString()}&to=${lastWeekMonday.toUTCString()}&limit=4`,
   );
   let data = await response.json();
   const ytData = await Promise.all(
     data.map(async (music: any) => {
-      const [ytid, times] = music;
+      const { musicID, times } = music;
       const ytData = await fetch(
-        `https://www.youtube.com/oembed?url=http%3A//youtube.com/watch%3Fv%3D${ytid}&format=json`,
+        `https://www.youtube.com/oembed?url=http%3A//youtube.com/watch%3Fv%3D${musicID}&format=json`,
       );
       const data = (await ytData.json()) as IYTVideoResponse;
       const { title, author_name, author_url, thumbnail_url } = data;
-      const ytUrl = `https://www.youtube.com/watch?v=${ytid}`;
+      const ytUrl = `https://www.youtube.com/watch?v=${musicID}`;
       return { title, author_name, author_url, ytUrl, thumbnail_url, times };
     }),
   );
