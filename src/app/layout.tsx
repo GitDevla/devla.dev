@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Providers from "./providers";
 import GlobalSearchServer from "@/components/GlobalSearchServer";
+import GoToTop from "@/components/GoToTop";
 
 const inter = Fira_Code({
   weight: "400",
@@ -24,11 +25,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <body
         className={
           inter.className +
-          " mx-auto min-h-screen scroll-smooth bg-background px-4 tracking-wide text-primaryText transition-colors"
+          " mx-auto min-h-screen bg-background px-4 tracking-wide text-primaryText transition-colors"
         }
         suppressHydrationWarning
       >
@@ -37,6 +38,7 @@ export default function RootLayout({
             <Header></Header>
             <GlobalSearchServer></GlobalSearchServer>
             {children}
+            <GoToTop></GoToTop>
             <Footer></Footer>
           </main>
         </Providers>
