@@ -11,7 +11,7 @@ export default function Header() {
         </div>
 
         <Link className="block md:hidden" href={"/"}>
-          Go Home
+          {"<-"} Go Home
         </Link>
       </div>
       <ThemeSwitcher></ThemeSwitcher>
