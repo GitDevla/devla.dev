@@ -52,6 +52,11 @@ body {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  .page-transition {
+    opacity: 0;
+    filter: blur(10px);
+  }
 }
 
 * {

@@ -2,6 +2,7 @@ import ReposSection from "@/components/Sections/ReposSection";
 import pullGiteaRepos from "@/services/Gitea";
 import pullGithubRepos from "@/services/Github";
 import { Metadata } from "next";
+import { Suspense } from "react";
 
 export const revalidate = 60 * 60 * 9;
 
@@ -29,7 +30,9 @@ export default async function ReposPage() {
         {repos.filter((r) => r.source === "github").length}, Gitea:{" "}
         {repos.filter((r) => r.source === "gitea").length})
       </p>
-      <ReposSection repos={repos}></ReposSection>
+      <Suspense fallback={<div>Loading...</div>}>
+        <ReposSection repos={repos}></ReposSection>
+      </Suspense>
     </>
   );
 }

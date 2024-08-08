@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import TransitionLink from "./TransitionLink";
 
 export function Title() {
   let pathname = usePathname();
@@ -11,7 +12,7 @@ export function Title() {
   }
   pathname = "~" + pathname;
   return (
-    <Link href={"/"}>
+    <TransitionLink href={"/"}>
       <div className="group flex">
         <div className="mr-[1ch]">anon@devla.dev:{pathname}$</div>
         <div className="duration-400 max-w-[0ch] overflow-hidden whitespace-nowrap transition-all ease-steps4 group-hover:max-w-[4ch]">
@@ -19,6 +20,6 @@ export function Title() {
         </div>
         <div className="animate-blink">_</div>
       </div>
-    </Link>
+    </TransitionLink>
   );
 }

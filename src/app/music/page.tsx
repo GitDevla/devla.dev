@@ -1,5 +1,6 @@
 import ArtistCard from "@/components/Cards/ArtistCard";
 import MusicCard from "@/components/Cards/MusicCard";
+import TransitionLink from "@/components/TransitionLink";
 import pullPostToPArtists, { pullPostToPMusic } from "@/services/postToP";
 import { Metadata } from "next";
 import { revalidatePath } from "next/cache";
@@ -76,9 +77,9 @@ export default async function MusicPage() {
       </section>
       <p className="float-end">
         by{" "}
-        <Link href={"/blog/postToP"} className="link">
+        <TransitionLink href={"/blog/postToP"} className="link">
           postToP
-        </Link>
+        </TransitionLink>
       </p>
     </>
   );

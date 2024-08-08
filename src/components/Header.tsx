@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { Title } from "./Title";
+import TransitionLink from "./TransitionLink";
 
 export default function Header() {
   return (
@@ -10,9 +11,9 @@ export default function Header() {
           <Title></Title>
         </div>
 
-        <Link className="block md:hidden" href={"/"}>
+        <TransitionLink className="block md:hidden" href={"/"}>
           {"<-"} Go Home
-        </Link>
+        </TransitionLink>
       </div>
       <ThemeSwitcher></ThemeSwitcher>
     </nav>

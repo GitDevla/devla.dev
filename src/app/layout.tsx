@@ -29,18 +29,18 @@ export default function RootLayout({
       <body
         className={
           inter.className +
-          " mx-auto min-h-screen bg-background px-4 tracking-wide text-primaryText transition-colors"
+          " mx-auto min-h-screen max-w-4xl bg-background px-4 tracking-wide text-primaryText transition-colors min-[912px]:px-0"
         }
         suppressHydrationWarning
       >
         <Providers>
-          <main className="mx-auto min-h-screen max-w-4xl">
-            <Header></Header>
-            <GlobalSearchServer></GlobalSearchServer>
+          <Header></Header>
+          <GlobalSearchServer></GlobalSearchServer>
+          <main className="transition-opacity duration-100 ease-in-out">
             {children}
-            <GoToTop></GoToTop>
-            <Footer></Footer>
           </main>
+          <GoToTop></GoToTop>
+          <Footer></Footer>
         </Providers>
       </body>
     </html>
