@@ -28,7 +28,7 @@ body {
 
 @layer components {
   .card {
-    @apply block size-full rounded-lg border border-border bg-accentbackground p-3 hover:bg-opacity-55;
+    @apply block size-auto rounded-lg border border-border bg-accentbackground p-3 hover:bg-opacity-55;
   }
 
   .header {
@@ -81,4 +81,20 @@ body {
     --highlight: 96 165 250;
     --border: 55 65 81;
   }
+}
+
+ul.tree ul {
+  @apply ml-3;
+}
+ul.tree li {
+  @apply link line-clamp-1 w-full break-all border-l border-primaryText px-2;
+}
+ul.tree li:last-child {
+  @apply border-l-0;
+}
+ul.tree li:before {
+  @apply relative left-[-0.5em] top-[-0.3em] inline-block h-[1em] w-3 border-b border-primaryText content-[""];
+}
+ul.tree li:last-child:before {
+  @apply border-l border-primaryText;
 }
