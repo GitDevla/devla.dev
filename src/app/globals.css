@@ -54,8 +54,7 @@ body {
   }
 
   .page-transition {
-    opacity: 0;
-    filter: blur(10px);
+    @apply opacity-30;
   }
 }
 

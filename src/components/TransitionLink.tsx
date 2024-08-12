@@ -35,10 +35,10 @@ export default function TransitionLink({
         e.preventDefault();
         const main = document.querySelector("main");
         main?.classList.add("page-transition");
-        await sleep(50);
+        await sleep(75);
 
         router.push(href);
-        await sleep(50);
+        await sleep(75);
         main?.classList.remove("page-transition");
       }}
       href={href}
