@@ -5,7 +5,8 @@ import moment from "moment";
 
 export default function RepoCard({ repo }: Readonly<{ repo: IRepo }>) {
   const languagesExpanded = repo.languages
-    .slice(1, 5)
+    .filter((lang) => lang != repo.mainLanguage)
+    .splice(0, 4)
     .map((lang, i) => <SkillPill key={i} name={lang}></SkillPill>);
   return (
     <Link href={repo.href}>
