@@ -1,7 +1,7 @@
 import Link from "next/link";
 import ExpandingPill from "../ExpandingPill";
 import SkillPill from "./SkillPill";
-import moment from "moment";
+import { formatTimeAgo } from "@/utils/Date";
 
 export default function RepoCard({ repo }: Readonly<{ repo: IRepo }>) {
   const languagesExpanded = repo.languages
@@ -30,8 +30,7 @@ export default function RepoCard({ repo }: Readonly<{ repo: IRepo }>) {
         </div>
         <div>
           <p className="mt-3 text-xs text-secondaryText">
-            Last Updated:{" "}
-            {moment.utc(repo.updated_at).local().startOf("days").fromNow()}
+            Last Updated: {formatTimeAgo(repo.updated_at)}
           </p>
         </div>
         <div className="absolute -bottom-3 left-2 flex w-full">
