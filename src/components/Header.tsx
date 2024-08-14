@@ -1,4 +1,4 @@
-import Link from "next/link";
+import GlobalSearchServer from "./GlobalSearchServer";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { Title } from "./Title";
 import TransitionLink from "./TransitionLink";
@@ -15,7 +15,10 @@ export default function Header() {
           {"<-"} Go Home
         </TransitionLink>
       </div>
-      <ThemeSwitcher></ThemeSwitcher>
+      <div className="flex">
+        <GlobalSearchServer></GlobalSearchServer>
+        <ThemeSwitcher></ThemeSwitcher>
+      </div>
     </nav>
   );
 }

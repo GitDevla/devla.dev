@@ -35,7 +35,6 @@ export default function RootLayout({
       >
         <Providers>
           <Header></Header>
-          <GlobalSearchServer></GlobalSearchServer>
           <main className="transition-opacity duration-[75ms] ease-linear">
             {children}
           </main>
