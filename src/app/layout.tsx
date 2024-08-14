@@ -3,8 +3,7 @@ import { Fira_Code } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import Providers from "./providers";
-import GlobalSearchServer from "@/components/GlobalSearchServer";
+import ThemeProvider from "../components/ThemeProvider";
 import GoToTop from "@/components/GoToTop";
 
 const inter = Fira_Code({
@@ -33,14 +32,14 @@ export default function RootLayout({
         }
         suppressHydrationWarning
       >
-        <Providers>
+        <ThemeProvider>
           <Header></Header>
           <main className="transition-opacity duration-[75ms] ease-linear">
             {children}
           </main>
           <GoToTop></GoToTop>
           <Footer></Footer>
-        </Providers>
+        </ThemeProvider>
       </body>
     </html>
   );
