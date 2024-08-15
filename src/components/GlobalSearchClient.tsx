@@ -19,33 +19,61 @@ export default function GlobalSearchClient({
   pages: { title: string; href: string; type: string }[];
 }) {
   const router = useRouter();
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const formRef = useRef<HTMLFormElement | null>(null);
+
   const [extended, setExtended] = useState(false);
-  const input = useRef<HTMLInputElement | null>(null);
-  const element = useRef<HTMLDivElement | null>(null);
   const [search, setSearch] = useState("");
+  const [focusedIndex, setFocusedIndex] = useState(0);
+  const [mouseHover, setMouseHover] = useState(false);
 
   const matches = pages.filter((p) =>
     p.title.toLowerCase().includes(search.toLowerCase()),
   );
 
   function handleClickOutside(event: MouseEvent) {
-    if (element.current && !element.current.contains(event.target as Node))
+    if (formRef.current && !formRef.current.contains(event.target as Node))
       setExtended(false);
   }
 
-  useEffect(() => {
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") setExtended(false);
-      if (e.ctrlKey || e.shiftKey || e.altKey || e.metaKey) return;
+  function handleArrows(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
+    e.preventDefault();
+    if (e.key === "ArrowDown")
+      setFocusedIndex((prev) => (prev + 1) % matches.length);
+    if (e.key === "ArrowUp")
+      setFocusedIndex((prev) => (prev - 1 + matches.length) % matches.length);
+  }
 
-      if (insideEditable(e.target as HTMLElement)) return;
-      if (!keypressIsLetter(e.key)) return;
-      setExtended(true);
-      if (input.current) {
-        input.current.focus();
-        if (process.env.NODE_ENV == "production") input.current.value = e.key;
-      }
-    });
+  function handleKeyDown(e: KeyboardEvent) {
+    if (e.key === "Escape") setExtended(false);
+    if (e.ctrlKey || e.shiftKey || e.altKey || e.metaKey) return;
+
+    if (insideEditable(e.target as HTMLElement)) return;
+    if (!keypressIsLetter(e.key)) return;
+
+    setExtended(true);
+    if (inputRef.current) {
+      inputRef.current.focus();
+      if (process.env.NODE_ENV == "production") inputRef.current.value = e.key;
+    }
+  }
+
+  useEffect(() => {
+    if (mouseHover) return;
+    const activeElement = document.querySelector(
+      `[tabindex='${focusedIndex}']`,
+    ) as HTMLElement;
+    if (activeElement)
+      activeElement.scrollIntoView({
+        block: "end",
+        inline: "end",
+        behavior: "smooth",
+      });
+  }, [focusedIndex]);
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
   }, []);
 
   useEffect(() => {
@@ -56,29 +84,33 @@ export default function GlobalSearchClient({
     };
   }, [extended]);
 
+  useEffect(() => {
+    setFocusedIndex(0);
+  }, [search, extended]);
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    navigateToPage(matches[focusedIndex]);
+  }
+
+  function navigateToPage(page: { title: string; href: string }) {
+    router.push(page.href);
+    setExtended(false);
+    setSearch("");
+    inputRef.current?.blur();
+  }
+
   return (
-    <div className="relative" ref={element}>
+    <form className="relative" ref={formRef} onSubmit={handleSubmit}>
       <input
         type="text"
         className="w-full rounded-lg bg-inherit p-2 outline-none"
         placeholder="Search..."
-        ref={input}
+        ref={inputRef}
         value={search}
-        onChange={(e) => {
-          setSearch(e.target.value);
-          setExtended(true);
-        }}
+        onChange={(e) => setSearch(e.target.value)}
         onClick={() => setExtended(true)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            const page = pages.find((p) =>
-              p.title.toLowerCase().includes(search.toLocaleLowerCase()),
-            );
-            if (page) {
-              navigateToPage(page);
-            }
-          }
-        }}
+        onKeyDown={handleArrows}
       />
       {extended && (
         <div className="absolute z-50 max-h-[200px] w-full overflow-scroll rounded-lg rounded-t-none border border-t-0 border-accentbackground bg-background p-2">
@@ -87,11 +119,14 @@ export default function GlobalSearchClient({
               matches.map((page, i) => (
                 <li
                   key={i}
-                  onClick={() => {
-                    console.log("clicked");
-                    navigateToPage(page);
+                  tabIndex={i}
+                  onClick={() => navigateToPage(page)}
+                  className={`mb-2 cursor-pointer rounded-lg bg-inherit p-2 ${focusedIndex === i ? "!bg-accentbackground" : ""} outline-none`}
+                  onMouseOver={() => {
+                    setMouseHover(true);
+                    setFocusedIndex(i);
                   }}
-                  className="mb-2 cursor-pointer rounded-lg bg-inherit p-2 first:bg-accentbackground hover:!bg-accentbackground first:group-hover:bg-inherit"
+                  onMouseLeave={() => setMouseHover(false)}
                 >
                   <span className="line-clamp-1 capitalize">
                     {page.type === "blog" && "Blog: "}
@@ -100,17 +135,11 @@ export default function GlobalSearchClient({
                 </li>
               ))
             ) : (
-              <li className="mb-2">No results found</li>
+              <li className="mb-2 p-2 text-secondaryText">No results found</li>
             )}
           </ul>
         </div>
       )}
-    </div>
+    </form>
   );
-
-  function navigateToPage(page: { title: string; href: string }) {
-    router.push(page.href);
-    setExtended(false);
-    setSearch("");
-  }
 }
