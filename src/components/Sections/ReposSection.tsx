@@ -22,8 +22,20 @@ function orderByLatest(a: IRepo, b: IRepo) {
 }
 
 function orderByDefault(a: IRepo, b: IRepo) {
-  return b.stars + b.watchers - (a.stars + a.watchers);
-  //todo
+  function weighedValue(repo: IRepo) {
+    return (
+      repo.stars * 2 +
+      repo.watchers +
+      repo.commits * 0.25 +
+      (repo.updated_at.getTime() - new Date().getTime()) / 100000000000
+    );
+  }
+
+  return weighedValue(b) - weighedValue(a);
+}
+
+function orderByName(a: IRepo, b: IRepo) {
+  return a.name.localeCompare(b.name);
 }
 
 function orderBy(a: IRepo, b: IRepo, strategy: string) {
@@ -32,6 +44,8 @@ function orderBy(a: IRepo, b: IRepo, strategy: string) {
       return orderByStars(a, b);
     case "latest":
       return orderByLatest(a, b);
+    case "name":
+      return orderByName(a, b);
     default:
       return orderByDefault(a, b);
   }
@@ -64,6 +78,7 @@ export default function ReposSection({ repos }: { repos: IRepo[] }) {
         >
           <option disabled>Order By</option>
           <option value="default">Default</option>
+          <option value="name">Name</option>
           <option value="latest">Latest</option>
           <option value="stars">Stars</option>
         </select>
