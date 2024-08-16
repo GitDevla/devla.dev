@@ -56,6 +56,9 @@ body {
   .page-transition {
     @apply opacity-30;
   }
+  .pause {
+    animation-play-state: paused;
+  }
 }
 
 * {

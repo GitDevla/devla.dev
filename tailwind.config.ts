@@ -23,9 +23,14 @@ const config: Config = {
           "0%,100%": { opacity: "1" },
           "50%": { opacity: "0" },
         },
+        infiniteScroll: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(calc(-100% - 0.5rem))" },
+        },
       },
       animation: {
         blink: "blinking 1.5s infinite",
+        infiniteScroll: "infiniteScroll 25s linear infinite",
       },
     },
   },
