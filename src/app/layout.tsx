@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Fira_Code } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import ThemeProvider from "../components/ThemeProvider";
-import GoToTop from "@/components/GoToTop";
+import Footer from "@/components/Layout/Footer";
+import Header from "@/components/Layout/Header";
+import ThemeProvider from "../components/Providers/ThemeProvider";
+import GoToTop from "@/components/Layout/GoToTop";
 
 const inter = Fira_Code({
   weight: "400",
@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     template: "Devla | %s",
     default: "Devla | Home",
   },
+  description: "Devla's personal website & portfolio.",
 };
 
 export default function RootLayout({

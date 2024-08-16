@@ -1,7 +1,7 @@
-import GlobalSearchServer from "./GlobalSearchServer";
-import ThemeSwitcher from "./ThemeSwitcher";
-import { Title } from "./Title";
-import TransitionLink from "./TransitionLink";
+import GlobalSearchServer from "@/components/GlobalSearchServer";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
+import { Title } from "@/components/Layout/Title";
+import TransitionLink from "@/components/TransitionLink";
 
 export default function Header() {
   return (

@@ -1,8 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
-import TransitionLink from "./TransitionLink";
+import TransitionLink from "@/components/TransitionLink";
 
 export function Title() {
   let pathname = usePathname();

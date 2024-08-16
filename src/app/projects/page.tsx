@@ -1,4 +1,4 @@
-import ProjectCard from "@/components/Project";
+import ProjectCard from "@/components/Cards/ProjectCard";
 import { fetchMarkdownPosts } from "@/utils/Markdown";
 import { Metadata } from "next";
 

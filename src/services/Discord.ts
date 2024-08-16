@@ -5,7 +5,7 @@ export default async function pullDiscordStatus() {
     return await mockData();
   }
   const response = await fetch(
-    `https://api.lanyard.rest/v1/users/${process.env.NEXT_PUBLIC_DISCORD_ID}`
+    `https://api.lanyard.rest/v1/users/${process.env.NEXT_PUBLIC_DISCORD_ID}`,
   );
   const data = (await response.json()) as ILanyardResponse;
   return data;

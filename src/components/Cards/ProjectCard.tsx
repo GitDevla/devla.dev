@@ -1,7 +1,6 @@
 import Markdown from "markdown-to-jsx";
-import Link from "next/link";
 import Image from "next/image";
-import TransitionLink from "./TransitionLink";
+import TransitionLink from "@/components/TransitionLink";
 
 export default async function ProjectCard({ post }: { post: any }) {
   let { metadata, content } = post;
