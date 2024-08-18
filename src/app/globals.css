@@ -100,3 +100,19 @@ ul.tree li:before {
 ul.tree li:last-child:before {
   @apply border-l border-primaryText;
 }
+
+body {
+  background-image: url("/bg.svg");
+  background-blend-mode: difference;
+  background-repeat: repeat;
+  animation: style_animatedBackground 35s linear infinite;
+}
+
+@keyframes style_animatedBackground {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: 600px 0px;
+  }
+}
