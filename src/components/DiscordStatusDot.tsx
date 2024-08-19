@@ -1,29 +1,13 @@
 "use client";
 
-import pullDiscordStatus from "@/services/Discord";
-import { useEffect, useState } from "react";
+import { useDiscordStatus } from "./Context/DiscordContext";
 
 export default function DiscordStatusDot({
   className,
 }: {
   className?: string;
 }) {
-  const [status, setStatus] = useState("offline");
-
-  useEffect(() => {
-    pullDiscordStatus().then((data) => {
-      setStatus(data.data.discord_status);
-    });
-
-    const interval = setInterval(() => {
-      pullDiscordStatus().then((data) => {
-        if (status != data.data.discord_status)
-          setStatus(data.data.discord_status);
-      });
-    }, 10000);
-
-    return () => clearInterval(interval);
-  }, []);
+  const status = useDiscordStatus();
 
   let color;
   switch (status) {

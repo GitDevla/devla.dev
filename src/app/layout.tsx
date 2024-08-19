@@ -5,6 +5,7 @@ import Footer from "@/components/Layout/Footer";
 import Header from "@/components/Layout/Header";
 import GoToTop from "@/components/Layout/GoToTop";
 import ThemeProvider from "@/components/Providers/ThemeProvider";
+import { DiscordContext } from "@/components/Context/DiscordContext";
 
 const inter = Fira_Code({
   weight: "400",
@@ -35,9 +36,11 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <Header></Header>
-          <main className="transition-opacity duration-[75ms] ease-linear">
-            {children}
-          </main>
+          <DiscordContext>
+            <main className="transition-opacity duration-[75ms] ease-linear">
+              {children}
+            </main>
+          </DiscordContext>
           <GoToTop></GoToTop>
           <Footer></Footer>
         </ThemeProvider>
