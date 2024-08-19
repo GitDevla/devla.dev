@@ -1,7 +1,6 @@
 import { IGithubResponse } from "@/types/IGithubResponse";
+import isProduction from "@/utils/isProd";
 import { readJSON } from "@/utils/ReadJSON";
-
-const isDevelopment = process.env.NODE_ENV === "development";
 
 async function fetchGitHubData() {
   const header = {
@@ -64,9 +63,8 @@ async function fetchGitHubData() {
 }
 
 export default async function pullGithubRepos() {
-  if (isDevelopment) {
-    return await mockData();
-  }
+  if (!isProduction) return await mockData();
+
   const githubresp = await fetchGitHubData();
   const data = (await githubresp.json()) as IGithubResponse;
   return parseGithubData(data);

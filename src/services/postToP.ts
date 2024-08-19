@@ -1,7 +1,6 @@
+import isProduction from "@/utils/isProd";
 import { readJSON } from "@/utils/ReadJSON";
 import moment from "moment";
-
-const isDevelopment = process.env.NODE_ENV === "development";
 
 // I fucking love timezones & notations
 function LastWeekSunday() {
@@ -23,9 +22,8 @@ function LastWeekMonday() {
 }
 
 export default async function pullPostToPArtists(): Promise<IPostToPArtist[]> {
-  if (isDevelopment) {
-    return await mockDataArtist();
-  }
+  if (!isProduction) return await mockDataArtist();
+
   let lastWeekSunday = LastWeekSunday();
   let lastWeekMonday = LastWeekMonday();
   let response = await fetch(
@@ -61,9 +59,8 @@ export default async function pullPostToPArtists(): Promise<IPostToPArtist[]> {
 }
 
 export async function pullPostToPMusic(): Promise<IPostToPMusic[]> {
-  if (isDevelopment) {
-    return await mockDataMusic();
-  }
+  if (!isProduction) return await mockDataMusic();
+
   let lastWeekSunday = LastWeekSunday();
   let lastWeekMonday = LastWeekMonday();
   let response = await fetch(
@@ -80,7 +77,7 @@ export async function pullPostToPMusic(): Promise<IPostToPMusic[]> {
       );
       const data = (await ytData.json()) as IYTVideoResponse;
       const { title, author_name, author_url, thumbnail_url } = data;
-      const ytUrl = `https://www.youtube.com/watch?v=${musicID}`;
+      const ytUrl = `https://music.youtube.com/watch?v=${musicID}`;
       return { title, author_name, author_url, ytUrl, thumbnail_url, times };
     }),
   );

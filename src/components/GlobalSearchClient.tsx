@@ -1,5 +1,6 @@
 "use client";
 
+import isProduction from "@/utils/isProd";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
@@ -55,7 +56,7 @@ export default function GlobalSearchClient({
     setExtended(true);
     if (inputRef.current) {
       inputRef.current.focus();
-      if (process.env.NODE_ENV == "production") inputRef.current.value = e.key;
+      if (isProduction) inputRef.current.value = e.key;
     }
   }
 

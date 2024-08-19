@@ -1,15 +1,12 @@
 import { IGiteaResponse } from "@/types/IGiteaResponse";
+import isProduction from "@/utils/isProd";
 import { readJSON } from "@/utils/ReadJSON";
 
-const isDevelopment = process.env.NODE_ENV === "development";
-
 export default async function pullGiteaRepos() {
-  if (isDevelopment) {
-    return await mockData();
-  }
+  if (!isProduction) return await mockData();
 
   const githubresp = await fetch(
-    `${process.env.GITEA_URL}/api/v1/users/${process.env.GITEA_ID}/repos`
+    `${process.env.GITEA_URL}/api/v1/users/${process.env.GITEA_ID}/repos`,
   );
   let data = await githubresp.json();
 
@@ -43,7 +40,7 @@ export default async function pullGiteaRepos() {
 
 async function mockData() {
   let data = (await readJSON(
-    "src/services/mockData/fakegitea.json"
+    "src/services/mockData/fakegitea.json",
   )) as IGiteaResponse[];
   let repos: IRepo[] = [];
   for (const repo of data) {

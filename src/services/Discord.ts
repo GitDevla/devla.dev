@@ -1,9 +1,8 @@
-const isDevelopment = process.env.NODE_ENV === "development";
+import isProduction from "@/utils/isProd";
 
 export default async function pullDiscordStatus() {
-  if (isDevelopment) {
-    return await mockData();
-  }
+  if (!isProduction) return await mockData();
+
   const response = await fetch(
     `https://api.lanyard.rest/v1/users/${process.env.NEXT_PUBLIC_DISCORD_ID}`,
   );
