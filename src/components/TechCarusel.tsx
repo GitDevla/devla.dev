@@ -30,27 +30,19 @@ function CaruselRow({ tech }: { tech: any[] }) {
   const animationDuration = tech.length * 7;
   return (
     <div className="mb-2 flex gap-2">
-      <div
-        className="group-hover:pause flex animate-infiniteScroll gap-2 will-change-transform"
-        style={{ animationDuration: `${animationDuration}s` }}
-      >
-        {tech.map((tech, i) => (
-          <div key={i} className="w-[175px]">
-            <SkillCard Tech={tech}></SkillCard>
-          </div>
-        ))}
-      </div>
-      <div
-        className="group-hover:pause flex animate-infiniteScroll gap-2 will-change-transform"
-        aria-hidden="true"
-        style={{ animationDuration: `${animationDuration}s` }}
-      >
-        {tech.map((tech, i) => (
-          <div key={i} className="w-[175px]">
-            <SkillCard Tech={tech}></SkillCard>
-          </div>
-        ))}
-      </div>
+      {[1, 2].map((_, i) => (
+        <div
+          className="group-hover:pause flex animate-infiniteScroll gap-2 will-change-transform"
+          style={{ animationDuration: `${animationDuration}s` }}
+          key={i}
+        >
+          {tech.map((tech, i) => (
+            <div key={i} className="w-[30vw] max-w-[175px]">
+              <SkillCard Tech={tech}></SkillCard>
+            </div>
+          ))}
+        </div>
+      ))}
     </div>
   );
 }
