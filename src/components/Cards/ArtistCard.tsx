@@ -4,9 +4,7 @@ import Image from "next/image";
 export default function ArtistCard({ artist }: { artist: any }) {
   const { name, ytUrl, thumbnail_url } = artist;
   return (
-    <div
-      className={`group relative h-full w-full content-center overflow-hidden rounded-lg border border-gray-800 transition-transform hover:scale-105`}
-    >
+    <div className="group relative h-full w-full content-center overflow-hidden rounded-lg border border-gray-800 transition-transform hover:scale-105">
       <Link href={ytUrl} target="_blank">
         <div
           style={{
@@ -14,9 +12,7 @@ export default function ArtistCard({ artist }: { artist: any }) {
           }}
           className="absolute left-0 top-0 -z-10 size-full overflow-hidden bg-cover bg-center blur-sm brightness-50 filter transition-all group-hover:blur"
         ></div>
-        <div
-          className={`grid grid-cols-[1fr_3fr] content-center overflow-hidden p-2`}
-        >
+        <div className="grid grid-cols-[1fr_3fr] content-center overflow-hidden p-2">
           <Image
             alt="thumbnail"
             src={thumbnail_url}
@@ -25,9 +21,7 @@ export default function ArtistCard({ artist }: { artist: any }) {
             height={88}
           />
           <div className="my-auto sm:px-6">
-            <h3
-              className={`line-clamp-1 text-lg font-medium leading-6 text-white`}
-            >
+            <h3 className="line-clamp-1 text-lg font-medium leading-6 text-white">
               {name.replace(" - Topic", "")}
             </h3>
           </div>

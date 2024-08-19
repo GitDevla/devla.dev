@@ -3,8 +3,8 @@ import { Fira_Code } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Layout/Footer";
 import Header from "@/components/Layout/Header";
-import ThemeProvider from "../components/Providers/ThemeProvider";
 import GoToTop from "@/components/Layout/GoToTop";
+import ThemeProvider from "@/components/Providers/ThemeProvider";
 
 const inter = Fira_Code({
   weight: "400",

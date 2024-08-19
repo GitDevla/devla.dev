@@ -26,7 +26,11 @@ export default function GoToTop() {
       onClick={() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }}
-      className={`fixed bottom-4 right-9 z-50 h-12 w-12 rounded-full bg-accentbackground p-2 text-center ${visible ? "opacity-100" : "pointer-events-none opacity-0"} transition-opacity`}
+      className="fixed bottom-4 right-9 z-50 h-12 w-12 rounded-full bg-accentbackground p-2 text-center transition-opacity"
+      style={{
+        opacity: visible ? 1 : 0,
+        pointerEvents: visible ? "auto" : "none",
+      }}
     >
       ▲
     </button>

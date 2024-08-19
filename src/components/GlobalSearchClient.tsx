@@ -104,7 +104,7 @@ export default function GlobalSearchClient({
     <form className="relative" ref={formRef} onSubmit={handleSubmit}>
       <input
         type="text"
-        className="w-full rounded-lg bg-inherit p-2 outline-none"
+        className="hidden w-full rounded-lg bg-inherit p-2 outline-none sm:block"
         placeholder="Search..."
         ref={inputRef}
         value={search}

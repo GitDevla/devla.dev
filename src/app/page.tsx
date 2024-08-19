@@ -4,6 +4,7 @@ import SkillSection from "@/components/Sections/SkillSection";
 import { Typewriter } from "nextjs-simple-typewriter";
 import { readStatic } from "@/utils/ReadJSON";
 import DiscordStatusDot from "@/components/DiscordStatusDot";
+import TechCarusel from "@/components/TechCarusel";
 
 export const revalidate = 60 * 60 * 9;
 
@@ -119,7 +120,9 @@ export default async function Home() {
         </section>
       ))}
 
-      <SkillSection techStack={techStack}></SkillSection>
+      <SkillSection techStack={techStack}>
+        <TechCarusel tech={techStack}></TechCarusel>
+      </SkillSection>
     </>
   );
 }

@@ -26,10 +26,10 @@ export default function TechCarusel({ tech }: { tech: any[] }) {
   );
 }
 
-function CaruselRow({ tech, className }: { tech: any[]; className?: string }) {
+function CaruselRow({ tech }: { tech: any[] }) {
   const animationDuration = tech.length * 7;
   return (
-    <div className={`mb-2 flex gap-2 ${className}`}>
+    <div className="mb-2 flex gap-2">
       <div
         className="group-hover:pause flex animate-infiniteScroll gap-2 will-change-transform"
         style={{ animationDuration: `${animationDuration}s` }}

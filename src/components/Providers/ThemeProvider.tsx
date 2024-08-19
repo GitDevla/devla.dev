@@ -1,5 +1,3 @@
-"use client";
-
 import { ThemeProvider as NextTheme } from "next-themes";
 
 export default function ThemeProvider({

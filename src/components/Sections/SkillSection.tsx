@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import React, { Suspense, useState } from "react";
 import SkillCard from "../Cards/SkillCard";
 import TechCarusel from "../TechCarusel";
 
@@ -18,12 +18,16 @@ function orderByNumberOfOccurrences(techStack: ITechSkill[]) {
   );
 }
 
+// TODO: clean this up later
+
 export default function SkillSection({
   techStack,
+  children,
 }: {
   techStack: ITechSkill[];
+  children: React.ReactNode;
 }) {
-  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
+  const [hoveredCategory, setHoveredCategory] = useState<string | null>("");
   let categories = orderByNumberOfOccurrences(techStack);
   techStack = techStack.sort((a, b) => a.name.localeCompare(b.name));
 
@@ -32,7 +36,7 @@ export default function SkillSection({
       <h2 className="subheader">Tech Stack</h2>
       <div className="mb-5 flex w-full flex-wrap justify-evenly gap-y-1">
         <div
-          onClick={() => setHoveredCategory(null)}
+          onClick={() => setHoveredCategory("")}
           className={
             "w-full max-w-28 cursor-pointer rounded-full bg-accentbackground p-4 text-center text-xs font-semibold uppercase text-secondaryText"
           }
@@ -67,7 +71,7 @@ export default function SkillSection({
             )}
           </div>
         ) : (
-          <TechCarusel tech={techStack}></TechCarusel>
+          children
         )}
       </div>
     </section>

@@ -10,7 +10,7 @@ export default function MusicCard({
   className?: string;
   small?: boolean;
 }) {
-  const { title, author_name, author_url, ytUrl, times, thumbnail_url } = music;
+  const { title, author_name, ytUrl, times, thumbnail_url } = music;
   return (
     <div
       className={`group relative ${className} h-full w-full content-center overflow-hidden rounded-lg border border-gray-800 transition-transform hover:scale-105`}

@@ -63,6 +63,7 @@ body {
 
 * {
   @apply transition-colors;
+  @apply text-primaryText;
 }
 
 @layer base {
