@@ -18,6 +18,13 @@ export const metadata: Metadata = {
     default: "Devla | Home",
   },
   description: "Devla's personal website & portfolio.",
+  keywords: [
+    "Devla",
+    "David Pataki",
+    "Software Developer",
+    "Personal Website",
+    "Portfolio",
+  ],
 };
 
 export default function RootLayout({
