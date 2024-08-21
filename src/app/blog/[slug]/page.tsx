@@ -6,6 +6,7 @@ import moment from "moment";
 import TransitionLink from "@/components/TransitionLink";
 import { Metadata } from "next";
 import PopUpSidebar from "@/components/PopUpSidebar";
+import ReadTime from "@/components/ReadTime";
 
 export const revalidate = 60 * 60 * 9;
 
@@ -79,6 +80,7 @@ export default async function BlogPage(props: any) {
       </div> */}
 
       <article className="prose mx-auto mt-8 max-w-[80ch] text-justify dark:prose-invert">
+        <ReadTime content={post.content} />
         <Markdown>{post.content}</Markdown>
         <hr />
         <div className="flex justify-between">
