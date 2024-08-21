@@ -9,6 +9,7 @@ import PopUpSidebar from "@/components/PopUpSidebar";
 import ReadTime from "@/components/ReadTime";
 
 export const revalidate = 60 * 60 * 9;
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const postMetadata = await fetchMarkdownPosts();

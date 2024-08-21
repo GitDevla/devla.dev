@@ -8,7 +8,10 @@ export async function fetchMarkdownPosts() {
   const markdownPosts = files
     .filter((file) => file.endsWith(".md"))
     .map((file) => file.replace(".md", ""));
-  const posts = await Promise.all(markdownPosts.map(getMD));
+  const posts = (await Promise.all(markdownPosts.map(getMD))).filter(
+    (i) => i?.metadata.visible,
+  );
+
   return posts;
 }
 
@@ -35,6 +38,7 @@ export async function getMD(slug: string) {
       slug: slug,
       lastUpdated: stats.mtime,
       created: stats.birthtime,
+      visible: matterResult.data.visible || false,
     },
     content: matterResult.content,
   };
