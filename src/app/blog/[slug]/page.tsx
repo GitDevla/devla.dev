@@ -2,15 +2,12 @@ import Markdown from "markdown-to-jsx";
 import { fetchMarkdownPosts, getMD } from "@/utils/Markdown";
 import { notFound } from "next/navigation";
 import TableOfContent from "@/components/TableOfContent";
-import Link from "next/link";
 import moment from "moment";
 import TransitionLink from "@/components/TransitionLink";
 import { Metadata } from "next";
 import PopUpSidebar from "@/components/PopUpSidebar";
 
 export const revalidate = 60 * 60 * 9;
-
-export const metadata: Metadata = {};
 
 export async function generateStaticParams() {
   const postMetadata = await fetchMarkdownPosts();
@@ -20,6 +17,13 @@ export async function generateStaticParams() {
       const slug = i?.metadata.slug;
       return { slug };
     });
+}
+
+export async function generateMetadata(props: any): Promise<Metadata> {
+  const slug = props.params.slug;
+  return {
+    title: slug,
+  };
 }
 
 async function getPrevAndNext(slug: string) {
@@ -32,7 +36,6 @@ async function getPrevAndNext(slug: string) {
 
 export default async function BlogPage(props: any) {
   const slug = props.params.slug;
-  metadata.title = slug;
   const post = await getMD(slug);
   const { prev, next } = await getPrevAndNext(slug);
   if (!post) {
