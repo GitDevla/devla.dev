@@ -25,7 +25,9 @@ export default function DiscordStatusDot({
   }
   return (
     <div className={className}>
-      <span className={`flex h-6 w-6 rounded-full ${color}`}></span>
+      <span
+        className={`flex h-6 w-6 rounded-full ${color} transition-colors`}
+      ></span>
     </div>
   );
 }

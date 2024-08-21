@@ -26,12 +26,14 @@ export default function SimpleIcon({
   height = 32,
   hideIfNotFound = false,
   className = "",
+  sizes,
 }: {
   name: string;
   width?: number;
   height?: number;
   hideIfNotFound?: boolean;
   className?: string;
+  sizes?: string;
 }) {
   if (!name) return null;
   name = name.toLowerCase();
@@ -43,6 +45,7 @@ export default function SimpleIcon({
         height={height}
         width={width}
         src={"https://cdn.simpleicons.org/" + name + "/000/fff"}
+        sizes={sizes}
         alt={"Simple Icon - " + name}
         onError={(e) => {
           e.preventDefault();

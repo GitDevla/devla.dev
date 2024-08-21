@@ -3,6 +3,7 @@ import ThemeSwitcher from "@/components/ThemeSwitcher";
 import { BreadcrumbTitle } from "@/components/Layout/BreadcrumbTitle";
 import Image from "next/image";
 import TransitionLink from "../TransitionLink";
+import Logo from "@/../public/logo.svg";
 
 export default function Header() {
   return (
@@ -11,7 +12,7 @@ export default function Header() {
         <TransitionLink href="/">
           <Image
             className="aspect-square h-10 w-10 invert transition-transform hover:-rotate-6"
-            src="/logo.svg"
+            src={Logo}
             width={40}
             height={40}
             alt="Logo"

@@ -5,11 +5,12 @@ import { Typewriter } from "nextjs-simple-typewriter";
 import { readStatic } from "@/utils/ReadJSON";
 import DiscordStatusDot from "@/components/DiscordStatusDot";
 import TechCarusel from "@/components/TechCarusel";
+import { Suspense } from "react";
 
 export const revalidate = 60 * 60 * 9;
 
 export default async function Home() {
-  const techStack: ITechSkill[] = await readStatic("skills.json");
+  const { categories, idk: techStack } = await readStatic("skills.json");
   const pages = [
     {
       group: "Pages",
@@ -100,8 +101,8 @@ export default async function Home() {
           <Image
             className="h-44 w-44 rounded-full"
             src="https://placehold.co/400"
-            width={200}
-            height={200}
+            width={176}
+            height={176}
             alt="Picture of the author"
             priority
           />
@@ -119,8 +120,7 @@ export default async function Home() {
           </div>
         </section>
       ))}
-
-      <SkillSection techStack={techStack}>
+      <SkillSection techStack={techStack} categories={categories}>
         <TechCarusel tech={techStack}></TechCarusel>
       </SkillSection>
     </>

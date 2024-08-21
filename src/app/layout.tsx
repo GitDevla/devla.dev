@@ -37,8 +37,9 @@ export default function RootLayout({
       <body
         className={
           inter.className +
-          " mx-auto min-h-screen max-w-4xl bg-background px-4 tracking-wide text-primaryText transition-colors min-[912px]:px-0"
+          " mx-auto min-h-screen max-w-4xl animate-animateBackground bg-background px-4 tracking-wide text-primaryText bg-blend-difference transition-colors min-[912px]:px-0"
         }
+        style={{ backgroundImage: "url('/bg.svg')" }}
         suppressHydrationWarning
       >
         <ThemeProvider>

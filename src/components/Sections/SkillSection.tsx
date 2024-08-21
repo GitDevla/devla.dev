@@ -1,35 +1,17 @@
 "use client";
-import React, { Suspense, useState } from "react";
+import { useState, ReactNode } from "react";
 import SkillCard from "../Cards/SkillCard";
-import TechCarusel from "../TechCarusel";
-
-function orderByNumberOfOccurrences(techStack: ITechSkill[]) {
-  let categories = [
-    ...new Set(techStack.flatMap((tech: ITechSkill) => tech.category)),
-  ];
-  let categoryCount = new Map<string, number>();
-  techStack.forEach((tech) => {
-    tech.category.forEach((category) => {
-      categoryCount.set(category, (categoryCount.get(category) || 0) + 1);
-    });
-  });
-  return categories.sort(
-    (a, b) => (categoryCount.get(b) || 0) - (categoryCount.get(a) || 0),
-  );
-}
-
-// TODO: clean this up later
 
 export default function SkillSection({
   techStack,
+  categories,
   children,
 }: {
   techStack: ITechSkill[];
-  children: React.ReactNode;
+  children: ReactNode;
+  categories: string[];
 }) {
-  const [hoveredCategory, setHoveredCategory] = useState<string | null>("");
-  let categories = orderByNumberOfOccurrences(techStack);
-  techStack = techStack.sort((a, b) => a.name.localeCompare(b.name));
+  const [hoveredCategory, setHoveredCategory] = useState<string>("");
 
   return (
     <section>
@@ -37,9 +19,7 @@ export default function SkillSection({
       <div className="mb-5 flex w-full flex-wrap justify-evenly gap-y-1">
         <div
           onClick={() => setHoveredCategory("")}
-          className={
-            "w-full max-w-28 cursor-pointer rounded-full bg-accentbackground p-4 text-center text-xs font-semibold uppercase text-secondaryText"
-          }
+          className="w-full max-w-28 cursor-pointer rounded-full bg-accentbackground p-4 text-center text-xs font-semibold uppercase text-secondaryText"
         >
           <span className={!hoveredCategory ? "text-highlight" : ""}>All</span>
         </div>
@@ -47,9 +27,7 @@ export default function SkillSection({
           <div
             key={i}
             onClick={() => setHoveredCategory(category)}
-            className={
-              "w-full max-w-28 cursor-pointer rounded-full bg-accentbackground p-4 text-center text-xs font-semibold uppercase text-secondaryText"
-            }
+            className="w-full max-w-28 cursor-pointer rounded-full bg-accentbackground p-4 text-center text-xs font-semibold uppercase text-secondaryText"
           >
             <span
               className={hoveredCategory === category ? "text-highlight" : ""}

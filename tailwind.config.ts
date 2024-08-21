@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  darkMode: "selector",
+  darkMode: "class",
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
@@ -27,10 +27,15 @@ const config: Config = {
           "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(calc(-100% - 0.5rem))" },
         },
+        animateBackground: {
+          "0%": { backgroundPosition: "0px 0px" },
+          "100%": { backgroundPosition: "600px 0px" },
+        },
       },
       animation: {
         blink: "blinking 1.5s infinite",
         infiniteScroll: "infiniteScroll 25s linear infinite",
+        animateBackground: "animateBackground 35s linear infinite",
       },
     },
   },

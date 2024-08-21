@@ -2,24 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -61,13 +43,8 @@ body {
   }
 }
 
-* {
-  @apply transition-colors;
-  @apply text-primaryText;
-}
-
 @layer base {
-  :root {
+  :root.light {
     --background: 244 244 242;
     --accentbackground: 222 222 222;
     --primaryText: 73 84 100;
@@ -76,7 +53,7 @@ body {
     --border: 229 231 235;
   }
 
-  :root[class~="dark"] {
+  :root {
     --background: 17 24 39;
     --accentbackground: 31 41 55;
     --primaryText: 243 244 246;
@@ -100,20 +77,4 @@ ul.tree li:before {
 }
 ul.tree li:last-child:before {
   @apply border-l border-primaryText;
-}
-
-body {
-  background-image: url("/bg.svg");
-  background-blend-mode: difference;
-  background-repeat: repeat;
-  animation: style_animatedBackground 35s linear infinite;
-}
-
-@keyframes style_animatedBackground {
-  0% {
-    background-position: 0px 0px;
-  }
-  100% {
-    background-position: 600px 0px;
-  }
 }

@@ -32,7 +32,7 @@ function CaruselRow({ tech }: { tech: any[] }) {
     <div className="mb-2 flex gap-2">
       {[1, 2].map((_, i) => (
         <div
-          className="group-hover:pause flex animate-infiniteScroll gap-2 will-change-transform"
+          className="group-hover:pause flex animate-infiniteScroll gap-2"
           style={{ animationDuration: `${animationDuration}s` }}
           key={i}
         >
