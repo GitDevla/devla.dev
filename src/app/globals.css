@@ -41,6 +41,18 @@
   .pause {
     animation-play-state: paused;
   }
+
+  blockquote {
+    @apply quote;
+  }
+
+  .quote::before {
+    content: "„";
+  }
+
+  .quote::after {
+    content: "“";
+  }
 }
 
 @layer base {
