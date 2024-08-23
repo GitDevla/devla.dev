@@ -8,7 +8,7 @@ import ThemeProvider from "@/components/Providers/ThemeProvider";
 import { DiscordContext } from "@/components/Context/DiscordContext";
 
 const inter = Fira_Code({
-  weight: "400",
+  weight: ["300", "400", "500", "600"],
   subsets: ["latin"],
 });
 
@@ -37,7 +37,7 @@ export default function RootLayout({
       <body
         className={
           inter.className +
-          " mx-auto min-h-screen max-w-4xl animate-animateBackground bg-background px-4 tracking-wide text-primaryText bg-blend-difference transition-colors min-[912px]:px-0"
+          " mx-auto min-h-screen max-w-4xl animate-animateBackground bg-background px-4 font-normal tracking-wide text-primaryText bg-blend-difference transition-colors min-[912px]:px-0"
         }
         style={{ backgroundImage: "url('/bg.svg')" }}
         suppressHydrationWarning

@@ -4,6 +4,12 @@ const config: Config = {
   darkMode: "class",
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
+    fontWeight: {
+      normal: "300",
+      medium: "400",
+      semibold: "500",
+      bold: "600",
+    },
     extend: {
       colors: {
         background: "rgb(var(--background) / <alpha-value>)",

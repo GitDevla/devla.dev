@@ -19,6 +19,7 @@ export default function ArtistCard({ artist }: { artist: any }) {
             className="rounded-full"
             width={88}
             height={88}
+            sizes="(min-width: 980px) 67px, (min-width: 780px) calc(6.67vw + 3px), (min-width: 440px) 88px, 20.83vw"
           />
           <div className="my-auto sm:px-6">
             <h3 className="line-clamp-1 text-lg font-medium leading-6 text-white">

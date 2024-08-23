@@ -38,7 +38,7 @@ export default function MusicCard({
           </div>
           <div className="flex flex-col justify-center break-all">
             <h3
-              className={`line-clamp-2 text-white ${
+              className={`line-clamp-2 font-medium text-white ${
                 small ? "text-base" : "text-lg"
               }`}
             >

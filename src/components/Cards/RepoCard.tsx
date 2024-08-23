@@ -25,7 +25,7 @@ export default function RepoCard({ repo }: Readonly<{ repo: IRepo }>) {
           {repo.description ? (
             <p className="">{repo.description}</p>
           ) : (
-            <p className="font-thin italic">No description was given</p>
+            <p className="italic">No description was given</p>
           )}
         </div>
         <div>

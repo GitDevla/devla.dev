@@ -31,7 +31,7 @@ export default async function Home() {
           description: "Discover my most listened songs.",
         },
         {
-          name: "Repos",
+          name: "Repositories",
           href: "/repos",
           description: "Access my published repositories.",
         },
@@ -93,8 +93,8 @@ export default async function Home() {
               .
             </p>
           </div>
-          <blockquote className="mt-4 text-xs font-thin italic text-secondaryText md:ml-2 md:text-sm">
-            "Let's fall and fall into the vortex of this hole-dwelling life."
+          <blockquote className="mt-4 text-xs italic text-secondaryText md:ml-2 md:text-sm">
+            Let's fall and fall into the vortex of this hole-dwelling life.
           </blockquote>
         </div>
         <div className="relative">

@@ -19,7 +19,7 @@ export default function SkillSection({
       <div className="mb-5 flex w-full flex-wrap justify-evenly gap-y-1">
         <div
           onClick={() => setHoveredCategory("")}
-          className="w-full max-w-28 cursor-pointer rounded-full bg-accentbackground p-4 text-center text-xs font-semibold uppercase text-secondaryText"
+          className="w-full max-w-28 cursor-pointer rounded-full bg-accentbackground p-4 text-center text-xs font-bold uppercase text-secondaryText"
         >
           <span className={!hoveredCategory ? "text-highlight" : ""}>All</span>
         </div>
@@ -27,7 +27,7 @@ export default function SkillSection({
           <div
             key={i}
             onClick={() => setHoveredCategory(category)}
-            className="w-full max-w-28 cursor-pointer rounded-full bg-accentbackground p-4 text-center text-xs font-semibold uppercase text-secondaryText"
+            className="w-full max-w-28 cursor-pointer rounded-full bg-accentbackground p-4 text-center text-xs font-bold uppercase text-secondaryText"
           >
             <span
               className={hoveredCategory === category ? "text-highlight" : ""}

@@ -16,7 +16,7 @@ export function BreadcrumbTitle() {
             href={`/${paths.slice(1, index + 1).join("/")}`}
             className="mr-1 capitalize hover:underline"
             style={{
-              fontWeight: index === paths.length - 1 ? "bold" : "normal",
+              fontWeight: index === paths.length - 1 ? "600" : "300",
               color:
                 index === paths.length - 1
                   ? "rgb(var(--primaryText))"

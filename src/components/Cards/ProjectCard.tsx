@@ -15,7 +15,7 @@ export default async function ProjectCard({ post }: { post: any }) {
         </p>
 
         <TransitionLink href={`/blog/${metadata.slug}`}>
-          <h2 className="text-lg font-semibold text-highlight hover:underline">
+          <h2 className="text-lg font-bold text-highlight hover:underline">
             {metadata.title}
           </h2>
         </TransitionLink>
