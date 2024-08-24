@@ -33,6 +33,7 @@ export default function TransitionLink({
           e.preventDefault();
           return;
         }
+        if (href.startsWith("http")) return;
         if (!isProduction) return;
 
         e.preventDefault();
