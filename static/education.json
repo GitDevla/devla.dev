@@ -1,0 +1,16 @@
+[
+  {
+    "from": "2023",
+    "to": "present",
+    "location": "University of Debrecen, Hungary",
+    "description": "Undergraduate in Computer Science",
+    "link": "https://inf.unideb.hu/"
+  },
+  {
+    "from": "2018",
+    "to": "2023",
+    "location": "DSZC Beregszászi Pál (Vocational) High School, Hungary",
+    "description": "System administrator\nSpecialized in Cisco networking, C#, PHP, HTML, CSS, JavaScript, MySQL",
+    "link": "https://www.dszcberegszaszi.hu/"
+  }
+]

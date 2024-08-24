@@ -1,104 +1,113 @@
-[
-  {
-    "name": "TypeScript",
-    "icon": "typescript",
-    "category": ["languages", "frontend", "backend"],
-    "href": "https://www.typescriptlang.org"
-  },
-  {
-    "name": "JavaScript",
-    "icon": "javascript",
-    "category": ["languages", "frontend", "backend"],
-    "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
-  },
-  {
-    "name": "HTML",
-    "icon": "html5",
-    "category": ["languages", "frontend"],
-    "href": "https://developer.mozilla.org/en-US/docs/Web/HTML"
-  },
-  {
-    "name": "CSS",
-    "icon": "css3",
-    "category": ["languages", "frontend"],
-    "href": "https://developer.mozilla.org/en-US/docs/Web/CSS"
-  },
-  {
-    "name": "Node.js",
-    "icon": "nodedotjs",
-    "category": ["backend"],
-    "href": "https://nodejs.org"
-  },
-  {
-    "name": "Express",
-    "icon": "express",
-    "category": ["backend"],
-    "href": "https://expressjs.com"
-  },
-  {
-    "name": "Rust",
-    "icon": "rust",
-    "category": ["languages", "backend"],
-    "href": "https://www.rust-lang.org"
-  },
-  {
-    "name": "C#",
-    "icon": "dotnet",
-    "category": ["languages", "backend"],
-    "href": "https://docs.microsoft.com/en-us/dotnet/csharp"
-  },
-  {
-    "name": "Next.js",
-    "icon": "nextdotjs",
-    "category": ["frontend"],
-    "href": "https://nextjs.org"
-  },
-  {
-    "name": "Tailwind CSS",
-    "icon": "tailwindcss",
-    "category": ["frontend"],
-    "href": "https://tailwindcss.com"
-  },
-  {
-    "name": "Docker/Compose",
-    "icon": "docker",
-    "category": ["devops"],
-    "href": "https://www.docker.com"
-  },
-  {
-    "name": "Portainer",
-    "icon": "portainer",
-    "category": ["devops"],
-    "href": "https://www.portainer.io"
-  },
-  {
-    "name": "Git",
-    "icon": "git",
-    "category": ["devops"],
-    "href": "https://git-scm.com"
-  },
-  {
-    "name": "Cloudflare",
-    "icon": "cloudflare",
-    "category": ["devops"],
-    "href": "https://www.cloudflare.com"
-  },
-  {
-    "name": "React",
-    "icon": "react",
-    "category": ["frontend"],
-    "href": "https://reactjs.org"
-  },
-  {
-    "name": "Sass",
-    "icon": "sass",
-    "category": ["frontend"],
-    "href": "https://sass-lang.com"
-  },
-  {
-    "name": "Python",
-    "icon": "python",
-    "category": ["languages"],
-    "href": "https://www.python.org"
-  }
-]
+{
+  "categories": ["languages", "frontend", "backend", "devops"],
+  "idk": [
+    {
+      "name": "TypeScript",
+      "icon": "typescript",
+      "category": ["languages", "frontend", "backend"],
+      "href": "https://www.typescriptlang.org"
+    },
+    {
+      "name": "JavaScript",
+      "icon": "javascript",
+      "category": ["languages", "frontend", "backend"],
+      "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+    },
+    {
+      "name": "HTML",
+      "icon": "html5",
+      "category": ["languages", "frontend"],
+      "href": "https://developer.mozilla.org/en-US/docs/Web/HTML"
+    },
+    {
+      "name": "CSS",
+      "icon": "css3",
+      "category": ["languages", "frontend"],
+      "href": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+    },
+    {
+      "name": "Node.js",
+      "icon": "nodedotjs",
+      "category": ["backend"],
+      "href": "https://nodejs.org"
+    },
+    {
+      "name": "Express",
+      "icon": "express",
+      "category": ["backend"],
+      "href": "https://expressjs.com"
+    },
+    {
+      "name": "Rust",
+      "icon": "rust",
+      "category": ["languages", "backend"],
+      "href": "https://www.rust-lang.org"
+    },
+    {
+      "name": "C#",
+      "icon": "dotnet",
+      "category": ["languages", "backend"],
+      "href": "https://docs.microsoft.com/en-us/dotnet/csharp"
+    },
+    {
+      "name": "Next.js",
+      "icon": "nextdotjs",
+      "category": ["frontend"],
+      "href": "https://nextjs.org"
+    },
+    {
+      "name": "Tailwind CSS",
+      "icon": "tailwindcss",
+      "category": ["frontend"],
+      "href": "https://tailwindcss.com"
+    },
+    {
+      "name": "Docker/Compose",
+      "icon": "docker",
+      "category": ["devops"],
+      "href": "https://www.docker.com"
+    },
+    {
+      "name": "Portainer",
+      "icon": "portainer",
+      "category": ["devops"],
+      "href": "https://www.portainer.io"
+    },
+    {
+      "name": "Git",
+      "icon": "git",
+      "category": ["devops"],
+      "href": "https://git-scm.com"
+    },
+    {
+      "name": "Cloudflare",
+      "icon": "cloudflare",
+      "category": ["devops"],
+      "href": "https://www.cloudflare.com"
+    },
+    {
+      "name": "React",
+      "icon": "react",
+      "category": ["frontend"],
+      "href": "https://reactjs.org"
+    },
+    {
+      "name": "Sass",
+      "icon": "sass",
+      "category": ["frontend"],
+      "href": "https://sass-lang.com"
+    },
+    {
+      "name": "Python",
+      "icon": "python",
+      "category": ["languages"],
+      "href": "https://www.python.org"
+    },
+    {
+      "name": "Linux",
+      "icon": "linux",
+      "category": ["devops"],
+      "href": "https://www.linux.org"
+    }
+  ]
+}
