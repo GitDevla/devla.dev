@@ -12,3 +12,9 @@ interface IPostToPArtist {
   ytUrl: string;
   thumbnail_url: string;
 }
+
+
+interface IPostToPGenre {
+  genre: string;
+  times: number;
+}

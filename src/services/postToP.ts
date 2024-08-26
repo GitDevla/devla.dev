@@ -21,7 +21,7 @@ function LastWeekMonday() {
     .toDate();
 }
 
-export default async function pullPostToPArtists(): Promise<IPostToPArtist[]> {
+export async function pullPostToPArtists(): Promise<IPostToPArtist[]> {
   if (!isProduction) return await mockDataArtist();
 
   let lastWeekSunday = LastWeekSunday();
@@ -84,6 +84,25 @@ export async function pullPostToPMusic(): Promise<IPostToPMusic[]> {
   return ytData;
 }
 
+export async function pullPostToPGenres(): Promise<IPostToPGenre[]> {
+  if (!isProduction) return await mockDataGenre();
+
+  let lastWeekSunday = LastWeekSunday();
+  let lastWeekMonday = LastWeekMonday();
+  let response = await fetch(
+    `${
+      process.env.postToP_URL
+    }genre?from=${lastWeekSunday.toUTCString()}&to=${lastWeekMonday.toUTCString()}&limit=10`,
+  );
+  let data = await response.json();
+  data = data.map((i: IPostToPGenre) => {
+    let { genre, times } = i;
+    genre = genre.replace("_", " ");
+    return { genre, times };
+  });
+  return data;
+}
+
 async function mockDataMusic() {
   const data = (await readJSON(
     "src/services/mockData/fakePostToPMusic.json",
@@ -95,5 +114,17 @@ async function mockDataArtist() {
   const data = (await readJSON(
     "src/services/mockData/fakePostToPArtists.json",
   )) as IPostToPArtist[];
+  return data;
+}
+
+async function mockDataGenre() {
+  const data = [
+    { genre: "Pop music", times: 75 },
+    { genre: "Music of Asia", times: 51 },
+    { genre: "Electronic music", times: 45 },
+    { genre: "Rock music", times: 24 },
+    { genre: "Independent music", times: 14 },
+    { genre: "Hip hop music", times: 5 },
+  ];
   return data;
 }

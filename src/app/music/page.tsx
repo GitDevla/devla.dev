@@ -1,11 +1,16 @@
 import ArtistCard from "@/components/Cards/ArtistCard";
 import MusicCard from "@/components/Cards/MusicCard";
 import TransitionLink from "@/components/TransitionLink";
-import pullPostToPArtists, { pullPostToPMusic } from "@/services/postToP";
+import {
+  pullPostToPMusic,
+  pullPostToPArtists,
+  pullPostToPGenres,
+} from "@/services/postToP";
+import { generateRandomDarkColor } from "@/utils/color";
 import { Metadata } from "next";
 import Link from "next/link";
 
-export const revalidate = 60 * 60 * 24 * 3;
+export const revalidate = 60 * 60 * 24 * 1;
 // cron.schedule("0 5 * * 1", async () => {
 //   revalidatePath("/music");
 // });
@@ -14,11 +19,23 @@ export const metadata: Metadata = {
   title: "Music",
 };
 
+function genreToPercentages(data: IPostToPGenre[]) {
+  const total = data.reduce((acc, curr) => acc + curr.times, 0);
+  return data.map((genre) => {
+    return {
+      genre: genre.genre,
+      percentage: Math.round((genre.times / total) * 100),
+    };
+  });
+}
+
 export default async function MusicPage() {
-  const [musicData, artistData] = await Promise.all([
+  const [musicData, artistData, genreData] = await Promise.all([
     pullPostToPMusic(),
     pullPostToPArtists(),
+    pullPostToPGenres(),
   ]);
+  const genrePercentages = genreToPercentages(genreData);
   return (
     <>
       <section>
@@ -70,6 +87,38 @@ export default async function MusicPage() {
         <div className="grid gap-5 md:grid-cols-3">
           {artistData.map((artist, i) => (
             <ArtistCard key={i} artist={artist} />
+          ))}
+        </div>
+      </section>
+      <section>
+        <h2 className="subheader">Genres of the week</h2>
+        <div className="mt-6 flex w-full rounded-lg">
+          {genrePercentages.map((genre, i) => (
+            <div
+              key={i}
+              className="group relative cursor-pointer p-2 transition-all hover:z-10 hover:!w-[90%] dark:backdrop-invert"
+              style={{
+                width: `${genre.percentage}%`,
+                backgroundColor: generateRandomDarkColor(),
+                borderRadius:
+                  i == 0
+                    ? "0.5rem 0 0 0.5rem"
+                    : i == genrePercentages.length - 1
+                      ? "0 0.5rem 0.5rem 0"
+                      : "0",
+                borderRight:
+                  i != genrePercentages.length - 1
+                    ? "1px solid rgb(var(--secondaryText))"
+                    : "none",
+              }}
+            >
+              <div className="absolute bottom-0 left-0 right-0 translate-y-full truncate text-center opacity-30 transition-opacity group-hover:opacity-100">
+                {genre.percentage}%
+              </div>
+              <div className="absolute left-0 right-0 top-0 -translate-y-full truncate text-center opacity-30 transition-opacity group-hover:opacity-100">
+                {genre.genre}
+              </div>
+            </div>
           ))}
         </div>
       </section>
