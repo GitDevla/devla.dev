@@ -1,5 +1,5 @@
 import Markdown from "markdown-to-jsx";
-import { fetchMarkdownPosts, getMD } from "@/utils/Markdown";
+import { fetchProjects, getMD } from "@/utils/Markdown";
 import { notFound } from "next/navigation";
 import TableOfContent from "@/components/TableOfContent";
 import moment from "moment";
@@ -12,13 +12,11 @@ export const revalidate = 60 * 60 * 9;
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const postMetadata = await fetchMarkdownPosts();
-  return postMetadata
-    .filter((i) => i?.metadata.tags.includes("project"))
-    .map((i) => {
-      const slug = i?.metadata.slug;
-      return { slug };
-    });
+  const postMetadata = await fetchProjects();
+  return postMetadata.map((i) => {
+    const slug = i?.metadata.slug;
+    return { slug };
+  });
 }
 
 export async function generateMetadata(props: any): Promise<Metadata> {
@@ -29,7 +27,7 @@ export async function generateMetadata(props: any): Promise<Metadata> {
 }
 
 async function getPrevAndNext(slug: string) {
-  const posts = await fetchMarkdownPosts();
+  const posts = await fetchProjects();
   const index = posts.findIndex((i) => i?.metadata.slug === slug);
   const prev = posts[index - 1];
   const next = posts[index + 1];

@@ -1,5 +1,5 @@
 import ProjectCard from "@/components/Cards/ProjectCard";
-import { fetchMarkdownPosts } from "@/utils/Markdown";
+import { fetchProjects } from "@/utils/Markdown";
 import { Metadata } from "next";
 
 export const revalidate = 60 * 60 * 9;
@@ -8,13 +8,8 @@ export const metadata: Metadata = {
   title: "Projects",
 };
 
-async function fetchProjectMD() {
-  const postMetadata = await fetchMarkdownPosts();
-  return postMetadata.filter((i) => i?.metadata.tags.includes("project"));
-}
-
 export default async function ProjectsPage() {
-  const postMetadata = await fetchProjectMD();
+  const postMetadata = await fetchProjects();
   return (
     <>
       <h1 className="header">Projects</h1>

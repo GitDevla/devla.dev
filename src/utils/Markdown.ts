@@ -3,6 +3,11 @@ import matter from "gray-matter";
 
 const folder = process.env.STATIC_PATH + "/blogs/";
 
+export async function fetchProjects() {
+  const postMetadata = await fetchMarkdownPosts();
+  return postMetadata.filter((i) => i?.metadata.type == "project");
+}
+
 export async function fetchMarkdownPosts() {
   const files = await fs.readdir(folder);
   const markdownPosts = files
@@ -29,13 +34,17 @@ export async function getMD(slug: string) {
   const matterResult = matter(fileContents);
   return {
     metadata: {
+      slug: slug,
       title: matterResult.data.title,
-      date: matterResult.data.date || null,
       subtitle: matterResult.data.subtitle,
-      tags: matterResult.data.tags || [],
+      coverImage: matterResult.data.coverImage || null,
+      type: matterResult.data.type,
+      date: matterResult.data.date || null,
       fromdate: matterResult.data.fromdate || null,
       todate: matterResult.data.todate || null,
-      slug: slug,
+      tags: matterResult.data.tags || [],
+      tryLink: matterResult.data.tryLink || null,
+      sourceLink: matterResult.data.sourceLink || null,
       lastUpdated: stats.mtime,
       created: stats.birthtime,
       visible: matterResult.data.visible || false,
