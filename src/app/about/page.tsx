@@ -42,9 +42,9 @@ export default function AboutPage() {
             <span className="inline-block scale-125">🐣</span> I have been
             interested in the world of computers and it's workings from an early
             age, as of now I have about{" "}
-            <span className="font-semibold">
+            <b className="font-semibold">
               {new Date().getFullYear() - 2017}+ years of combined experience
-            </span>{" "}
+            </b>{" "}
             in the field.
           </p>
           <p>
@@ -61,10 +61,10 @@ export default function AboutPage() {
             <br />
             In the ocean, that is software development, I have experience with a
             wide range of technologies and fields such as:{" "}
-            <span className="font-semibold">
+            <b className="font-semibold">
               frontend web design, backend & APIs, networking & security,
               automation,
-            </span>{" "}
+            </b>{" "}
             and more.
           </p>
           <p>
