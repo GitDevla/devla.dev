@@ -21,6 +21,14 @@ function LastWeekMonday() {
     .toDate();
 }
 
+function getChannelURL(channelID: string) {
+  return `https://music.youtube.com/channel/${channelID}`;
+}
+
+function getVideoURL(videoID: string) {
+  return `https://music.youtube.com/watch?v=${videoID}`;
+}
+
 export async function pullPostToPArtists(): Promise<IPostToPArtist[]> {
   if (!isProduction) return await mockDataArtist();
 
@@ -38,20 +46,20 @@ export async function pullPostToPArtists(): Promise<IPostToPArtist[]> {
       let ytData;
       if ((artistID as String).startsWith("@")) {
         ytData = await fetch(
-          `https://yt.lemnoslife.com/noKey/channels?part=snippet&forHandle=${artistID.slice(
+          `https://youtube.googleapis.com/youtube/v3/channels?part=snippet&forHandle=${artistID.slice(
             1,
-          )}`,
+          )}&key=${process.env.YOUTUBE_API_KEY}`,
         );
       } else {
         ytData = await fetch(
-          `https://yt.lemnoslife.com/noKey/channels?part=snippet&id=${artistID}`,
+          `https://youtube.googleapis.com/youtube/v3/channels?part=snippet&id=${artistID}&key=${process.env.YOUTUBE_API_KEY}`,
         );
       }
       const data = (await ytData.json()) as IYTArtistResponse;
       const { id, snippet } = data.items[0];
       const { title: name, thumbnails } = snippet;
-      const { url: thumbnail_url } = thumbnails.default;
-      const ytUrl = `https://music.youtube.com/channel/${id}`;
+      const { url: thumbnail_url } = thumbnails.high;
+      const ytUrl = getChannelURL(id);
       return { name, ytUrl, thumbnail_url };
     }),
   );
@@ -73,11 +81,17 @@ export async function pullPostToPMusic(): Promise<IPostToPMusic[]> {
     data.map(async (music: any) => {
       const { musicID, times } = music;
       const ytData = await fetch(
-        `https://www.youtube.com/oembed?url=http%3A//youtube.com/watch%3Fv%3D${musicID}&format=json`,
+        `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${musicID}&key=${process.env.YOUTUBE_API_KEY}`,
       );
       const data = (await ytData.json()) as IYTVideoResponse;
-      const { title, author_name, author_url, thumbnail_url } = data;
-      const ytUrl = `https://music.youtube.com/watch?v=${musicID}`;
+      const {
+        title,
+        channelTitle: author_name,
+        channelId,
+      } = data.items[0].snippet;
+      const { url: thumbnail_url } = data.items[0].snippet.thumbnails.high;
+      const author_url = getChannelURL(channelId);
+      const ytUrl = getVideoURL(musicID);
       return { title, author_name, author_url, ytUrl, thumbnail_url, times };
     }),
   );
