@@ -8,8 +8,7 @@ import { Metadata } from "next";
 import PopUpSidebar from "@/components/PopUpSidebar";
 import ReadTime from "@/components/ReadTime";
 
-export const revalidate = 60 * 60 * 9;
-export const dynamicParams = false;
+export const revalidate = 60 * 60 * 24;
 
 export async function generateStaticParams() {
   const postMetadata = await fetchProjects();
@@ -41,6 +40,7 @@ export default async function BlogPage(props: any) {
   if (!post) {
     return notFound();
   }
+  if (!post.metadata.visible) return notFound();
   return (
     <>
       <PopUpSidebar title="Table of Contents">

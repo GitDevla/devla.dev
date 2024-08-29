@@ -5,7 +5,7 @@ import TransitionLink from "@/components/TransitionLink";
 import { Metadata } from "next";
 import Link from "next/link";
 
-export const revalidate = 60 * 60 * 24 * 1;
+export const revalidate = 60 * 60 * 24 * 8; // Actual revalidation is ran using instrumentation.ts
 // cron.schedule("0 5 * * 1", async () => {
 //   revalidatePath("/music");
 // });
