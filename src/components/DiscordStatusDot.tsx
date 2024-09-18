@@ -7,10 +7,10 @@ export default function DiscordStatusDot({
 }: {
   className?: string;
 }) {
-  const status = useDiscordStatus();
+  const discordData = useDiscordStatus();
 
   let color;
-  switch (status) {
+  switch (discordData.status) {
     case "online":
       color = "bg-green-500";
       break;

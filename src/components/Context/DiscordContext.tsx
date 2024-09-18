@@ -3,32 +3,59 @@
 import pullDiscordStatus from "@/services/Discord";
 import { createContext, useContext, useEffect, useState } from "react";
 
-const defaultDiscordStatus = "offline";
-const DiscordStatus = createContext(defaultDiscordStatus);
+const defaultDiscordData: {
+  status: string;
+  activities: {
+    name: string;
+    description: string | undefined;
+    details: string | undefined;
+    asset: string | undefined;
+  }[];
+} = {
+  status: "offline",
+  activities: [],
+};
+const DiscordDataContext = createContext(defaultDiscordData);
 
 export function DiscordContext({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [status, setStatus] = useState(defaultDiscordStatus);
+  const [discordData, setDiscordData] = useState(defaultDiscordData);
   useEffect(() => {
     pullDiscordStatus().then((data) => {
-      setStatus(data.data.discord_status);
+      const status = data.data.discord_status;
+      const activities = data.data.activities.map((activity) => ({
+        name: activity.name,
+        description: activity.state,
+        details: activity.details,
+        asset: "https://" + activity.assets?.large_image.split("/https/")[1],
+      }));
+      setDiscordData({ status, activities });
     });
 
     const interval = setInterval(() => {
       pullDiscordStatus().then((data) => {
-        if (status != data.data.discord_status)
-          setStatus(data.data.discord_status);
+        const status = data.data.discord_status;
+        const activities = data.data.activities.map((activity) => ({
+          name: activity.name,
+          description: activity.state,
+          details: activity.details,
+
+          asset: "https://" + activity.assets?.large_image.split("/https/")[1],
+        }));
+        setDiscordData({ status, activities });
       });
     }, 1000 * 60);
 
     return () => clearInterval(interval);
   }, []);
   return (
-    <DiscordStatus.Provider value={status}>{children}</DiscordStatus.Provider>
+    <DiscordDataContext.Provider value={discordData}>
+      {children}
+    </DiscordDataContext.Provider>
   );
 }
 
-export const useDiscordStatus = () => useContext(DiscordStatus);
+export const useDiscordStatus = () => useContext(DiscordDataContext);

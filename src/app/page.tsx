@@ -6,6 +6,8 @@ import { readStatic } from "@/utils/ReadJSON";
 import DiscordStatusDot from "@/components/DiscordStatusDot";
 import TechCarusel from "@/components/TechCarusel";
 import { Suspense } from "react";
+import DiscordGenericActivityCard from "@/components/DiscordGenericActivityCard";
+import DiscordListeningToCard from "@/components/DiscordListeningToCard";
 
 export const revalidate = 60 * 60 * 9;
 
@@ -93,20 +95,24 @@ export default async function Home() {
               .
             </p>
           </div>
-          <blockquote className="mt-4 text-xs italic text-secondaryText md:ml-2 md:text-sm">
+          <blockquote className="mt-4 text-xs italic text-secondaryText md:ml-2">
             Let's fall and fall into the vortex of this hole-dwelling life.
           </blockquote>
         </div>
-        <div className="relative">
-          <Image
-            className="h-44 w-44 rounded-full"
-            src="https://placehold.co/400"
-            width={176}
-            height={176}
-            alt="Picture of the author"
-            priority
-          />
-          <DiscordStatusDot className="absolute bottom-3 right-1 rounded-full bg-background p-2" />
+        <div className="group relative">
+          <div className="relative rotate-6 transition-transform group-hover:-rotate-6 group-hover:scale-110">
+            <Image
+              className="h-52 w-52 rounded-xl"
+              src="https://placehold.co/400"
+              width={176}
+              height={176}
+              alt="Picture of the author"
+              priority
+            />
+            <DiscordStatusDot className="absolute -bottom-1 -right-1 rounded-full bg-background p-2" />
+          </div>
+          <DiscordGenericActivityCard className="absolute -bottom-5 -left-0 -translate-x-1/2" />
+          <DiscordListeningToCard className="absolute -top-5 right-0 translate-x-1/2"></DiscordListeningToCard>
         </div>
       </section>
 
