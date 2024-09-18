@@ -7,6 +7,8 @@ import TransitionLink from "@/components/TransitionLink";
 import { Metadata } from "next";
 import PopUpSidebar from "@/components/PopUpSidebar";
 import ReadTime from "@/components/ReadTime";
+import { exec } from "child_process";
+import AnsiToHtml from "ansi-to-html";
 
 export const revalidate = 60 * 60 * 24;
 
@@ -25,6 +27,23 @@ export async function generateMetadata(props: any): Promise<Metadata> {
   };
 }
 
+async function getHistory(filename: String): Promise<string> {
+  const ansiConverter = new AnsiToHtml();
+  return new Promise((resolve) => {
+    exec(
+      "git log --pretty=format:'%ad' --date=short -p --word-diff --color -- " +
+        process.env.STATIC_PATH +
+        "/" +
+        filename +
+        ".md",
+      function (error, stdout, stderr) {
+        console.log(stdout);
+        resolve(ansiConverter.toHtml(stdout));
+      },
+    );
+  });
+}
+
 async function getPrevAndNext(slug: string) {
   const posts = await fetchProjects();
   const index = posts.findIndex((i) => i?.metadata.slug === slug);
@@ -40,6 +59,7 @@ export default async function BlogPage(props: any) {
   if (!post) {
     return notFound();
   }
+  const history = await getHistory(slug);
   if (!post.metadata.visible) return notFound();
   return (
     <>
@@ -100,6 +120,13 @@ export default async function BlogPage(props: any) {
               .fromNow()}
           </span>
         </div>
+        <details className="">
+          <summary className="text-lg">History of changes</summary>
+          <p
+            className="max-h-96 overflow-scroll whitespace-pre-wrap"
+            dangerouslySetInnerHTML={{ __html: history }}
+          ></p>
+        </details>
       </article>
     </>
   );
