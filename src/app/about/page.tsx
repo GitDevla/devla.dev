@@ -1,4 +1,5 @@
 import EmailForm from "@/components/EmailForm";
+import Hover from "@/components/Hover";
 import SimpleIcon from "@/components/SimpleIcon";
 import Timeline from "@/components/Timeline";
 import { Metadata } from "next";
@@ -16,8 +17,10 @@ export default function AboutPage() {
         <section className="max-w-[65ch] space-y-4">
           <p>
             <span className="inline-block scale-125">👋</span> Hi, I'm{" "}
-            <span title="(just a nickname)">Devla</span>- real name is David.
-            I'm a self-taught developer from{" "}
+            <Hover hoverText="(just a nickname)">
+              <span>Devla</span>
+            </Hover>
+            - real name is David. I'm a self-taught developer from{" "}
             <a
               className="link"
               href="https://www.google.com/maps/place/Hungary/"
