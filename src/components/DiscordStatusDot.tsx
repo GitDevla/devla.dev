@@ -1,6 +1,7 @@
 "use client";
 
 import { useDiscordStatus } from "./Context/DiscordContext";
+import Hover from "./Hover";
 
 export default function DiscordStatusDot({
   className,
@@ -24,10 +25,10 @@ export default function DiscordStatusDot({
       color = "bg-gray-500";
   }
   return (
-    <div className={className}>
+    <Hover className={className} hoverText={discordData.status}>
       <span
-        className={`flex h-6 w-6 rounded-full ${color} transition-colors`}
+        className={`flex aspect-square size-full rounded-full ${color} transition-colors`}
       ></span>
-    </div>
+    </Hover>
   );
 }

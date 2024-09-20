@@ -69,7 +69,10 @@ export default async function Home() {
       <section className="flex flex-col-reverse items-center justify-between md:flex-row md:items-stretch md:px-4">
         <div className="flex flex-col justify-between text-center text-lg md:text-left">
           <div className="mt-8">
-            <h1 className="text-2xl font-bold">Hi, I am Devla.</h1>
+            <span className="flex items-center gap-2">
+              <h1 className="text-2xl font-bold">Hi, I am Devla.</h1>
+              <DiscordStatusDot className="inline-block size-4 rounded-full bg-background" />
+            </span>
             <p className="break-all text-sm md:text-base">
               I'm a second-year undergraduate
               <br />
@@ -95,7 +98,7 @@ export default async function Home() {
               .
             </p>
           </div>
-          <blockquote className="mt-4 text-xs italic text-secondaryText md:ml-2">
+          <blockquote className="mt-4 text-xs italic text-secondaryText md:ml-2 md:text-sm">
             Let's fall and fall into the vortex of this hole-dwelling life.
           </blockquote>
         </div>
@@ -109,10 +112,9 @@ export default async function Home() {
               alt="Picture of the author"
               priority
             />
-            <DiscordStatusDot className="absolute -bottom-1 -right-1 rounded-full bg-background p-2" />
           </div>
-          <DiscordGenericActivityCard className="absolute -bottom-5 -left-0 -translate-x-1/2" />
-          <DiscordListeningToCard className="absolute -top-5 right-0 translate-x-1/2"></DiscordListeningToCard>
+          <DiscordListeningToCard className="absolute -top-5 left-0 h-16 -translate-x-1/4"></DiscordListeningToCard>
+          <DiscordGenericActivityCard className="absolute -bottom-5 right-0 h-16 translate-x-1/4" />
         </div>
       </section>
 
