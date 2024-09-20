@@ -60,7 +60,7 @@ async function mockData() {
         {
           flags: 1,
           id: "67f2517e6c39365d",
-          name: "Visual Studio Code",
+          name: "Code",
           type: 0,
           state: "Working on DiscordContext.tsx:6:68",
           session_id: "2fbc22319e5cdc4428c4dc02056f6291",
