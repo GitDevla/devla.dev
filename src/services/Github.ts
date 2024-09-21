@@ -2,7 +2,7 @@ import { IGithubResponse } from "@/types/IGithubResponse";
 import isProduction from "@/utils/isProd";
 import { readJSON } from "@/utils/ReadJSON";
 
-async function fetchGitHubData() {
+async function fetchRepositoriesFromGitHub() {
   const header = {
     Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
     "Content-Type": "application/json",
@@ -62,10 +62,54 @@ async function fetchGitHubData() {
   return githubresp;
 }
 
-export default async function pullGithubRepos() {
+async function fetchContributionDataFromGithub() {
+  let header = {
+    Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+    "Content-Type": "application/json",
+  };
+  let body = `{
+	viewer {
+		contributionsCollection {
+				contributionCalendar {
+					totalContributions
+					weeks {
+						contributionDays {
+							contributionCount
+							date
+						}
+					}
+				}
+}}}
+        `;
+  const githubresp = await fetch(`https://api.github.com/graphql`, {
+    method: "POST",
+    headers: header,
+    body: JSON.stringify({ query: body }),
+  });
+  return githubresp;
+}
+
+export async function pullGithubContributions() {
+  if (!isProduction) {
+    const data = await readJSON("src/services/mockData/fakeGithubContrib.json");
+    const contributionCalendarData =
+      data.data.viewer.contributionsCollection.contributionCalendar;
+    return contributionCalendarData.weeks
+      .map((week: any) => week.contributionDays)
+      .flat() as { contributionCount: number; date: string }[];
+  }
+
+  const githubresp = await fetchContributionDataFromGithub();
+  const data = (await githubresp.json()) as any;
+  return data.data.viewer.contributionsCollection.contributionCalendar.weeks
+    .map((week: any) => week.contributionDays)
+    .flat() as { contributionCount: number; date: string }[];
+}
+
+export async function pullGithubRepos() {
   if (!isProduction) return await mockData();
 
-  const githubresp = await fetchGitHubData();
+  const githubresp = await fetchRepositoriesFromGitHub();
   const data = (await githubresp.json()) as IGithubResponse;
   return parseGithubData(data);
 }
