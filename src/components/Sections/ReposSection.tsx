@@ -67,7 +67,7 @@ export default function ReposSection({ repos }: { repos: IRepo[] }) {
         <input
           className="card w-full p-1"
           type="text"
-          placeholder="Search..."
+          placeholder="Search... (name, description, language)"
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
         />
