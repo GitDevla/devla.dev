@@ -22,7 +22,7 @@
   }
 
   .link {
-    @apply text-highlight underline;
+    @apply underlinea underlinea-highlight text-highlight;
   }
 
   section {
@@ -52,6 +52,28 @@
 
   .quote::after {
     content: "“";
+  }
+
+  .underlinea {
+    @apply relative;
+  }
+
+  .underlinea:after {
+    @apply absolute bottom-0 left-1/2 block h-[.05em] w-[80%] -translate-x-1/2 bg-primaryText bg-opacity-90 bg-clip-content transition-all content-[""];
+  }
+
+  .underlinea-w-0::after {
+    @apply w-0;
+  }
+
+  .underlinea-highlight::after {
+    @apply bg-highlight;
+  }
+  .underlinea-secondaryText::after {
+    @apply bg-secondaryText;
+  }
+  .underlinea:hover:after {
+    @apply w-full;
   }
 }
 

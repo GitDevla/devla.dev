@@ -14,7 +14,7 @@ export function BreadcrumbTitle() {
         <div key={index} className="flex">
           <TransitionLink
             href={`/${paths.slice(1, index + 1).join("/")}`}
-            className="mr-1 capitalize hover:underline"
+            className={`mr-1 capitalize ${index !== paths.length - 1 && "underlinea underlinea-secondaryText underlinea-w-0"}`}
             style={{
               fontWeight: index === paths.length - 1 ? "600" : "300",
               color:
