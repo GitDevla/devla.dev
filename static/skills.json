@@ -10,20 +10,8 @@
     {
       "name": "JavaScript",
       "icon": "javascript",
-      "category": ["languages", "frontend", "backend"],
+      "category": ["languages", "frontend"],
       "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
-    },
-    {
-      "name": "HTML",
-      "icon": "html5",
-      "category": ["languages", "frontend"],
-      "href": "https://developer.mozilla.org/en-US/docs/Web/HTML"
-    },
-    {
-      "name": "CSS",
-      "icon": "css3",
-      "category": ["languages", "frontend"],
-      "href": "https://developer.mozilla.org/en-US/docs/Web/CSS"
     },
     {
       "name": "Node.js",
@@ -108,6 +96,42 @@
       "icon": "linux",
       "category": ["devops"],
       "href": "https://www.linux.org"
+    },
+    {
+      "name": "NGINX",
+      "icon": "nginx",
+      "category": ["devops"],
+      "href": "https://www.nginx.com"
+    },
+    {
+      "name": "SQL",
+      "icon": "mysql",
+      "category": ["languages", "backend"],
+      "href": "https://en.wikipedia.org/wiki/SQL"
+    },
+    {
+      "name": "Insomnia",
+      "icon": "insomnia",
+      "category": ["devops"],
+      "href": "https://insomnia.rest"
+    },
+    {
+      "name": "HTML5",
+      "icon": "html5",
+      "category": ["languages", "frontend"],
+      "href": "https://developer.mozilla.org/en-US/docs/Web/HTML"
+    },
+    {
+      "name": "CSS3",
+      "icon": "css3",
+      "category": ["languages", "frontend"],
+      "href": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+    },
+    {
+      "name": "Markdown",
+      "icon": "markdown",
+      "category": ["languages"],
+      "href": "https://www.markdownguide.org"
     }
   ]
 }
