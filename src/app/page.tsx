@@ -102,19 +102,19 @@ export default async function Home() {
             Let's fall and fall into the vortex of this hole-dwelling life.
           </blockquote>
         </div>
-        <div className="group relative">
-          <div className="relative rotate-6 transition-transform group-hover:-rotate-6 group-hover:scale-110">
+        <div className="relative">
+          <div className="peer relative rotate-6 transition-transform hover:-rotate-6 hover:scale-110">
             <Image
               className="h-52 w-52 rounded-xl"
-              src="https://placehold.co/400"
+              src="/xqc-despair.gif"
               width={176}
               height={176}
               alt="Picture of the author"
               priority
             />
           </div>
-          <DiscordListeningToCard className="absolute -top-5 left-0 h-16 -translate-x-1/4"></DiscordListeningToCard>
-          <DiscordGenericActivityCard className="absolute -bottom-5 right-0 h-16 translate-x-1/4" />
+          <DiscordListeningToCard className="absolute -top-5 left-0 h-16 -translate-x-1/4 transition-all peer-hover:-z-10 peer-hover:brightness-75"></DiscordListeningToCard>
+          <DiscordGenericActivityCard className="absolute -bottom-5 right-0 h-16 translate-x-1/4 transition-all peer-hover:-z-10 peer-hover:brightness-75" />
         </div>
       </section>
 
