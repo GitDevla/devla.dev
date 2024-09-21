@@ -15,7 +15,7 @@ export default function AboutPage() {
       <h1 className="header">About Me</h1>
       <div className="relative">
         <section className="max-w-[65ch] space-y-4">
-          <p>
+          <div>
             <span className="inline-block scale-125">👋</span> Hi, I'm{" "}
             <Hover hoverText="(just a nickname)">
               <span>Devla</span>
@@ -33,7 +33,7 @@ export default function AboutPage() {
               University of Debrecen
             </a>
             .
-          </p>
+          </div>
           <Image
             className="right-0 top-1/2 mx-auto my-auto w-1/2 md:absolute md:w-1/4 md:-translate-y-1/2"
             src="https://placehold.co/400x600"
@@ -94,7 +94,11 @@ export default function AboutPage() {
             <SimpleIcon name="Gmail" className="mb-2 inline-block size-2" />
           </a>
           , on Discord as{" "}
-          <a href="https://discord.com/" className="link">
+          <a
+            href={`https://discordredirect.discordsafe.com/users/${process.env.NEXT_PUBLIC_DISCORD_ID}`}
+            className="link"
+            target="_blank"
+          >
             @Devla
             <SimpleIcon name="Discord" className="mb-2 inline-block size-2" />
           </a>
