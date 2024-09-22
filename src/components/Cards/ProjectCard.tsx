@@ -3,6 +3,8 @@ import TransitionLink from "@/components/TransitionLink";
 import LinkSVG from "@/../public/svg/link.svg";
 import CodeSVG from "@/../public/svg/code.svg";
 import BookSVG from "@/../public/svg/book.svg";
+import SimpleIcon from "../SimpleIcon";
+import Hover from "../Hover";
 
 export default async function ProjectCard({ post }: { post: any }) {
   let { metadata, content } = post;
@@ -14,15 +16,28 @@ export default async function ProjectCard({ post }: { post: any }) {
     .join("\n");
   return (
     <div className="group relative mt-6 grid w-full overflow-hidden rounded-md p-4 shadow-sm sm:grid-cols-[4fr_1fr] sm:even:grid-cols-[1fr_4fr]">
-      <div className="order-2 p-5 group-even:text-right sm:order-1 sm:group-even:order-2">
+      <div className="order-2 flex flex-col p-5 group-even:items-end sm:order-1 sm:group-even:order-2">
         <p className="mb-1 text-sm text-secondaryText">
           {metadata.date
             ? metadata.date
             : `${metadata.fromdate} - ${metadata.todate}`}
         </p>
-
-        <h2 className="text-xl font-bold">{metadata.title}</h2>
-
+        <div className="flex gap-2 group-even:flex-row-reverse">
+          <h2 className="text-xl font-bold">{metadata.title}</h2>
+          <div className="flex items-center gap-2">
+            {metadata.tags.map((tag: string, i: number) => (
+              <Hover hoverText={tag} key={i}>
+                <SimpleIcon
+                  height={20}
+                  width={20}
+                  className="size-5"
+                  name={tag}
+                  useDefaultColor
+                />
+              </Hover>
+            ))}
+          </div>
+        </div>
         <p className="mb-4 text-primaryText sm:text-secondaryText">
           {metadata.subtitle}
         </p>

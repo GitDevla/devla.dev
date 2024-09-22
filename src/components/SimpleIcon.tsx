@@ -3,6 +3,12 @@ import Image from "next/image";
 
 function typoFix(name: string) {
   switch (name) {
+    case "chrome":
+      return "googlechrome";
+    case "tailwind css":
+      return "tailwindcss";
+    case "websocket":
+      return "rocket";
     case "html":
       return "html5";
     case "css":
@@ -27,6 +33,7 @@ export default function SimpleIcon({
   hideIfNotFound = false,
   className = "",
   sizes,
+  useDefaultColor = false,
 }: {
   name: string;
   width?: number;
@@ -34,6 +41,7 @@ export default function SimpleIcon({
   hideIfNotFound?: boolean;
   className?: string;
   sizes?: string;
+  useDefaultColor?: boolean;
 }) {
   if (!name) return null;
   name = name.toLowerCase();
@@ -44,7 +52,11 @@ export default function SimpleIcon({
       <Image
         height={height}
         width={width}
-        src={"https://cdn.simpleicons.org/" + name + "/000/fff"}
+        src={
+          "https://cdn.simpleicons.org/" +
+          name +
+          (!useDefaultColor ? "/000/fff" : "")
+        }
         sizes={sizes}
         alt={"Simple Icon - " + name}
         onError={(e) => {
