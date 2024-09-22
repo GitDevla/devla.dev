@@ -22,9 +22,8 @@ export default async function ProjectCard({ post }: { post: any }) {
             ? metadata.date
             : `${metadata.fromdate} - ${metadata.todate}`}
         </p>
-        <div className="flex gap-2 group-even:flex-row-reverse">
-          <h2 className="text-xl font-bold">{metadata.title}</h2>
-          <div className="flex items-center gap-2">
+        <div className="flex flex-col justify-end gap-2 md:flex-row-reverse md:group-even:flex-row">
+          <div className="flex flex-wrap items-center gap-2">
             {metadata.tags.map((tag: string, i: number) => (
               <Hover hoverText={tag} key={i}>
                 <SimpleIcon
@@ -37,6 +36,9 @@ export default async function ProjectCard({ post }: { post: any }) {
               </Hover>
             ))}
           </div>
+          <h2 className="whitespace-nowrap text-xl font-bold">
+            {metadata.title}
+          </h2>
         </div>
         <p className="mb-4 text-primaryText sm:text-secondaryText">
           {metadata.subtitle}
