@@ -67,12 +67,12 @@ export default async function Home() {
   return (
     <>
       <section className="flex flex-col-reverse items-center justify-between md:flex-row md:items-stretch md:px-4">
-        <div className="flex flex-col justify-between text-center text-lg md:text-left">
+        <div className="flex flex-col items-center justify-between text-center text-lg md:items-start md:text-left">
           <div className="mt-8">
-            <span className="flex items-center gap-2">
+            <div className="flex items-center gap-2">
               <h1 className="text-2xl font-bold">Hi, I am Devla.</h1>
               <DiscordStatusDot className="inline-block size-4 rounded-full bg-background" />
-            </span>
+            </div>
             <p className="break-all text-sm md:text-base">
               I'm a second-year undergraduate
               <br />
