@@ -2,7 +2,20 @@ import { pullGithubContributions } from "@/services/Github";
 import Hover from "./Hover";
 
 export default async function ContributionCalendar() {
-  const githubContributions = await pullGithubContributions();
+  let githubContributions = await pullGithubContributions();
+
+  // Start from the first Sunday
+  while (true) {
+    let current = githubContributions[0].date;
+    let date = new Date(current);
+    if (date.getDay() == 0) {
+      //Sunday
+      break;
+    } else {
+      githubContributions.shift();
+    }
+  }
+
   const highestCount = Math.max(
     ...githubContributions.map((day: any) => day.contributionCount),
   );
@@ -10,6 +23,7 @@ export default async function ContributionCalendar() {
     (acc: number, day: any) => acc + day.contributionCount,
     0,
   );
+
   return (
     <div>
       <div className="grid grid-cols-[auto_1fr] grid-rows-[auto_1fr] gap-2">
