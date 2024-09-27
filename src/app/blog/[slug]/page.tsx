@@ -8,7 +8,6 @@ import { Metadata } from "next";
 import PopUpSidebar from "@/components/PopUpSidebar";
 import ReadTime from "@/components/ReadTime";
 import { exec } from "child_process";
-import AnsiToHtml from "ansi-to-html";
 
 export const revalidate = 60 * 60 * 24;
 
@@ -28,17 +27,21 @@ export async function generateMetadata(props: any): Promise<Metadata> {
 }
 
 async function getHistory(filename: String): Promise<string> {
-  const ansiConverter = new AnsiToHtml();
   return new Promise((resolve) => {
     exec(
-      "git log --pretty=format:'%ad' --date=short -p --word-diff --color -- " +
+      "git log --pretty=format:'%ad' --date=short -p --word-diff -- " +
         process.env.STATIC_PATH +
         "/" +
         filename +
         ".md",
+
       function (error, stdout, stderr) {
-        console.log(stdout);
-        resolve(ansiConverter.toHtml(stdout));
+        let xd = new RegExp(
+          "(diff|---|\\+\\+\\+|@@|diff|index|new file mode).*",
+          "gm",
+        );
+        let filtered = stdout.replace(xd, "");
+        resolve(filtered);
       },
     );
   });
@@ -122,10 +125,35 @@ export default async function BlogPage(props: any) {
         </div>
         <details className="">
           <summary className="text-lg">History of changes</summary>
-          <p
-            className="max-h-96 overflow-scroll whitespace-pre-wrap"
-            dangerouslySetInnerHTML={{ __html: history }}
-          ></p>
+          {history === "" ? (
+            <span>No changes were made so far</span>
+          ) : (
+            <p className="max-h-96 overflow-scroll">
+              {history.split("\n").map((i, index) => {
+                if (i === "") return;
+                const addedRegex = new RegExp("{\\+.*\\+}");
+                const deletedRegex = new RegExp("\\[-.*-\\]");
+                const dateRegex = new RegExp("'\\d{4}-\\d{2}-\\d{2}'");
+                if (dateRegex.test(i))
+                  return (
+                    <h3 key={index} className="text-lg font-bold">
+                      Changes made in {i.replace(/'/g, "")}
+                    </h3>
+                  );
+
+                let className = "";
+                if (addedRegex.test(i) && deletedRegex.test(i))
+                  className = "text-blue-300";
+                else if (deletedRegex.test(i)) className = "text-red-300";
+                else if (addedRegex.test(i)) className = "text-green-300";
+                return (
+                  <span key={index} className={className}>
+                    {i} <br />
+                  </span>
+                );
+              })}
+            </p>
+          )}
         </details>
       </article>
     </>
