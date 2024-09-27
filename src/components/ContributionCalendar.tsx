@@ -26,7 +26,7 @@ export default async function ContributionCalendar() {
 
   return (
     <div>
-      <div className="grid grid-cols-[auto_1fr] grid-rows-[auto_1fr] gap-2">
+      <div className="grid grid-cols-[auto_1fr] grid-rows-[auto_1fr] gap-2 overflow-x-scroll md:overflow-visible">
         <div></div>
         <div className="flex justify-evenly">
           {githubContributions
