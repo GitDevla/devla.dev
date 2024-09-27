@@ -48,3 +48,4 @@ The whole project (as of now) is written in **Typescript** as it is ideal for as
 The Chrome extension uses **Webpack** to bundle the files into a file structure that Chrome can understand, the whole communication with the server goes via **Websocket** to reduce latency and allows continuous back n' forth communications for commands like syncing.
 
 The server uses **Express** to host and API and handle Websocket connections, it filters and stores the data into an **SQLite** database to be later accessed and analyzed. (I might try adding _GraphQL_ to the server)
+a
