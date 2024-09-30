@@ -8,6 +8,7 @@ import { Metadata } from "next";
 import PopUpSidebar from "@/components/PopUpSidebar";
 import ReadTime from "@/components/ReadTime";
 import { exec } from "child_process";
+import { getHistory } from "@/services/Git";
 
 export const revalidate = 60 * 60 * 24;
 
@@ -26,27 +27,6 @@ export async function generateMetadata(props: any): Promise<Metadata> {
   };
 }
 
-async function getHistory(filename: String): Promise<string> {
-  return new Promise((resolve) => {
-    exec(
-      "git log --pretty=format:'%ad' --date=short -p --word-diff -- " +
-        process.env.STATIC_PATH +
-        "/" +
-        filename +
-        ".md",
-
-      function (error, stdout, stderr) {
-        let xd = new RegExp(
-          "(diff|---|\\+\\+\\+|@@|diff|index|new file mode).*",
-          "gm",
-        );
-        let filtered = stdout.replace(xd, "");
-        resolve(filtered);
-      },
-    );
-  });
-}
-
 async function getPrevAndNext(slug: string) {
   const posts = await fetchProjects();
   const index = posts.findIndex((i) => i?.metadata.slug === slug);
@@ -62,7 +42,9 @@ export default async function BlogPage(props: any) {
   if (!post) {
     return notFound();
   }
-  const history = await getHistory(slug);
+  const history = await getHistory(
+    process.env.STATIC_PATH + "/blogs/" + slug + ".md",
+  );
   if (!post.metadata.visible) return notFound();
   return (
     <>
@@ -90,16 +72,6 @@ export default async function BlogPage(props: any) {
           <div></div>
         )}
       </div>
-      {/* <div className="my-12 text-center">
-        <h1 className="text-3xl font-bold text-primaryText">
-          {post.metadata.title}
-        </h1>
-        <p className="mt-2 text-secondaryText">
-          {post.metadata.date
-            ? post.metadata.date
-            : `${post.metadata.fromdate} - ${post.metadata.todate}`}
-        </p>
-      </div> */}
 
       <article className="prose mx-auto mt-8 max-w-[80ch] text-justify dark:prose-invert">
         <ReadTime content={post.content} />
@@ -125,34 +97,52 @@ export default async function BlogPage(props: any) {
         </div>
         <details className="">
           <summary className="text-lg">History of changes</summary>
-          {history === "" ? (
+          {history.length == 0 ? (
             <span>No changes were made so far</span>
           ) : (
-            <p className="max-h-96 overflow-scroll">
-              {history.split("\n").map((i, index) => {
-                if (i === "") return;
-                const addedRegex = new RegExp("{\\+.*\\+}");
-                const deletedRegex = new RegExp("\\[-.*-\\]");
-                const dateRegex = new RegExp("'\\d{4}-\\d{2}-\\d{2}'");
-                if (dateRegex.test(i))
-                  return (
-                    <h3 key={index} className="text-lg font-bold">
-                      Changes made in {i.replace(/'/g, "")}
-                    </h3>
-                  );
-
-                let className = "";
-                if (addedRegex.test(i) && deletedRegex.test(i))
-                  className = "text-blue-300";
-                else if (deletedRegex.test(i)) className = "text-red-300";
-                else if (addedRegex.test(i)) className = "text-green-300";
-                return (
-                  <span key={index} className={className}>
-                    {i} <br />
-                  </span>
-                );
-              })}
-            </p>
+            <div className="max-h-96 overflow-scroll">
+              {history.map((i, index) => (
+                <div key={index}>
+                  <h3>Changes made in {i.date}</h3>
+                  {i.additions.length > 0 && (
+                    <>
+                      <h4>Additions</h4>
+                      <ul>
+                        {i.additions.map((i, index) => (
+                          <li key={index} className="text-green-300">
+                            {i}
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
+                  {i.deletions.length > 0 && (
+                    <>
+                      <h4>Deletions</h4>
+                      <ul>
+                        {i.deletions.map((i, index) => (
+                          <li key={index} className="text-red-300">
+                            {i}
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
+                  {i.changes.length > 0 && (
+                    <>
+                      <h4>Changes</h4>
+                      <ul>
+                        {i.changes.map((i, index) => (
+                          <li key={index} className="text-blue-300">
+                            {i}
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
+                </div>
+              ))}
+            </div>
           )}
         </details>
       </article>
