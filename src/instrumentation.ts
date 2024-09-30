@@ -1,4 +1,3 @@
-import { revalidatePath } from "next/cache";
 import { poorMansCron } from "./utils/Cron";
 
 export function register() {
@@ -21,6 +20,7 @@ function runOnMonday() {
 
 function revalidateMusic() {
   console.log("Music revalidation started");
-  revalidatePath("/music");
-  fetch("http://localhost:3000/music"); // actually generate the site
+  fetch("http://localhost:3000/revalidate?type=music").then(() => {
+    fetch("http://localhost:3000/music");
+  });
 }
