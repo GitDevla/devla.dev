@@ -41,13 +41,26 @@ function headersToTree(headers: string[]) {
   return tree;
 }
 
-function renderTree(tree: any) {
+function getDepth(tree: any) {
+  let depth = 0;
+  for (let node of tree) {
+    let d = getDepth(node.children);
+    if (d > depth) {
+      depth = d;
+    }
+  }
+  return depth + 1;
+}
+
+function renderTree(tree: any, depth: number[] = [], maxdepth: number) {
   return (
     <ul>
-      {tree.map((node: any) => (
-        <li key={node.header}>
+      {tree.map((node: any, index: number) => (
+        <li key={index + 1}>
+          <span>{`${depth.join("")}${index + 1}`.padEnd(maxdepth, "0")}</span>{" "}
           <a href={`#${headerToId(node.header)}`}>{node.header}</a>
-          {node.children.length > 0 && renderTree(node.children)}
+          {node.children.length > 0 &&
+            renderTree(node.children, [...depth, index + 1], maxdepth)}
         </li>
       ))}
     </ul>
@@ -61,5 +74,6 @@ export default function TableOfContent({ markdown }: { markdown: string }) {
     (match) => match[0],
   );
   const tree = headersToTree(headers);
-  return <ul className="tree">{headers && renderTree(tree)}</ul>;
+  const depth = getDepth(tree) - 1;
+  return <ul className="tree">{headers && renderTree(tree, [], depth)}</ul>;
 }

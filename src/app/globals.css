@@ -101,7 +101,7 @@ ul.tree ul {
   @apply ml-3;
 }
 ul.tree li {
-  @apply link line-clamp-1 w-full break-all border-l border-primaryText px-2;
+  @apply line-clamp-1 w-full break-all border-l border-primaryText px-2 text-highlight underline;
 }
 ul.tree li:last-child {
   @apply border-l-0;
