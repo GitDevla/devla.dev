@@ -11,7 +11,9 @@ export async function getHistory(filenamePath: String): Promise<GitHistory[]> {
   return new Promise((resolve) => {
     exec(
       `git log --pretty=format:'%ad' --date=short -p --word-diff -- ${filenamePath}`,
-
+      {
+        cwd: process.env.STATIC_PATH + "/blogs/",
+      },
       function (error, stdout, stderr) {
         if (error) {
           console.log(`error: ${error.message}`);
