@@ -103,6 +103,18 @@ export default function AboutPage() {
             <SimpleIcon name="Discord" className="mb-2 inline-block size-2" />
           </a>
           , or by filling out the form below.
+          <p className="font-bold text-highlight">
+            I'm not associated with the{" "}
+            <a
+              href="https://www.linkedin.com/company/devla"
+              target="_blank"
+              className="underline"
+            >
+              Devla
+            </a>{" "}
+            German company, and not involved in NFT, crypto, or blockchain work,
+            so please don't contact me about those topics.
+          </p>
         </div>
 
         <EmailForm />
