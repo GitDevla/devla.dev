@@ -7,6 +7,10 @@ const withBundleAnalyzer = bundleAnalyzer({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone",
+  swcMinify: true,
+  reactStrictMode: true,
+  crossOrigin: "anonymous",
+  compress: true,
   experimental: {
     instrumentationHook: true,
   },
@@ -22,36 +26,11 @@ const nextConfig = {
   images: {
     dangerouslyAllowSVG: true,
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "cdn.simpleicons.org",
-        port: "",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "placehold.co",
-        port: "",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "yt3.ggpht.com",
-        port: "",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "i.ytimg.com",
-        port: "",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "noah.devla.dev",
-        port: "",
-        pathname: "/**",
-      },
+      { hostname: "cdn.simpleicons.org" },
+      { hostname: "placehold.co" },
+      { hostname: "yt3.ggpht.com" },
+      { hostname: "i.ytimg.com" },
+      { hostname: "noah.devla.dev" },
     ],
   },
 };
