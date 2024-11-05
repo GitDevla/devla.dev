@@ -5,7 +5,7 @@ import TopGenreShowcase from "@/components/Showcase/TopGenreShowcase";
 import TopMusicShowcase from "@/components/Showcase/TopMusicShowcase";
 import TransitionLink from "@/components/TransitionLink";
 
-export const revalidate = 60 * 60 * 24 * 8; // Actual revalidation is ran using instrumentation.ts
+export const revalidate = 691200; // 60 * 60 * 24 * 8 Actual revalidation is ran using instrumentation.ts
 // cron.schedule("0 5 * * 1", async () => {
 //   revalidatePath("/music");
 // });

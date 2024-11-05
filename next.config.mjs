@@ -1,19 +1,15 @@
-import bundleAnalyzer from "@next/bundle-analyzer";
+// import bundleAnalyzer from "@next/bundle-analyzer";
 
-const withBundleAnalyzer = bundleAnalyzer({
-  enabled: process.env.ANALYZE === "true",
-});
+// const withBundleAnalyzer = bundleAnalyzer({
+//   enabled: process.env.ANALYZE === "true",
+// });
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone",
-  swcMinify: true,
   reactStrictMode: true,
   crossOrigin: "anonymous",
   compress: true,
-  experimental: {
-    instrumentationHook: true,
-  },
   redirects: async () => {
     return [
       {
@@ -35,4 +31,5 @@ const nextConfig = {
   },
 };
 
-export default withBundleAnalyzer(nextConfig);
+// export default withBundleAnalyzer(nextConfig);
+export default nextConfig;

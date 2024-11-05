@@ -9,7 +9,18 @@ import SkillSection from "@/components/Sections/SkillSection";
 import TechCarusel from "@/components/TechCarusel";
 import { readStatic } from "@/utils/ReadJSON";
 
-export const revalidate = 60 * 60 * 9;
+export const revalidate = 32400; // 60 * 60 * 9
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "David Pataki",
+  url: "https://devla.dev",
+  image: "https://devla.dev/favicon.ico",
+  sameAs: ["https://github.com/GitDevla", "https://devla.dev/about"],
+  email: "contact@devla.dev",
+  description: "David Pataki's personal website & portfolio.",
+};
 
 export default async function Home() {
   const { categories, idk: techStack } = await readStatic("skills.json");
@@ -159,6 +170,10 @@ export default async function Home() {
       <SkillSection techStack={techStack} categories={categories}>
         <TechCarusel tech={techStack} />
       </SkillSection>
+      <script
+        type={"application/ld+json"}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     </>
   );
 }

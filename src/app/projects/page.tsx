@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import ProjectCard from "@/components/Cards/ProjectCard";
 import { fetchProjects } from "@/utils/Markdown";
 
-export const revalidate = 60 * 60 * 24;
+export const revalidate = 86400; //60 * 60 * 24
 
 export const metadata: Metadata = {
   title: "Projects",

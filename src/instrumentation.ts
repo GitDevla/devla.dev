@@ -10,7 +10,7 @@ function runOnMonday() {
   const now = new Date();
   const nextMonday = new Date(now);
   const dayOfWeek = nextMonday.getDay();
-
+  console.log("running");
   const daysUntilNextMonday = (1 + 7 - dayOfWeek) % 7 || 7;
   nextMonday.setDate(now.getDate() + daysUntilNextMonday);
   nextMonday.setHours(5, 0, 0, 0);

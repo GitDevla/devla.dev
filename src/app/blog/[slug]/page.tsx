@@ -10,7 +10,7 @@ import TransitionLink from "@/components/TransitionLink";
 import { getHistory } from "@/services/Git";
 import { fetchProjects, getMD } from "@/utils/Markdown";
 
-export const revalidate = 60 * 60 * 24;
+export const revalidate = 86400; // 60 * 60 * 24
 
 export async function generateStaticParams() {
   const postMetadata = await fetchProjects();
@@ -21,7 +21,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(props: any): Promise<Metadata> {
-  const slug = props.params.slug;
+  const slug = (await props.params).slug;
   return {
     title: slug,
   };
@@ -36,7 +36,7 @@ async function getPrevAndNext(slug: string) {
 }
 
 export default async function BlogPage(props: any) {
-  const slug = props.params.slug;
+  const slug = (await props.params).slug;
   const post = await getMD(slug);
   const { prev, next } = await getPrevAndNext(slug);
   if (!post) {
