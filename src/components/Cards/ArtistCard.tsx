@@ -17,7 +17,7 @@ export default function ArtistCard({ artist }: { artist: any }) {
           className={
             "absolute left-0 top-0 -z-10 size-full overflow-hidden bg-cover bg-center blur-sm brightness-50 filter transition-all group-hover:blur"
           }
-        ></div>
+        />
         <div
           className={
             "grid grid-cols-[1fr_3fr] content-center overflow-hidden p-2"

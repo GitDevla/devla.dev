@@ -63,7 +63,7 @@ export default async function BlogPage(props: any) {
             <span className={"inline sm:hidden"}>{"<-"}</span>
           </TransitionLink>
         ) : (
-          <div></div>
+          <div />
         )}
         <TransitionLink className={"link"} href={"/projects"}>
           Projects
@@ -79,7 +79,7 @@ export default async function BlogPage(props: any) {
             <span className={"inline sm:hidden"}>{"->"}</span>
           </TransitionLink>
         ) : (
-          <div></div>
+          <div />
         )}
       </div>
 

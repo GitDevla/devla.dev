@@ -37,7 +37,7 @@ export default function YoutubeThumbnail({
       <div
         style={style}
         className={`absolute left-1/2 aspect-video -translate-x-1/2 bg-cover bg-center ${blackBars ? "-top-[18%] h-[135%] w-[185%]" : "top-0 h-full w-[185%]"}`}
-      ></div>
+      />
     </div>
   );
 }

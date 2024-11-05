@@ -87,7 +87,7 @@ export default function AboutPage() {
       </div>
       <section>
         <h2 className={"subheader"}>Education</h2>
-        <Timeline></Timeline>
+        <Timeline />
       </section>
       <section className={"mt-16"}>
         <h2 id={"contact"} className={"subheader"}>

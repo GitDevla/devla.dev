@@ -137,7 +137,7 @@ export default async function Home() {
             className={
               "absolute -top-5 left-0 h-16 -translate-x-1/4 transition-all peer-hover:-z-10 peer-hover:brightness-75"
             }
-          ></DiscordListeningToCard>
+          />
           <DiscordGenericActivityCard
             className={
               "absolute -bottom-5 right-0 h-16 translate-x-1/4 transition-all peer-hover:-z-10 peer-hover:brightness-75"
@@ -151,13 +151,13 @@ export default async function Home() {
           <h2 className={"subheader"}>{group.group}</h2>
           <div className={"grid grid-cols-1 gap-x-3 gap-y-3 md:grid-cols-2"}>
             {group.pages.map((page, i) => (
-              <LinkCard key={i} {...page}></LinkCard>
+              <LinkCard key={i} {...page} />
             ))}
           </div>
         </section>
       ))}
       <SkillSection techStack={techStack} categories={categories}>
-        <TechCarusel tech={techStack}></TechCarusel>
+        <TechCarusel tech={techStack} />
       </SkillSection>
     </>
   );

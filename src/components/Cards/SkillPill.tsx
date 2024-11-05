@@ -13,7 +13,7 @@ export default function SkillPill({ name }: Readonly<{ name: string }>) {
         width={16}
         hideIfNotFound={true}
         className={"h-[16px] w-[16px]"}
-      ></SimpleIcon>
+      />
       <span className={"uppercase"}>{name}</span>
     </div>
   );

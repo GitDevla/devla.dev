@@ -18,7 +18,7 @@ export default async function ProjectsPage() {
           <p className={"text-center text-secondaryText"}>No projects found</p>
         )}
         {postMetadata.map((post, i) => (
-          <ProjectCard post={post} key={i}></ProjectCard>
+          <ProjectCard post={post} key={i} />
         ))}
       </div>
     </>

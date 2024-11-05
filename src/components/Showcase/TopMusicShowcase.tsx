@@ -10,22 +10,22 @@ export default async function TopMusicShowcase() {
       <MusicCard
         music={musicData[0]}
         className={"md:row-start-1 md:row-end-4"}
-      ></MusicCard>
+      />
       <MusicCard
         music={musicData[1]}
         className={"md:row-start-1 md:row-end-2"}
         small={true}
-      ></MusicCard>
+      />
       <MusicCard
         music={musicData[2]}
         className={"md:row-start-2 md:row-end-3"}
         small={true}
-      ></MusicCard>
+      />
       <MusicCard
         music={musicData[3]}
         className={"md:row-start-3 md:row-end-4"}
         small={true}
-      ></MusicCard>
+      />
     </div>
   );
 }

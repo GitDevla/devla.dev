@@ -7,7 +7,7 @@ export default function RepoCard({ repo }: Readonly<{ repo: IRepo }>) {
   const languagesExpanded = repo.languages
     .filter((lang) => lang != repo.mainLanguage)
     .splice(0, 4)
-    .map((lang, i) => <SkillPill key={i} name={lang}></SkillPill>);
+    .map((lang, i) => <SkillPill key={i} name={lang} />);
   return (
     <Link href={repo.href}>
       <div
@@ -39,9 +39,7 @@ export default function RepoCard({ repo }: Readonly<{ repo: IRepo }>) {
         </div>
         <div className={"absolute -bottom-3 left-2 flex w-full"}>
           {repo.mainLanguage != "" && (
-            <ExpandingPill
-              defaultText={<SkillPill name={repo.mainLanguage}></SkillPill>}
-            >
+            <ExpandingPill defaultText={<SkillPill name={repo.mainLanguage} />}>
               {languagesExpanded}
             </ExpandingPill>
           )}

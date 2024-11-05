@@ -9,7 +9,7 @@ export default function SkillCard({ Tech }: { Tech: ITechSkill }) {
           <SimpleIcon
             name={icon}
             sizes={"(min-width: 600px) 32px, calc(7.14vw - 9px)"}
-          ></SimpleIcon>
+          />
         </div>
         <span className={"truncate text-sm"}>{name}</span>
       </div>

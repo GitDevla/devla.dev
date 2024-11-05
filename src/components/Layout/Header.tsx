@@ -24,8 +24,8 @@ export default function Header() {
         <BreadcrumbTitle />
       </div>
       <div className={"flex"}>
-        <GlobalSearchServer></GlobalSearchServer>
-        <ThemeSwitcher></ThemeSwitcher>
+        <GlobalSearchServer />
+        <ThemeSwitcher />
       </div>
     </nav>
   );

@@ -12,7 +12,7 @@ export default async function Timeline() {
             className={
               "absolute -start-1.5 mt-2 h-3 w-3 rounded-full bg-secondaryText"
             }
-          ></div>
+          />
           <time className={"mb-1 text-sm leading-none text-secondaryText"}>
             {item.from} - {item.to}
           </time>

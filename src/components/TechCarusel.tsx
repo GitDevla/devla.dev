@@ -24,7 +24,7 @@ export default function TechCarusel({ tech }: { tech: any[] }) {
       }
     >
       {parts.map((part, i) => (
-        <CaruselRow key={i} tech={part}></CaruselRow>
+        <CaruselRow key={i} tech={part} />
       ))}
     </div>
   );
@@ -42,7 +42,7 @@ function CaruselRow({ tech }: { tech: any[] }) {
         >
           {tech.map((tech, i) => (
             <div key={i} className={"w-[30vw] max-w-[175px]"}>
-              <SkillCard Tech={tech}></SkillCard>
+              <SkillCard Tech={tech} />
             </div>
           ))}
         </div>

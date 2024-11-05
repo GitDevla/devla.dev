@@ -33,10 +33,10 @@ export default async function ReposPage() {
         {repos.filter((r) => r.source === "gitea").length})
       </p>
       <div className={"py-2"}>
-        <ContributionCalendar></ContributionCalendar>
+        <ContributionCalendar />
       </div>
       <Suspense fallback={<div>Loading...</div>}>
-        <ReposSection repos={repos}></ReposSection>
+        <ReposSection repos={repos} />
       </Suspense>
     </>
   );

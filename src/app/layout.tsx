@@ -19,11 +19,20 @@ export const metadata: Metadata = {
   },
   description: "Devla's personal website & portfolio.",
   keywords: [
-    "Devla",
-    "David Pataki",
-    "Software Developer",
-    "Personal Website",
-    "Portfolio",
+    "devla",
+    "david pataki",
+    "david",
+    "pataki",
+    "davidpataki",
+    "pataki david",
+    "patakidavid",
+    "software engineer",
+    "developer",
+    "web",
+    "full-stack",
+    "hungary",
+    "open-source",
+    "portfolio",
   ],
 };
 
@@ -43,14 +52,14 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <ThemeProvider>
-          <Header></Header>
+          <Header />
           <DiscordContext>
             <main className={"transition-opacity duration-[75ms] ease-linear"}>
               {children}
             </main>
           </DiscordContext>
-          <GoToTop></GoToTop>
-          <Footer></Footer>
+          <GoToTop />
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

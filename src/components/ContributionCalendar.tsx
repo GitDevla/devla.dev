@@ -31,7 +31,7 @@ export default async function ContributionCalendar() {
           "grid grid-cols-[auto_1fr] grid-rows-[auto_1fr] gap-2 overflow-x-scroll md:overflow-visible"
         }
       >
-        <div></div>
+        <div />
         <div className={"flex justify-evenly"}>
           {githubContributions
             .filter((d: any) => d.date.split("-")[2] == "01")
@@ -63,7 +63,7 @@ export default async function ContributionCalendar() {
                 className={"!block size-full"}
                 hoverText={`${day.contributionCount == 0 ? "No" : day.contributionCount} contributions on ${day.date}`}
               >
-                <div className={"size-full"}></div>
+                <div className={"size-full"} />
               </Hover>
             </div>
           ))}
@@ -84,7 +84,7 @@ export default async function ContributionCalendar() {
               style={{
                 backgroundColor: `color-mix(in hsl, rgb(var(--accentbackground)), rgb(var(--highlight)) ${percent}%)`,
               }}
-            ></div>
+            />
           ))}
           <span>More</span>
         </div>

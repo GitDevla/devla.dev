@@ -52,7 +52,7 @@ export default function SkillSection({
               (tech, i) =>
                 (!hoveredCategory ||
                   tech.category.includes(hoveredCategory)) && (
-                  <SkillCard key={i} Tech={tech}></SkillCard>
+                  <SkillCard key={i} Tech={tech} />
                 ),
             )}
           </div>

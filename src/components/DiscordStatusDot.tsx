@@ -28,7 +28,7 @@ export default function DiscordStatusDot({
     <Hover className={className} hoverText={discordData.status}>
       <span
         className={`flex aspect-square size-full rounded-full ${color} transition-colors`}
-      ></span>
+      />
     </Hover>
   );
 }
