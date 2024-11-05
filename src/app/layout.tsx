@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Fira_Code } from "next/font/google";
-import "./globals.css";
+import "@/styles/globals.css";
 import Footer from "@/components/Layout/Footer";
 import Header from "@/components/Layout/Header";
 import GoToTop from "@/components/Layout/GoToTop";
