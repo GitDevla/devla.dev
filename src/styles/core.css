@@ -1,0 +1,86 @@
+.text-balance {
+  text-wrap: balance;
+}
+
+.card {
+  @apply block size-auto rounded-lg border border-border bg-accentbackground p-3 hover:bg-opacity-55;
+}
+
+.header {
+  @apply mb-3 text-2xl font-bold uppercase;
+}
+
+.subheader {
+  @apply mb-2 text-base font-bold uppercase;
+}
+
+.link {
+  @apply underlinea underlinea-highlight text-highlight;
+}
+
+section {
+  @apply mb-7;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.page-transition {
+  @apply opacity-30;
+}
+.pause {
+  animation-play-state: paused;
+}
+
+blockquote {
+  @apply quote;
+}
+
+.quote::before {
+  content: "„";
+}
+
+.quote::after {
+  content: "“";
+}
+
+.underlinea {
+  @apply relative;
+}
+
+.underlinea:after {
+  @apply absolute bottom-0 left-1/2 block h-[.05em] w-[80%] -translate-x-1/2 bg-primaryText bg-opacity-90 bg-clip-content transition-all content-[""];
+}
+
+.underlinea-w-0::after {
+  @apply w-0;
+}
+
+.underlinea-highlight::after {
+  @apply bg-highlight;
+}
+.underlinea-secondaryText::after {
+  @apply bg-secondaryText;
+}
+.underlinea:hover:after {
+  @apply w-full;
+}
+
+ul.tree ul {
+  @apply ml-3;
+}
+ul.tree li {
+  @apply line-clamp-1 w-full break-all border-l border-primaryText px-2 text-highlight underline;
+}
+ul.tree li:last-child {
+  @apply border-l-0;
+}
+ul.tree li:before {
+  @apply relative left-[-0.5em] top-[-0.3em] inline-block h-[1em] w-3 border-b border-primaryText content-[""];
+}
+ul.tree li:last-child:before {
+  @apply border-l border-primaryText;
+}
