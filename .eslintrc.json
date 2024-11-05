@@ -1,4 +1,37 @@
 {
-  "extends": "next/core-web-vitals",
-  "rules": { "react/no-unescaped-entities": "off" }
+  "extends": ["next/core-web-vitals", "prettier"],
+  "rules": {
+    "react/no-unescaped-entities": "off",
+    "semi": ["error", "always"],
+    "quotes": ["error", "double"],
+    "no-empty": ["error", { "allowEmptyCatch": true }],
+    "max-len": [
+      "error",
+      {
+        "code": 120,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreRegExpLiterals": true
+      }
+    ],
+    "max-lines": ["error", { "max": 300, "skipBlankLines": true }],
+    "import/order": [
+      "warn",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          ["parent", "sibling", "index"]
+        ],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "newlines-between": "never"
+      }
+    ],
+    "react/jsx-curly-brace-presence": ["error", { "props": "always" }]
+  }
 }

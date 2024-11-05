@@ -12,9 +12,9 @@ export default function LinkCard({
 }) {
   return (
     <TransitionLink href={href}>
-      <div className="card h-full transition-colors">
-        <h3 className="font-semibold">{name}</h3>
-        <p className="text-sm text-secondaryText">{desctiption}</p>
+      <div className={"card h-full transition-colors"}>
+        <h3 className={"font-semibold"}>{name}</h3>
+        <p className={"text-sm text-secondaryText"}>{desctiption}</p>
       </div>
     </TransitionLink>
   );

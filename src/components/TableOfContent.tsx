@@ -75,5 +75,5 @@ export default function TableOfContent({ markdown }: { markdown: string }) {
   );
   const tree = headersToTree(headers);
   const depth = getDepth(tree) - 1;
-  return <ul className="tree">{headers && renderTree(tree, [], depth)}</ul>;
+  return <ul className={"tree"}>{headers && renderTree(tree, [], depth)}</ul>;
 }

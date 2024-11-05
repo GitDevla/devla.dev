@@ -54,7 +54,7 @@ async function fetchRepositoriesFromGitHub() {
 	}
 }
   `;
-  const githubresp = await fetch(`https://api.github.com/graphql`, {
+  const githubresp = await fetch("https://api.github.com/graphql", {
     method: "POST",
     headers: header,
     body: JSON.stringify({ query: body }),
@@ -81,7 +81,7 @@ async function fetchContributionDataFromGithub() {
 				}
 }}}
         `;
-  const githubresp = await fetch(`https://api.github.com/graphql`, {
+  const githubresp = await fetch("https://api.github.com/graphql", {
     method: "POST",
     headers: header,
     body: JSON.stringify({ query: body }),

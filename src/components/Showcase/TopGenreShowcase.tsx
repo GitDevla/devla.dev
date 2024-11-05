@@ -16,11 +16,13 @@ export default async function TopGenreShowcase() {
 
   const genrePercentages = genreToPercentages(genreData);
   return (
-    <div className="mt-6 flex w-full rounded-lg">
+    <div className={"mt-6 flex w-full rounded-lg"}>
       {genrePercentages.map((genre, i) => (
         <div
           key={i}
-          className="group relative cursor-pointer p-2 transition-all hover:z-10 hover:!w-[90%] dark:backdrop-invert"
+          className={
+            "group relative cursor-pointer p-2 transition-all hover:z-10 hover:!w-[90%] dark:backdrop-invert"
+          }
           style={{
             width: `${genre.percentage}%`,
             backgroundColor: generateRandomDarkColor(),
@@ -36,10 +38,18 @@ export default async function TopGenreShowcase() {
                 : "none",
           }}
         >
-          <div className="absolute bottom-0 left-0 right-0 translate-y-full truncate text-center opacity-30 transition-opacity group-hover:opacity-100">
+          <div
+            className={
+              "absolute bottom-0 left-0 right-0 translate-y-full truncate text-center opacity-30 transition-opacity group-hover:opacity-100"
+            }
+          >
             {genre.percentage}%
           </div>
-          <div className="absolute left-0 right-0 top-0 -translate-y-full truncate text-center opacity-30 transition-opacity group-hover:opacity-100">
+          <div
+            className={
+              "absolute left-0 right-0 top-0 -translate-y-full truncate text-center opacity-30 transition-opacity group-hover:opacity-100"
+            }
+          >
             {genre.genre}
           </div>
         </div>

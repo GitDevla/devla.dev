@@ -9,9 +9,9 @@ export function BreadcrumbTitle() {
   let paths = pathname.split("/").filter((path) => path !== "");
   paths = ["Home", ...paths];
   return (
-    <div className="group flex">
+    <div className={"group flex"}>
       {paths.map((path, index) => (
-        <div key={index} className="flex">
+        <div key={index} className={"flex"}>
           <TransitionLink
             href={`/${paths.slice(1, index + 1).join("/")}`}
             className={`mr-1 capitalize ${index !== paths.length - 1 && "underlinea underlinea-secondaryText underlinea-w-0"}`}
@@ -25,7 +25,7 @@ export function BreadcrumbTitle() {
           >
             {path}
           </TransitionLink>
-          {index !== paths.length - 1 && <div className="mr-1">{`/`}</div>}
+          {index !== paths.length - 1 && <div className={"mr-1"}>/</div>}
         </div>
       ))}
     </div>

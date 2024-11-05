@@ -5,17 +5,21 @@ export default async function Timeline() {
   education = education.sort((a, b) => a.from - b.from).reverse();
 
   return (
-    <ol className="relative border-s border-secondaryText">
+    <ol className={"relative border-s border-secondaryText"}>
       {education.map((item, i) => (
-        <li className="mb-7 ms-4" key={i}>
-          <div className="absolute -start-1.5 mt-2 h-3 w-3 rounded-full bg-secondaryText"></div>
-          <time className="mb-1 text-sm leading-none text-secondaryText">
+        <li className={"mb-7 ms-4"} key={i}>
+          <div
+            className={
+              "absolute -start-1.5 mt-2 h-3 w-3 rounded-full bg-secondaryText"
+            }
+          ></div>
+          <time className={"mb-1 text-sm leading-none text-secondaryText"}>
             {item.from} - {item.to}
           </time>
-          <h3 className="font-semibold text-lg text-primaryText">
+          <h3 className={"text-lg font-semibold text-primaryText"}>
             {item.location}
           </h3>
-          <p className="mb-3 whitespace-pre-wrap text-secondaryText">
+          <p className={"mb-3 whitespace-pre-wrap text-secondaryText"}>
             {item.description}
           </p>
         </li>

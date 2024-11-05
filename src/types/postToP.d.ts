@@ -13,7 +13,6 @@ interface IPostToPArtist {
   thumbnail_url: string;
 }
 
-
 interface IPostToPGenre {
   genre: string;
   times: number;

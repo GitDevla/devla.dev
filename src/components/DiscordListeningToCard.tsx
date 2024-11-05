@@ -20,20 +20,20 @@ export default function DiscordListeningToCard({
         {activityD.asset && (
           <img
             src={activityD.asset}
-            alt="Activity Image"
-            className="aspect-square h-full rounded-md object-cover"
+            alt={"Activity Image"}
+            className={"aspect-square h-full rounded-md object-cover"}
           />
         )}
-        <div className="w-full overflow-hidden p-2">
-          <p className="truncate text-sm font-semibold">Listening to</p>
+        <div className={"w-full overflow-hidden p-2"}>
+          <p className={"truncate text-sm font-semibold"}>Listening to</p>
           <p
-            className="truncate text-xs font-semibold"
+            className={"truncate text-xs font-semibold"}
             title={activityD.details}
           >
             {activityD.details}
           </p>
           <p
-            className="truncate text-xs text-gray-400"
+            className={"truncate text-xs text-gray-400"}
             title={activityD.description}
           >
             by {activityD.description}

@@ -5,7 +5,7 @@ export default async function TopArtistShowcase() {
   const artistData = await pullPostToPArtists();
 
   return (
-    <div className="grid gap-5 md:grid-cols-3">
+    <div className={"grid gap-5 md:grid-cols-3"}>
       {artistData.map((artist, i) => (
         <ArtistCard key={i} artist={artist} />
       ))}

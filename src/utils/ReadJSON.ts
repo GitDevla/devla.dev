@@ -11,7 +11,7 @@ export async function readJSON(relativePath: string) {
 export async function readStatic(filename: string) {
   const absolutePath = path.resolve(
     process.env.STATIC_PATH as string,
-    filename
+    filename,
   );
   const file = await fs.readFile(absolutePath, "utf8");
   const content = JSON.parse(file);

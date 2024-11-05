@@ -1,8 +1,8 @@
 "use client";
 
-import isProduction from "@/utils/isProd";
 import Link, { LinkProps } from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import isProduction from "@/utils/isProd";
 
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));

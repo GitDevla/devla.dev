@@ -1,9 +1,9 @@
+import { Metadata } from "next";
+import { Suspense } from "react";
 import ContributionCalendar from "@/components/ContributionCalendar";
 import ReposSection from "@/components/Sections/ReposSection";
 import pullGiteaRepos from "@/services/Gitea";
 import { pullGithubContributions, pullGithubRepos } from "@/services/Github";
-import { Metadata } from "next";
-import { Suspense } from "react";
 
 export const revalidate = 60 * 60 * 24;
 
@@ -25,14 +25,14 @@ export default async function ReposPage() {
 
   return (
     <>
-      <h1 className="header">Repositories</h1>
+      <h1 className={"header"}>Repositories</h1>
       <p>Collection of all my published repositories.</p>
       <p>
         Total: {repos.length} (Github:{" "}
         {repos.filter((r) => r.source === "github").length}, Gitea:{" "}
         {repos.filter((r) => r.source === "gitea").length})
       </p>
-      <div className="py-2">
+      <div className={"py-2"}>
         <ContributionCalendar></ContributionCalendar>
       </div>
       <Suspense fallback={<div>Loading...</div>}>

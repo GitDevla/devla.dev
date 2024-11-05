@@ -1,7 +1,7 @@
 "use client";
 
-import pullDiscordStatus from "@/services/Discord";
 import { createContext, useContext, useEffect, useState } from "react";
+import pullDiscordStatus from "@/services/Discord";
 
 const defaultDiscordData: {
   status: string;

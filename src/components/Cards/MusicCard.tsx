@@ -15,10 +15,12 @@ export default function MusicCard({
     <div
       className={`group relative ${className} h-full w-full content-center overflow-hidden rounded-lg border border-gray-800 transition-transform hover:scale-105`}
     >
-      <Link href={ytUrl} target="_blank">
+      <Link href={ytUrl} target={"_blank"}>
         <YoutubeThumbnail
           thumbnail_url={thumbnail_url}
-          className="-z-10 blur-sm brightness-50 filter transition-all group-hover:blur"
+          className={
+            "-z-10 blur-sm brightness-50 filter transition-all group-hover:blur"
+          }
           lowRes
         />
         <div
@@ -32,11 +34,15 @@ export default function MusicCard({
             } m-auto overflow-hidden rounded-lg`}
           >
             <YoutubeThumbnail thumbnail_url={thumbnail_url} lowRes={small} />
-            <div className="absolute flex h-full w-full items-center justify-center text-6xl text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <div
+              className={
+                "absolute flex h-full w-full items-center justify-center text-6xl text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              }
+            >
               ▶
             </div>
           </div>
-          <div className="flex flex-col justify-center break-all">
+          <div className={"flex flex-col justify-center break-all"}>
             <h3
               className={`line-clamp-2 font-medium text-white ${
                 small ? "text-base" : "text-lg"
@@ -44,11 +50,11 @@ export default function MusicCard({
             >
               {title}
             </h3>
-            <p className="mt-1 line-clamp-1 text-sm text-gray-400">
+            <p className={"mt-1 line-clamp-1 text-sm text-gray-400"}>
               by {author_name.replace(" - Topic", "")}
             </p>
           </div>
-          <div className="absolute bottom-1 right-1 text-white">x{times}</div>
+          <div className={"absolute bottom-1 right-1 text-white"}>x{times}</div>
         </div>
       </Link>
     </div>

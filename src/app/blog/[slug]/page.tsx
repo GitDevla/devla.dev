@@ -1,14 +1,14 @@
+import { exec } from "child_process";
 import Markdown from "markdown-to-jsx";
-import { fetchProjects, getMD } from "@/utils/Markdown";
-import { notFound } from "next/navigation";
-import TableOfContent from "@/components/TableOfContent";
 import moment from "moment";
-import TransitionLink from "@/components/TransitionLink";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import PopUpSidebar from "@/components/PopUpSidebar";
 import ReadTime from "@/components/ReadTime";
-import { exec } from "child_process";
+import TableOfContent from "@/components/TableOfContent";
+import TransitionLink from "@/components/TransitionLink";
 import { getHistory } from "@/services/Git";
+import { fetchProjects, getMD } from "@/utils/Markdown";
 
 export const revalidate = 60 * 60 * 24;
 
@@ -48,36 +48,50 @@ export default async function BlogPage(props: any) {
   if (!post.metadata.visible) return notFound();
   return (
     <>
-      <PopUpSidebar title="Table of Contents">
+      <PopUpSidebar title={"Table of Contents"}>
         <TableOfContent markdown={post.content} />
       </PopUpSidebar>
-      <div className="grid grid-cols-3 justify-items-center px-5">
+      <div className={"grid grid-cols-3 justify-items-center px-5"}>
         {prev ? (
-          <TransitionLink className="link" href={`/blog/${prev.metadata.slug}`}>
-            <span className="hidden sm:inline">{`<- ${prev.metadata.title}`}</span>
-            <span className="inline sm:hidden">{`<-`}</span>
+          <TransitionLink
+            className={"link"}
+            href={`/blog/${prev.metadata.slug}`}
+          >
+            <span
+              className={"hidden sm:inline"}
+            >{`<- ${prev.metadata.title}`}</span>
+            <span className={"inline sm:hidden"}>{"<-"}</span>
           </TransitionLink>
         ) : (
           <div></div>
         )}
-        <TransitionLink className="link" href="/projects">
+        <TransitionLink className={"link"} href={"/projects"}>
           Projects
         </TransitionLink>
         {next ? (
-          <TransitionLink className="link" href={`/blog/${next.metadata.slug}`}>
-            <span className="hidden sm:inline">{`${next.metadata.title} ->`}</span>
-            <span className="inline sm:hidden">{`->`}</span>
+          <TransitionLink
+            className={"link"}
+            href={`/blog/${next.metadata.slug}`}
+          >
+            <span
+              className={"hidden sm:inline"}
+            >{`${next.metadata.title} ->`}</span>
+            <span className={"inline sm:hidden"}>{"->"}</span>
           </TransitionLink>
         ) : (
           <div></div>
         )}
       </div>
 
-      <article className="prose mx-auto mt-8 max-w-[80ch] text-justify dark:prose-invert">
+      <article
+        className={
+          "prose mx-auto mt-8 max-w-[80ch] text-justify dark:prose-invert"
+        }
+      >
         <ReadTime content={post.content} />
         <Markdown>{post.content}</Markdown>
         <hr />
-        <div className="flex justify-between">
+        <div className={"flex justify-between"}>
           <span>
             Created:{" "}
             {moment
@@ -95,12 +109,12 @@ export default async function BlogPage(props: any) {
               .fromNow()}
           </span>
         </div>
-        <details className="">
-          <summary className="text-lg">History of changes</summary>
+        <details className={""}>
+          <summary className={"text-lg"}>History of changes</summary>
           {history.length == 0 ? (
             <span>No changes were made so far</span>
           ) : (
-            <div className="max-h-96 overflow-scroll">
+            <div className={"max-h-96 overflow-scroll"}>
               {history.map((i, index) => (
                 <div key={index}>
                   <h3>Changes made in {i.date}</h3>
@@ -109,7 +123,7 @@ export default async function BlogPage(props: any) {
                       <h4>Additions</h4>
                       <ul>
                         {i.additions.map((i, index) => (
-                          <li key={index} className="text-green-300">
+                          <li key={index} className={"text-green-300"}>
                             {i}
                           </li>
                         ))}
@@ -121,7 +135,7 @@ export default async function BlogPage(props: any) {
                       <h4>Deletions</h4>
                       <ul>
                         {i.deletions.map((i, index) => (
-                          <li key={index} className="text-red-300">
+                          <li key={index} className={"text-red-300"}>
                             {i}
                           </li>
                         ))}
@@ -133,7 +147,7 @@ export default async function BlogPage(props: any) {
                       <h4>Changes</h4>
                       <ul>
                         {i.changes.map((i, index) => (
-                          <li key={index} className="text-blue-300">
+                          <li key={index} className={"text-blue-300"}>
                             {i}
                           </li>
                         ))}

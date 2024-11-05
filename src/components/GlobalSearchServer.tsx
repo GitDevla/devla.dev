@@ -1,5 +1,5 @@
-import GlobalSearchClient from "./GlobalSearchClient";
 import { fetchMarkdownPosts } from "@/utils/Markdown";
+import GlobalSearchClient from "./GlobalSearchClient";
 
 async function getAllStaticPages() {
   return [

@@ -20,20 +20,20 @@ export default function DiscordGenericActivityCard({
         {activityD.asset && (
           <img
             src={activityD.asset}
-            alt="Activity Image"
-            className="aspect-square h-full rounded-md object-cover"
+            alt={"Activity Image"}
+            className={"aspect-square h-full rounded-md object-cover"}
           />
         )}
-        <div className="w-full overflow-hidden p-2">
-          <p className="truncate text-sm font-semibold">{activityD.name}</p>
+        <div className={"w-full overflow-hidden p-2"}>
+          <p className={"truncate text-sm font-semibold"}>{activityD.name}</p>
           <p
-            className="truncate text-xs text-gray-400"
+            className={"truncate text-xs text-gray-400"}
             title={activityD.description}
           >
             {activityD.description}
           </p>
           <p
-            className="truncate text-xs text-gray-400"
+            className={"truncate text-xs text-gray-400"}
             title={activityD.details}
           >
             {activityD.details}

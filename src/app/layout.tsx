@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Fira_Code } from "next/font/google";
 import "@/styles/globals.css";
-import Footer from "@/components/Layout/Footer";
-import Header from "@/components/Layout/Header";
-import GoToTop from "@/components/Layout/GoToTop";
-import ThemeProvider from "@/components/Providers/ThemeProvider";
 import { DiscordContext } from "@/components/Context/DiscordContext";
+import Footer from "@/components/Layout/Footer";
+import GoToTop from "@/components/Layout/GoToTop";
+import Header from "@/components/Layout/Header";
+import ThemeProvider from "@/components/Providers/ThemeProvider";
 
 const inter = Fira_Code({
   weight: ["300", "400", "500", "600"],
@@ -33,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="scroll-smooth">
+    <html lang={"en"} suppressHydrationWarning className={"scroll-smooth"}>
       <body
         className={
           inter.className +
@@ -45,7 +45,7 @@ export default function RootLayout({
         <ThemeProvider>
           <Header></Header>
           <DiscordContext>
-            <main className="transition-opacity duration-[75ms] ease-linear">
+            <main className={"transition-opacity duration-[75ms] ease-linear"}>
               {children}
             </main>
           </DiscordContext>

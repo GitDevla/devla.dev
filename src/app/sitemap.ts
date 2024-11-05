@@ -1,5 +1,5 @@
-import { fetchMarkdownPosts } from "@/utils/Markdown";
 import { MetadataRoute } from "next";
+import { fetchMarkdownPosts } from "@/utils/Markdown";
 
 export default async function Sitemap(): Promise<MetadataRoute.Sitemap> {
   const postMetadata = await fetchMarkdownPosts();

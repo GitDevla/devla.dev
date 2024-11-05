@@ -1,8 +1,8 @@
 "use client";
 
-import isProduction from "@/utils/isProd";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import isProduction from "@/utils/isProd";
 
 function keypressIsLetter(key: string) {
   return /^[a-zA-Z]$/.test(key);
@@ -102,11 +102,13 @@ export default function GlobalSearchClient({
   }
 
   return (
-    <form className="relative" ref={formRef} onSubmit={handleSubmit}>
+    <form className={"relative"} ref={formRef} onSubmit={handleSubmit}>
       <input
-        type="text"
-        className="hidden w-full rounded-lg bg-inherit p-2 outline-none sm:block"
-        placeholder="Search..."
+        type={"text"}
+        className={
+          "hidden w-full rounded-lg bg-inherit p-2 outline-none sm:block"
+        }
+        placeholder={"Search..."}
         ref={inputRef}
         value={search}
         onChange={(e) => setSearch(e.target.value)}
@@ -114,8 +116,12 @@ export default function GlobalSearchClient({
         onKeyDown={handleArrows}
       />
       {extended && (
-        <div className="absolute z-50 max-h-[200px] w-full overflow-scroll rounded-lg rounded-t-none border border-t-0 border-accentbackground bg-background p-2">
-          <ul className="group">
+        <div
+          className={
+            "absolute z-50 max-h-[200px] w-full overflow-scroll rounded-lg rounded-t-none border border-t-0 border-accentbackground bg-background p-2"
+          }
+        >
+          <ul className={"group"}>
             {matches.length ? (
               matches.map((page, i) => (
                 <li
@@ -129,14 +135,16 @@ export default function GlobalSearchClient({
                   }}
                   onMouseLeave={() => setMouseHover(false)}
                 >
-                  <span className="line-clamp-1 capitalize">
+                  <span className={"line-clamp-1 capitalize"}>
                     {page.type === "blog" && "Blog: "}
                     {page.title}
                   </span>
                 </li>
               ))
             ) : (
-              <li className="mb-2 p-2 text-secondaryText">No results found</li>
+              <li className={"mb-2 p-2 text-secondaryText"}>
+                No results found
+              </li>
             )}
           </ul>
         </div>
