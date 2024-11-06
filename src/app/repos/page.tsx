@@ -2,8 +2,9 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 import ContributionCalendar from "@/components/ContributionCalendar";
 import ReposSection from "@/components/Sections/ReposSection";
+import ContributionCalendarSkeleton from "@/components/Skeletons/ContributonCalendarSkeleton";
 import pullGiteaRepos from "@/services/Gitea";
-import { pullGithubContributions, pullGithubRepos } from "@/services/Github";
+import { pullGithubRepos } from "@/services/Github";
 
 export const revalidate = 86400; //60 * 60 * 24
 
@@ -33,8 +34,10 @@ export default async function ReposPage() {
         {repos.filter((r) => r.source === "gitea").length})
       </p>
       <div className={"py-2"}>
-        <ContributionCalendar />
-      </div>
+        <Suspense fallback={<ContributionCalendarSkeleton />}>
+          <ContributionCalendar />
+        </Suspense >
+      </div >
       <Suspense fallback={<div>Loading...</div>}>
         <ReposSection repos={repos} />
       </Suspense>
