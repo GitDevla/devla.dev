@@ -1,21 +1,9 @@
-import { poorMansCron } from "./utils/Cron";
+import cron from "node-cron";
 
 export function register() {
-  if (process.env.NODE_ENV === "production") {
-    runOnMonday();
-  }
-}
-
-function runOnMonday() {
-  const now = new Date();
-  const nextMonday = new Date(now);
-  const dayOfWeek = nextMonday.getDay();
-  console.log("running");
-  const daysUntilNextMonday = (1 + 7 - dayOfWeek) % 7 || 7;
-  nextMonday.setDate(now.getDate() + daysUntilNextMonday);
-  nextMonday.setHours(5, 0, 0, 0);
-
-  poorMansCron(nextMonday.getTime(), 7 * 24 * 60 * 60 * 1000, revalidateMusic);
+   if (process.env.NODE_ENV === "production") {
+    cron.schedule("0 5 * * 1", revalidateMusic);
+ }
 }
 
 function revalidateMusic() {
