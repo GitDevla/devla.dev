@@ -1,4 +1,4 @@
-import SimpleIcon from "../SimpleIcon";
+import SimpleIcon from "../Image/SimpleIcon";
 
 export default function SkillPill({ name }: Readonly<{ name: string }>) {
   return (

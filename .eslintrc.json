@@ -39,6 +39,25 @@
         "component": true,
         "html": true
       }
+    ],
+
+    "no-unused-vars": [
+      "error",
+      { "varsIgnorePattern": "^I", "argsIgnorePattern": "_" }
+    ],
+
+    // for next/link except for Atoms/Link
+    "no-restricted-imports": [
+      "error",
+      {
+        "paths": [
+          {
+            "name": "next/link",
+            "message": "Please use Atoms/Link instead."
+          }
+        ],
+        "patterns": ["next/link"]
+      }
     ]
   }
 }

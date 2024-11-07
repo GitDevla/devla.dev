@@ -30,7 +30,6 @@ export default function SimpleIcon({
   name,
   width = 32,
   height = 32,
-  hideIfNotFound = false,
   className = "",
   sizes,
   useDefaultColor = false,

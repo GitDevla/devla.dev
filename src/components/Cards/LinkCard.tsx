@@ -1,5 +1,4 @@
-import Link from "next/link";
-import TransitionLink from "../TransitionLink";
+import Link from "../Atoms/Link";
 
 export default function LinkCard({
   name,
@@ -11,11 +10,11 @@ export default function LinkCard({
   href: string;
 }) {
   return (
-    <TransitionLink href={href}>
+    <Link href={href}>
       <div className={"card h-full transition-colors"}>
         <h3 className={"font-semibold"}>{name}</h3>
         <p className={"text-sm text-secondaryText"}>{desctiption}</p>
       </div>
-    </TransitionLink>
+    </Link>
   );
 }

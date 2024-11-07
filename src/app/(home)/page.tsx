@@ -1,12 +1,11 @@
 import Image from "next/image";
 import { Typewriter } from "nextjs-simple-typewriter";
-import { Suspense } from "react";
+import DiscordGenericActivityCard from "@/components/Cards/DiscordGenericActivityCard";
+import DiscordListeningToCard from "@/components/Cards/DiscordListeningToCard";
 import LinkCard from "@/components/Cards/LinkCard";
-import DiscordGenericActivityCard from "@/components/DiscordGenericActivityCard";
-import DiscordListeningToCard from "@/components/DiscordListeningToCard";
 import DiscordStatusDot from "@/components/DiscordStatusDot";
 import SkillSection from "@/components/Sections/SkillSection";
-import TechCarusel from "@/components/TechCarusel";
+import TechSkillShowcase from "@/components/Showcase/TechSkillShowcase";
 import { readStatic } from "@/utils/ReadJSON";
 
 export const revalidate = 32400; // 60 * 60 * 9
@@ -168,7 +167,7 @@ export default async function Home() {
         </section>
       ))}
       <SkillSection techStack={techStack} categories={categories}>
-        <TechCarusel tech={techStack} />
+        <TechSkillShowcase tech={techStack} />
       </SkillSection>
       <script
         type={"application/ld+json"}

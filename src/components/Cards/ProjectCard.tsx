@@ -2,18 +2,13 @@ import Image from "next/image";
 import BookSVG from "@/../public/svg/book.svg";
 import CodeSVG from "@/../public/svg/code.svg";
 import LinkSVG from "@/../public/svg/link.svg";
-import TransitionLink from "@/components/TransitionLink";
-import Hover from "../Hover";
-import SimpleIcon from "../SimpleIcon";
+import TransitionLink from "@/components/Atoms/TransitionLink";
+import Hover from "../Atoms/Hover";
+import SimpleIcon from "../Image/SimpleIcon";
+import Link from "../Atoms/Link";
 
 export default async function ProjectCard({ post }: { post: any }) {
-  let { metadata, content } = post;
-  content = content.replace(/^#{1,6} .*$/gm, "");
-  content = content
-    .split("\n")
-    .filter((i: string) => i !== "")
-    .splice(0, 3)
-    .join("\n");
+  let { metadata } = post;
   return (
     <div
       className={
@@ -60,7 +55,7 @@ export default async function ProjectCard({ post }: { post: any }) {
             "mt-4 flex gap-4 text-sm font-semibold group-even:flex-row-reverse"
           }
         >
-          <TransitionLink href={`/blog/${metadata.slug}`}>
+          <Link href={`/blog/${metadata.slug}`}>
             <div
               className={
                 "flex gap-2 rounded-md bg-highlight p-2 transition-colors hover:bg-opacity-100 sm:bg-opacity-50"
@@ -76,9 +71,9 @@ export default async function ProjectCard({ post }: { post: any }) {
                 sizes={"16px"}
               />
             </div>
-          </TransitionLink>
+          </Link>
           {metadata.tryLink && (
-            <TransitionLink href={metadata.tryLink}>
+            <Link href={metadata.tryLink}>
               <div
                 className={
                   "flex gap-2 rounded-md bg-accentbackground p-2 transition-colors hover:bg-opacity-100 sm:bg-opacity-50"
@@ -94,10 +89,10 @@ export default async function ProjectCard({ post }: { post: any }) {
                   sizes={"16px"}
                 />
               </div>
-            </TransitionLink>
+            </Link>
           )}
           {metadata.sourceLink && (
-            <TransitionLink href={metadata.sourceLink}>
+            <Link href={metadata.sourceLink}>
               <div
                 className={
                   "flex gap-2 rounded-md bg-accentbackground p-2 transition-colors hover:bg-opacity-100 sm:bg-opacity-50"
@@ -113,7 +108,7 @@ export default async function ProjectCard({ post }: { post: any }) {
                   sizes={"16px"}
                 />
               </div>
-            </TransitionLink>
+            </Link>
           )}
         </div>
       </div>

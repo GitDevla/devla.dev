@@ -1,12 +1,11 @@
-import { exec } from "child_process";
 import Markdown from "markdown-to-jsx";
 import moment from "moment";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Link from "@/components/Atoms/Link";
 import PopUpSidebar from "@/components/PopUpSidebar";
 import ReadTime from "@/components/ReadTime";
 import TableOfContent from "@/components/TableOfContent";
-import TransitionLink from "@/components/TransitionLink";
 import { getHistory } from "@/services/Git";
 import { fetchProjects, getMD } from "@/utils/Markdown";
 
@@ -53,7 +52,7 @@ export default async function BlogPage(props: any) {
       </PopUpSidebar>
       <div className={"grid grid-cols-3 justify-items-center px-5"}>
         {prev ? (
-          <TransitionLink
+          <Link
             className={"link"}
             href={`/blog/${prev.metadata.slug}`}
           >
@@ -61,15 +60,15 @@ export default async function BlogPage(props: any) {
               className={"hidden sm:inline"}
             >{`<- ${prev.metadata.title}`}</span>
             <span className={"inline sm:hidden"}>{"<-"}</span>
-          </TransitionLink>
+          </Link>
         ) : (
           <div />
         )}
-        <TransitionLink className={"link"} href={"/projects"}>
+        <Link className={"link"} href={"/projects"}>
           Projects
-        </TransitionLink>
+        </Link>
         {next ? (
-          <TransitionLink
+          <Link
             className={"link"}
             href={`/blog/${next.metadata.slug}`}
           >
@@ -77,7 +76,7 @@ export default async function BlogPage(props: any) {
               className={"hidden sm:inline"}
             >{`${next.metadata.title} ->`}</span>
             <span className={"inline sm:hidden"}>{"->"}</span>
-          </TransitionLink>
+          </Link>
         ) : (
           <div />
         )}
@@ -109,7 +108,7 @@ export default async function BlogPage(props: any) {
               .fromNow()}
           </span>
         </div>
-        <details className={""}>
+        <details>
           <summary className={"text-lg"}>History of changes</summary>
           {history.length == 0 ? (
             <span>No changes were made so far</span>

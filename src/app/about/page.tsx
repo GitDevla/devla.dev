@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import EmailForm from "@/components/EmailForm";
-import Hover from "@/components/Hover";
-import SimpleIcon from "@/components/SimpleIcon";
+import Hover from "@/components/Atoms/Hover";
+import EmailForm from "@/components/Forms/EmailForm";
+import SimpleIcon from "@/components/Image/SimpleIcon";
 import Timeline from "@/components/Timeline";
 
 export const metadata: Metadata = {

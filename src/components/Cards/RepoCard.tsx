@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { formatTimeAgo } from "@/utils/Date";
 import SkillPill from "./SkillPill";
+import Link from "../Atoms/Link";
 import ExpandingPill from "../ExpandingPill";
 
 export default function RepoCard({ repo }: Readonly<{ repo: IRepo }>) {
@@ -9,7 +9,7 @@ export default function RepoCard({ repo }: Readonly<{ repo: IRepo }>) {
     .splice(0, 4)
     .map((lang, i) => <SkillPill key={i} name={lang} />);
   return (
-    <Link href={repo.href}>
+    <Link href={repo.href} external>
       <div
         className={
           "card relative flex h-full flex-col justify-between rounded-lg pb-6"

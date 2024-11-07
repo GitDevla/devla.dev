@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import TransitionLink from "@/components/TransitionLink";
+import Link from "../Atoms/Link";
 
 export function BreadcrumbTitle() {
   let pathname = usePathname();
@@ -12,7 +12,7 @@ export function BreadcrumbTitle() {
     <div className={"group flex"}>
       {paths.map((path, index) => (
         <div key={index} className={"flex"}>
-          <TransitionLink
+          <Link
             href={`/${paths.slice(1, index + 1).join("/")}`}
             className={`mr-1 capitalize ${index !== paths.length - 1 && "underlinea underlinea-secondaryText underlinea-w-0"}`}
             style={{
@@ -24,7 +24,7 @@ export function BreadcrumbTitle() {
             }}
           >
             {path}
-          </TransitionLink>
+          </Link>
           {index !== paths.length - 1 && <div className={"mr-1"}>/</div>}
         </div>
       ))}

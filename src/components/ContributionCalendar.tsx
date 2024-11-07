@@ -1,5 +1,5 @@
 import { pullGithubContributions } from "@/services/Github";
-import Hover from "./Hover";
+import Hover from "./Atoms/Hover";
 
 export default async function ContributionCalendar() {
   let githubContributions = await pullGithubContributions();

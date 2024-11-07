@@ -1,8 +1,8 @@
 "use client";
 
-import { useDiscordStatus } from "./Context/DiscordContext";
+import { useDiscordStatus } from "../Context/DiscordContext";
 
-export default function DiscordGenericActivityCard({
+export default function DiscordListeningToCard({
   className,
 }: {
   className?: string;
@@ -10,7 +10,7 @@ export default function DiscordGenericActivityCard({
   const discordData = useDiscordStatus();
   const activityD = discordData.activities
     .filter((i) => i.name != "Custom Status")
-    .find((i) => i.name == "Code")!; //TODO: this is temporary till i figure out how to get activity icon hashes
+    .find((i) => i.name == "postToP")!;
 
   return (
     activityD && (
@@ -25,18 +25,18 @@ export default function DiscordGenericActivityCard({
           />
         )}
         <div className={"w-full overflow-hidden p-2"}>
-          <p className={"truncate text-sm font-semibold"}>{activityD.name}</p>
+          <p className={"truncate text-sm font-semibold"}>Listening to</p>
+          <p
+            className={"truncate text-xs font-semibold"}
+            title={activityD.details}
+          >
+            {activityD.details}
+          </p>
           <p
             className={"truncate text-xs text-gray-400"}
             title={activityD.description}
           >
-            {activityD.description}
-          </p>
-          <p
-            className={"truncate text-xs text-gray-400"}
-            title={activityD.details}
-          >
-            {activityD.details}
+            by {activityD.description}
           </p>
         </div>
       </div>

@@ -1,5 +1,5 @@
-import Link from "next/link";
-import YoutubeThumbnail from "../YoutubeThumbnail";
+import Link from "../Atoms/Link";
+import YoutubeThumbnail from "../Image/YoutubeThumbnail";
 
 export default function MusicCard({
   music,
@@ -15,7 +15,7 @@ export default function MusicCard({
     <div
       className={`group relative ${className} h-full w-full content-center overflow-hidden rounded-lg border border-gray-800 transition-transform hover:scale-105`}
     >
-      <Link href={ytUrl} target={"_blank"}>
+      <Link href={ytUrl} external>
         <YoutubeThumbnail
           thumbnail_url={thumbnail_url}
           className={
@@ -24,14 +24,12 @@ export default function MusicCard({
           lowRes
         />
         <div
-          className={`overflow-hidden ${
-            small && "grid grid-cols-[1fr_3fr] gap-3"
-          } content-center p-4`}
+          className={`overflow-hidden ${small && "grid grid-cols-[1fr_3fr] gap-3"
+            } content-center p-4`}
         >
           <div
-            className={`relative aspect-square ${
-              small ? "w-full" : "mb-6 w-1/2"
-            } m-auto overflow-hidden rounded-lg`}
+            className={`relative aspect-square ${small ? "w-full" : "mb-6 w-1/2"
+              } m-auto overflow-hidden rounded-lg`}
           >
             <YoutubeThumbnail thumbnail_url={thumbnail_url} lowRes={small} />
             <div
@@ -44,9 +42,8 @@ export default function MusicCard({
           </div>
           <div className={"flex flex-col justify-center break-all"}>
             <h3
-              className={`line-clamp-2 font-medium text-white ${
-                small ? "text-base" : "text-lg"
-              }`}
+              className={`line-clamp-2 font-medium text-white ${small ? "text-base" : "text-lg"
+                }`}
             >
               {title}
             </h3>

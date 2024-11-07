@@ -2,17 +2,6 @@ function headerLevel(header: string) {
   return header.match(/^#{1,6}/)![0].length;
 }
 
-function indentBasedOnHeader(header: string) {
-  let level = headerLevel(header) - 1;
-  if (level === 0) return "";
-  if (level === 1) return "ml-4";
-  if (level === 2) return "ml-8";
-  if (level === 3) return "ml-12";
-  if (level === 4) return "ml-16";
-  if (level === 5) return "ml-20";
-  if (level === 6) return "ml-24";
-}
-
 function stripHeader(header: string) {
   return header.replace(/^#{1,6} /, "");
 }

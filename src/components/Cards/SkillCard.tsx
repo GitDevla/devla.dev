@@ -1,4 +1,4 @@
-import SimpleIcon from "../SimpleIcon";
+import SimpleIcon from "../Image/SimpleIcon";
 
 export default function SkillCard({ Tech }: { Tech: ITechSkill }) {
   const { name, icon, href } = Tech;

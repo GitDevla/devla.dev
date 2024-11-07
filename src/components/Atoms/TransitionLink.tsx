@@ -1,5 +1,6 @@
 "use client";
 
+// eslint-disable-next-line no-restricted-imports
 import Link, { LinkProps } from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import isProduction from "@/utils/isProd";

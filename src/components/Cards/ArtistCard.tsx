@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "../Atoms/Link";
 
 export default function ArtistCard({ artist }: { artist: any }) {
   const { name, ytUrl, thumbnail_url } = artist;
@@ -9,7 +9,7 @@ export default function ArtistCard({ artist }: { artist: any }) {
         "group relative h-full w-full content-center overflow-hidden rounded-lg border border-gray-800 transition-transform hover:scale-105"
       }
     >
-      <Link href={ytUrl} target={"_blank"}>
+      <Link href={ytUrl} external>
         <div
           style={{
             backgroundImage: `url(${thumbnail_url})`,

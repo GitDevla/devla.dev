@@ -1,7 +1,7 @@
 "use client";
 
 import { useDiscordStatus } from "./Context/DiscordContext";
-import Hover from "./Hover";
+import Hover from "./Atoms/Hover";
 
 export default function DiscordStatusDot({
   className,

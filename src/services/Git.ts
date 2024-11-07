@@ -14,7 +14,7 @@ export async function getHistory(filenamePath: String): Promise<GitHistory[]> {
       {
         cwd: process.env.STATIC_PATH + "/blogs/",
       },
-      function (error, stdout, stderr) {
+      function (error, stdout, _) {
         if (error) {
           console.log(`error: ${error.message}`);
           return;

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "../Atoms/Link";
 
 export default function Footer() {
   return (
@@ -7,8 +7,8 @@ export default function Footer() {
         This website is open-source on{" "}
         <Link
           href={"https://github.com/GitDevla/devla.dev"}
-          target={"_blank"}
           className={"link"}
+          external
         >
           Github
         </Link>{" "}

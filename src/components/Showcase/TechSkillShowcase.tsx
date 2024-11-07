@@ -1,4 +1,4 @@
-import SkillCard from "./Cards/SkillCard";
+import SkillCard from "../Cards/SkillCard";
 
 function splitIntoNChunks<T>(arr: T[], n: number): T[][] {
   const perChuck = Math.floor(arr.length / n);
@@ -7,7 +7,7 @@ function splitIntoNChunks<T>(arr: T[], n: number): T[][] {
   );
 }
 
-export default function TechCarusel({ tech }: { tech: any[] }) {
+export default function TechSkillShowcase({ tech }: { tech: any[] }) {
   const parts = splitIntoNChunks(tech, 3);
   switch (tech.length % 3) {
     case 1:
