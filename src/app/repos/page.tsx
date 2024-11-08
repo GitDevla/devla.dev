@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 import ContributionCalendar from "@/components/ContributionCalendar";
 import ReposSection from "@/components/Sections/ReposSection";
-import ContributionCalendarSkeleton from "@/components/Skeletons/ContributonCalendarSkeleton";
 import pullGiteaRepos from "@/services/Gitea";
 import { pullGithubRepos } from "@/services/Github";
 import createMetadata from "@/utils/Metadata";
@@ -37,9 +36,7 @@ export default async function ReposPage() {
         {repos.filter((r) => r.source === "gitea").length})
       </p>
       <div className={"py-2"}>
-        <Suspense fallback={<ContributionCalendarSkeleton />}>
-          <ContributionCalendar />
-        </Suspense >
+        <ContributionCalendar />
       </div >
       <Suspense fallback={<div>Loading...</div>}>
         <ReposSection repos={repos} />

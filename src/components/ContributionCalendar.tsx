@@ -23,7 +23,6 @@ export default async function ContributionCalendar() {
     (acc: number, day: any) => acc + day.contributionCount,
     0,
   );
-
   return (
     <div>
       <div
@@ -50,7 +49,7 @@ export default async function ContributionCalendar() {
           <span>Wed</span>
           <span>Fri</span>
         </div>
-        <div className={"grid w-full grid-flow-col grid-rows-7 gap-1"}>
+        <div className={"grid w-full grid-flow-col grid-rows-7 grid-cols-[repeat(53,1fr)] gap-1"}>
           {githubContributions.map((day: any, index: any) => (
             <div
               key={index}
