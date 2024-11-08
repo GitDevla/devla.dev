@@ -1,12 +1,15 @@
 import { Metadata } from "next";
 import ProjectCard from "@/components/Cards/ProjectCard";
 import { fetchProjects } from "@/utils/Markdown";
+import createMetadata from "@/utils/Metadata";
 
 export const revalidate = 86400; //60 * 60 * 24
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createMetadata({
   title: "Projects",
-};
+  description: "Projects by David Pataki. Get to know the projects I'm most proud of.",
+  keywords: ["projects", "portfolio", "open-source", "software", "development"],
+});
 
 export default async function ProjectsPage() {
   const postMetadata = await fetchProjects();

@@ -9,8 +9,35 @@ import { formatTimeAgo } from "@/utils/Date";
 import { fetchProjects, getMD } from "@/utils/Markdown";
 import BlogNavBar from "./BlogNavBar";
 import GitHistorySection from "./GitHistorySection";
+import JsonLD from "@/components/Atoms/JsonLD";
+import createMetadata from "@/utils/Metadata";
 
 export const revalidate = 86400; // 60 * 60 * 24
+
+function generateJsonLd(blog: IMarkdown) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: blog.metadata.title,
+    description: blog.metadata.subtitle,
+    author: {
+      "@type": "Person",
+      name: "David Pataki"
+    },
+    datePublished: blog.metadata.created,
+    dateModified: blog.metadata.lastUpdated,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": "https://devla.dev/blog/" + blog.metadata.slug
+    },
+    image: {
+      "@type": "ImageObject",
+      url: blog.metadata.coverImage,
+    }
+  };
+}
+
+
 
 export async function generateStaticParams() {
   const postMetadata = await fetchProjects();
@@ -22,9 +49,12 @@ export async function generateStaticParams() {
 
 export async function generateMetadata(props: any): Promise<Metadata> {
   const slug = (await props.params).slug;
-  return {
+  const post = await getMD(slug);
+  return createMetadata({
     title: slug,
-  };
+    description: post?.metadata.subtitle || "",
+    keywords: post?.metadata.tags,
+  });
 }
 
 async function getPrevAndNext(slug: string) {
@@ -73,6 +103,7 @@ export default async function BlogPage(props: any) {
         </div>
         <GitHistorySection history={history} />
       </article>
+      <JsonLD json={generateJsonLd(post)} />
     </>
   );
 }

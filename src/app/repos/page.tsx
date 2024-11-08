@@ -5,12 +5,15 @@ import ReposSection from "@/components/Sections/ReposSection";
 import ContributionCalendarSkeleton from "@/components/Skeletons/ContributonCalendarSkeleton";
 import pullGiteaRepos from "@/services/Gitea";
 import { pullGithubRepos } from "@/services/Github";
+import createMetadata from "@/utils/Metadata";
 
 export const revalidate = 86400; //60 * 60 * 24
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createMetadata({
   title: "Repositories",
-};
+  description: "David Pataki's repositories. Collection of all my published repositories.",
+  keywords: ["repositories", "projects", "portfolio", "open-source", "software", "development"],
+});
 
 async function pullRepos() {
   let [githubRepos, giteaRepos] = await Promise.all([

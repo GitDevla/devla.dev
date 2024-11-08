@@ -7,6 +7,7 @@ import DiscordStatusDot from "@/components/DiscordStatusDot";
 import SkillSection from "@/components/Sections/SkillSection";
 import TechSkillShowcase from "@/components/Showcase/TechSkillShowcase";
 import { readStatic } from "@/utils/ReadJSON";
+import JsonLD from "@/components/Atoms/JsonLD";
 
 export const revalidate = 32400; // 60 * 60 * 9
 
@@ -16,9 +17,10 @@ const jsonLd = {
   name: "David Pataki",
   url: "https://devla.dev",
   image: "https://devla.dev/favicon.ico",
-  sameAs: ["https://github.com/GitDevla", "https://devla.dev/about"],
+  sameAs: ["https://devla.dev/about"],
   email: "contact@devla.dev",
-  description: "David Pataki's personal website & portfolio.",
+  description: "Passionate and creative full-stack software engineer from Hungary",
+  foundingDate: new Date("2003-12-31").toISOString(),
 };
 
 export default async function Home() {
@@ -169,10 +171,7 @@ export default async function Home() {
       <SkillSection techStack={techStack} categories={categories}>
         <TechSkillShowcase tech={techStack} />
       </SkillSection>
-      <script
-        type={"application/ld+json"}
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLD json={jsonLd} />
     </>
   );
 }

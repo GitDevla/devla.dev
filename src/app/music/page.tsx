@@ -3,12 +3,15 @@ import Link from "@/components/Atoms/Link";
 import TopArtistShowcase from "@/components/Showcase/TopArtistShowcase";
 import TopGenreShowcase from "@/components/Showcase/TopGenreShowcase";
 import TopMusicShowcase from "@/components/Showcase/TopMusicShowcase";
+import createMetadata from "@/utils/Metadata";
 
 export const revalidate = 691200; // 60 * 60 * 24 * 8 Actual revalidation is ran using instrumentation.ts
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createMetadata({
   title: "Music",
-};
+  description: "Collection of my most played songs and artists on Youtube & Youtube Music.",
+  keywords: ["music", "songs", "artists", "youtube", "youtube music"],
+});
 
 export default async function MusicPage() {
   return (

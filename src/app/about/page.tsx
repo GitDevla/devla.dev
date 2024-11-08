@@ -1,12 +1,34 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import Hover from "@/components/Atoms/Hover";
+import JsonLD from "@/components/Atoms/JsonLD";
 import EmailForm from "@/components/Forms/EmailForm";
 import SimpleIcon from "@/components/Image/SimpleIcon";
 import Timeline from "@/components/Timeline";
+import createMetadata from "@/utils/Metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createMetadata({
   title: "About",
+  description: "David Pataki's personal page. Get to know more about me.",
+  keywords: ["about", "personal", "profile", "bio", "contact"],
+});
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  dateCreated: new Date("2003-12-31").toISOString(),
+  dateModified: new Date().toISOString(),
+  mainEntity: {
+    "@id": "#main-author",
+    "@type": "Person",
+    name: "David Pataki",
+    alternateName: ["devla", "davidpataki", "patakidavid", "gitdevla"],
+    description:
+      "Passionate and creative full-stack software engineer from Hungary",
+    sameAs: [
+      "https://github.com/GitDevla",
+    ],
+  },
 };
 
 export default function AboutPage() {
@@ -128,6 +150,7 @@ export default function AboutPage() {
 
         <EmailForm />
       </section>
+      <JsonLD json={jsonLd} />
     </>
   );
 }
