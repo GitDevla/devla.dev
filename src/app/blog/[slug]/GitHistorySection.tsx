@@ -1,4 +1,4 @@
-import { GitHistory } from "/home/devla/devla.dev/src/services/Git";
+import { GitHistory } from "@/services/Git";
 
 export default function GitHistorySection({ history }: { history: GitHistory[] }) {
     return <details>

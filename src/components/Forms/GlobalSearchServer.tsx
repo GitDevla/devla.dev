@@ -26,8 +26,8 @@ async function getAllBlogs() {
   const allBlogs = await fetchMarkdownPosts();
   return allBlogs.map((post) => {
     return {
-      title: post?.metadata.title,
-      href: `/blog/${post?.metadata.slug}`,
+      title: post?.metadata.title ?? "",
+      href: `/blog/${post?.metadata.slug ?? ""}`,
       type: "blog",
     };
   });
