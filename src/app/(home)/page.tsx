@@ -1,13 +1,11 @@
-import Image from "next/image";
-import { Typewriter } from "nextjs-simple-typewriter";
-import DiscordGenericActivityCard from "@/components/Cards/DiscordGenericActivityCard";
-import DiscordListeningToCard from "@/components/Cards/DiscordListeningToCard";
+import JsonLD from "@/components/Atoms/JsonLD";
 import LinkCard from "@/components/Cards/LinkCard";
 import DiscordStatusDot from "@/components/DiscordStatusDot";
 import SkillSection from "@/components/Sections/SkillSection";
 import TechSkillShowcase from "@/components/Showcase/TechSkillShowcase";
 import { readStatic } from "@/utils/ReadJSON";
-import JsonLD from "@/components/Atoms/JsonLD";
+import RenderProfileCard from "./RenderProfileCard";
+import TypewriterIntro from "../../components/Typewriter";
 
 export const revalidate = 32400; // 60 * 60 * 9
 
@@ -88,7 +86,7 @@ export default async function Home() {
             "flex flex-col items-center justify-between text-center text-lg md:items-start md:text-left"
           }
         >
-          <div className={"mt-8"}>
+          <div className={"mt-12 flex flex-col items-center md:items-start"}>
             <div className={"flex items-center gap-2"}>
               <h1 className={"text-2xl font-bold"}>Hi, I am Devla.</h1>
               <DiscordStatusDot
@@ -99,26 +97,16 @@ export default async function Home() {
               I'm a second-year undergraduate
               <br />
               whom enjoys{" "}
-              <Typewriter
-                words={[
-                  "coding",
-                  "designing frontends",
-                  "developing backends",
-                  "writing scripts",
-                  "managing my home server",
-                  "breaking stuff",
-                  "listening to music",
-                ]}
-                loop={0}
-                typeSpeed={60}
-                deleteSpeed={40}
-                delaySpeed={800}
-              />
-              <span
-                className={"relative -left-1 inline-block w-0 animate-blink"}
-              >
-                |
-              </span>
+              <TypewriterIntro sentences={[
+                "coding",
+                "designing frontends",
+                "developing backends",
+                "writing scripts",
+                "managing my home server",
+                "breaking stuff",
+                "listening to music",
+              ]}
+                typeSpeed={60} delaySpeed={800} deleteSpeed={40} />
               .
             </p>
           </div>
@@ -130,32 +118,7 @@ export default async function Home() {
             Let's fall and fall into the vortex of this hole-dwelling life.
           </blockquote>
         </div>
-        <div className={"relative"}>
-          <div
-            className={
-              "peer relative rotate-6 transition-transform hover:-rotate-6 hover:scale-110"
-            }
-          >
-            <Image
-              className={"h-52 w-52 rounded-xl"}
-              src={"/xqc-despair.gif"}
-              width={176}
-              height={176}
-              alt={"Picture of the author"}
-              priority
-            />
-          </div>
-          <DiscordListeningToCard
-            className={
-              "absolute -top-5 left-0 h-16 -translate-x-1/4 transition-all peer-hover:-z-10 peer-hover:brightness-75"
-            }
-          />
-          <DiscordGenericActivityCard
-            className={
-              "absolute -bottom-5 right-0 h-16 translate-x-1/4 transition-all peer-hover:-z-10 peer-hover:brightness-75"
-            }
-          />
-        </div>
+        <RenderProfileCard />
       </section>
 
       {pages.map((group, i) => (
@@ -175,3 +138,4 @@ export default async function Home() {
     </>
   );
 }
+
