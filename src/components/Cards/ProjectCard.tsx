@@ -2,10 +2,9 @@ import Image from "next/image";
 import BookSVG from "@/../public/svg/book.svg";
 import CodeSVG from "@/../public/svg/code.svg";
 import LinkSVG from "@/../public/svg/link.svg";
-import TransitionLink from "@/components/Atoms/TransitionLink";
 import Hover from "../Atoms/Hover";
-import SimpleIcon from "../Image/SimpleIcon";
 import Link from "../Atoms/Link";
+import SimpleIcon from "../Image/SimpleIcon";
 
 export default async function ProjectCard({ post }: { post: any }) {
   let { metadata } = post;

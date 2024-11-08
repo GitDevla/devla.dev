@@ -20,7 +20,7 @@ export async function fetchMarkdownPosts() {
   return posts;
 }
 
-export async function getMD(slug: string) {
+export async function getMD(slug: string):Promise<IMarkdown | null> {
   const file = `${folder}${slug}.md`;
   const fileExists = await fs
     .access(file)
