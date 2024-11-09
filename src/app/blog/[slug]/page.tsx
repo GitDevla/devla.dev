@@ -1,16 +1,17 @@
 import Markdown from "markdown-to-jsx";
 import { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
+import JsonLD from "@/components/Atoms/JsonLD";
 import PopUpSidebar from "@/components/PopUpSidebar";
 import ReadTime from "@/components/ReadTime";
 import TableOfContent from "@/components/TableOfContent";
 import { getHistory } from "@/services/Git";
 import { formatTimeAgo } from "@/utils/Date";
 import { fetchProjects, getMD } from "@/utils/Markdown";
+import createMetadata from "@/utils/Metadata";
 import BlogNavBar from "./BlogNavBar";
 import GitHistorySection from "./GitHistorySection";
-import JsonLD from "@/components/Atoms/JsonLD";
-import createMetadata from "@/utils/Metadata";
 
 export const revalidate = 86400; // 60 * 60 * 24
 
@@ -78,6 +79,13 @@ export default async function BlogPage(props: any) {
   if (!post.metadata.visible) return notFound();
   return (
     <>
+      <Image
+        src={post.metadata.coverImage ?? ""}
+        alt={post.metadata.title}
+        width={800}
+        height={400}
+        className={"absolute top-0 left-0 right-0 w-full h-[384px] overflow-hidden -z-10 blur opacity-65 [mask-image:linear-gradient(to_bottom,rgba(0,0,0,0.9)_0%,rgba(0,0,0,0)_100%)] object-cover object-center"}
+      />
       <PopUpSidebar title={"Table of Contents"}>
         <TableOfContent markdown={post.content} />
       </PopUpSidebar>
