@@ -7,7 +7,7 @@
 }
 
 .header {
-  @apply mb-3 text-2xl font-bold uppercase;
+  @apply mb-3 font-bold uppercase;
 }
 
 .subheader {
@@ -22,10 +22,22 @@ section {
   @apply mb-7;
 }
 
-body::-webkit-scrollbar {
+/* body::-webkit-scrollbar {
   display: none;
   -ms-overflow-style: none;
   scrollbar-width: none;
+} */
+
+* {
+  scrollbar-color: rgb(var(--highlight)) rgb(var(--background));
+}
+*::-webkit-scrollbar-track {
+  background: rgb(var(--highlight));
+}
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(var(--background));
+  border-radius: 20px;
+  border: 3px solid rgb(var(--highlight));
 }
 
 .page-transition {
