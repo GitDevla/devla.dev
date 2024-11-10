@@ -1,7 +1,7 @@
 ---
 title: "PostToP Ecosystem"
 subtitle: "Youtube (Music) data tracker"
-coverImage: "https://noah.devla.dev/images/devla.dev.webp"
+coverImage: "https://noah.devla.dev/images/PostToP.webp"
 type: ["project"]
 fromdate: "2024-06-29"
 todate: "present"
