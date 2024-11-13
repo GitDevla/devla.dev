@@ -7,7 +7,7 @@ import { readStatic } from "@/utils/ReadJSON";
 import RenderProfileCard from "./RenderProfileCard";
 import TypewriterIntro from "../../components/Typewriter";
 
-export const revalidate = 32400; // 60 * 60 * 9
+export let revalidate = 60 * 60 * 9;
 
 const jsonLd = {
   "@context": "https://schema.org",

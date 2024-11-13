@@ -6,7 +6,7 @@ import pullGiteaRepos from "@/services/Gitea";
 import { pullGithubRepos } from "@/services/Github";
 import createMetadata from "@/utils/Metadata";
 
-export const revalidate = 86400; //60 * 60 * 24
+export let revalidate = 60 * 60 * 24;
 
 export const metadata: Metadata = createMetadata({
   title: "Repositories",

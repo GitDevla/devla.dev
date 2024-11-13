@@ -5,7 +5,7 @@ import TopGenreShowcase from "@/components/Showcase/TopGenreShowcase";
 import TopMusicShowcase from "@/components/Showcase/TopMusicShowcase";
 import createMetadata from "@/utils/Metadata";
 
-export const revalidate = 691200; // 60 * 60 * 24 * 8 Actual revalidation is ran using instrumentation.ts
+export let revalidate = 60 * 60 * 24 * 8; // Actual revalidation is ran using instrumentation.ts
 
 export const metadata: Metadata = createMetadata({
   title: "Music",

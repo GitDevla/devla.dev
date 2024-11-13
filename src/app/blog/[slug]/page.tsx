@@ -13,7 +13,7 @@ import createMetadata from "@/utils/Metadata";
 import BlogNavBar from "./BlogNavBar";
 import GitHistorySection from "./GitHistorySection";
 
-export const revalidate = 86400; // 60 * 60 * 24
+export let revalidate = 60 * 60 * 24;
 
 function generateJsonLd(blog: IMarkdown) {
   return {
