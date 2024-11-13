@@ -24,10 +24,10 @@ export default async function ContributionCalendar() {
     0,
   );
   return (
-    <div>
+    <div className={"overflow-x-scroll md:overflow-visible"}>
       <div
         className={
-          "grid grid-cols-[auto_1fr] grid-rows-[auto_1fr] gap-2 overflow-x-scroll md:overflow-visible"
+          "grid grid-cols-[auto_1fr] grid-rows-[auto_1fr] gap-2 w-full min-w-[768px]"
         }
       >
         <div />
