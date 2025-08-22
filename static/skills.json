@@ -1,137 +1,202 @@
 {
-  "categories": ["languages", "frontend", "backend", "devops"],
+  "categories": [
+    "languages",
+    "frontend",
+    "backend",
+    "devops"
+  ],
   "idk": [
     {
       "name": "TypeScript",
       "icon": "typescript",
-      "category": ["languages", "frontend", "backend"],
+      "category": [
+        "languages",
+        "frontend",
+        "backend"
+      ],
       "href": "https://www.typescriptlang.org"
     },
     {
       "name": "JavaScript",
       "icon": "javascript",
-      "category": ["languages", "frontend"],
+      "category": [
+        "languages",
+        "frontend"
+      ],
       "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
     },
     {
       "name": "Node.js",
       "icon": "nodedotjs",
-      "category": ["backend"],
+      "category": [
+        "backend"
+      ],
       "href": "https://nodejs.org"
     },
     {
       "name": "Express",
       "icon": "express",
-      "category": ["backend"],
+      "category": [
+        "backend"
+      ],
       "href": "https://expressjs.com"
     },
     {
       "name": "Rust",
       "icon": "rust",
-      "category": ["languages", "backend"],
+      "category": [
+        "languages",
+        "backend"
+      ],
       "href": "https://www.rust-lang.org"
     },
     {
       "name": "C#",
       "icon": "dotnet",
-      "category": ["languages", "backend"],
+      "category": [
+        "languages",
+        "backend"
+      ],
       "href": "https://docs.microsoft.com/en-us/dotnet/csharp"
     },
     {
       "name": "Next.js",
       "icon": "nextdotjs",
-      "category": ["frontend"],
+      "category": [
+        "frontend"
+      ],
       "href": "https://nextjs.org"
     },
     {
       "name": "Tailwind CSS",
       "icon": "tailwindcss",
-      "category": ["frontend"],
+      "category": [
+        "frontend"
+      ],
       "href": "https://tailwindcss.com"
     },
     {
       "name": "Docker/Compose",
       "icon": "docker",
-      "category": ["devops"],
+      "category": [
+        "devops"
+      ],
       "href": "https://www.docker.com"
     },
     {
       "name": "Portainer",
       "icon": "portainer",
-      "category": ["devops"],
+      "category": [
+        "devops"
+      ],
       "href": "https://www.portainer.io"
     },
     {
       "name": "Git",
       "icon": "git",
-      "category": ["devops"],
+      "category": [
+        "devops"
+      ],
       "href": "https://git-scm.com"
     },
     {
       "name": "Cloudflare",
       "icon": "cloudflare",
-      "category": ["devops"],
+      "category": [
+        "devops"
+      ],
       "href": "https://www.cloudflare.com"
     },
     {
       "name": "React",
       "icon": "react",
-      "category": ["frontend"],
+      "category": [
+        "frontend"
+      ],
       "href": "https://reactjs.org"
     },
     {
       "name": "Sass",
       "icon": "sass",
-      "category": ["frontend"],
+      "category": [
+        "frontend"
+      ],
       "href": "https://sass-lang.com"
     },
     {
       "name": "Python",
       "icon": "python",
-      "category": ["languages"],
+      "category": [
+        "languages"
+      ],
       "href": "https://www.python.org"
     },
     {
       "name": "Linux",
       "icon": "linux",
-      "category": ["devops"],
+      "category": [
+        "devops"
+      ],
       "href": "https://www.linux.org"
     },
     {
       "name": "NGINX",
       "icon": "nginx",
-      "category": ["devops"],
+      "category": [
+        "devops"
+      ],
       "href": "https://www.nginx.com"
     },
     {
       "name": "SQL",
       "icon": "mysql",
-      "category": ["languages", "backend"],
+      "category": [
+        "languages",
+        "backend"
+      ],
       "href": "https://en.wikipedia.org/wiki/SQL"
     },
     {
       "name": "Insomnia",
       "icon": "insomnia",
-      "category": ["devops"],
+      "category": [
+        "devops"
+      ],
       "href": "https://insomnia.rest"
     },
     {
       "name": "HTML5",
       "icon": "html5",
-      "category": ["languages", "frontend"],
+      "category": [
+        "languages",
+        "frontend"
+      ],
       "href": "https://developer.mozilla.org/en-US/docs/Web/HTML"
     },
     {
       "name": "CSS3",
-      "icon": "css3",
-      "category": ["languages", "frontend"],
+      "icon": "css",
+      "category": [
+        "languages",
+        "frontend"
+      ],
       "href": "https://developer.mozilla.org/en-US/docs/Web/CSS"
     },
     {
       "name": "Markdown",
       "icon": "markdown",
-      "category": ["languages"],
+      "category": [
+        "languages"
+      ],
       "href": "https://www.markdownguide.org"
+    },
+    {
+      "name": "Java",
+      "icon": "apachemaven",
+      "category": [
+        "languages"
+      ],
+      "href": "https://www.java.com"
     }
   ]
 }
