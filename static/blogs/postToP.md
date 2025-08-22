@@ -23,6 +23,8 @@ visible: true
 
 # PostToP Ecosystem
 
+> Please note that this project is currently being integrated into my thesis work as a multi-user, AI driven ecosystem. As a result, the information presented here may not reflect the most current status or implementation details of the project.
+
 PostToP is an ecosystem that I created to track my most & currently playing songs on Youtube & Youtube Music. The project was a fun way for me to learn more about Chrome extensions and to track my music listening habits, which I can then display on my website or as a Discord status.
 
 Similar project to PostToP is [PreMiD](https://premid.app/) (yes, the naming is intentional), which is also a Chrome extension that displays your currently playing music on Spotify, YouTube, and other platforms. But I always found it sluggish and not very customizable, so I decided to create my own.
