@@ -49,7 +49,7 @@ export default function AboutPage() {
             >
               Hungary
             </a>
-            , currently studying computer science as a second-year undergraduate
+            , currently studying computer science as a third-year undergraduate
             at the{" "}
             <a className={"link"} href={"https://inf.unideb.hu/"}>
               University of Debrecen
@@ -58,9 +58,9 @@ export default function AboutPage() {
           </div>
           <Image
             className={
-              "right-0 top-1/2 mx-auto my-auto w-1/2 md:absolute md:w-1/4 md:-translate-y-1/2"
+              "right-0 top-1/2 mx-auto my-auto w-1/2 md:absolute md:w-1/4 md:-translate-y-1/2 rounded-lg shadow-lg"
             }
-            src={"https://placehold.co/400x600"}
+            src={"/aislop.png"}
             alt={"Picture of the author"}
             width={400}
             height={600}

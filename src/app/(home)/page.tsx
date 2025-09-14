@@ -94,7 +94,7 @@ export default async function Home() {
               />
             </div>
             <p className={"break-all text-sm md:text-base"}>
-              I'm a second-year undergraduate
+              I'm a third-year undergraduate
               <br />
               whom enjoys{" "}
               <TypewriterIntro sentences={[
