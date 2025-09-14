@@ -12,7 +12,7 @@ function typoFix(name: string) {
     case "html":
       return "html5";
     case "css":
-      return "css3";
+      return "css";
     case "shell":
       return "gnubash";
     case "dockerfile":
@@ -21,6 +21,8 @@ function typoFix(name: string) {
       return "sass";
     case "batchfile":
       return "gnubash";
+    case "qmake":
+      return "qt";
     default:
       return name;
   }

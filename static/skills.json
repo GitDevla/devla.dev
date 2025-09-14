@@ -151,8 +151,7 @@
       "name": "SQL",
       "icon": "mysql",
       "category": [
-        "languages",
-        "backend"
+        "languages"
       ],
       "href": "https://en.wikipedia.org/wiki/SQL"
     },
@@ -197,6 +196,47 @@
         "languages"
       ],
       "href": "https://www.java.com"
+    },
+    {
+      "name": "TensorFlow",
+      "icon": "tensorflow",
+      "category": [
+        "languages",
+        "backend"
+      ],
+      "href": "https://www.tensorflow.org"
+    },
+    {
+      "name": "PostgreSQL",
+      "icon": "postgresql",
+      "category": [
+        "backend"
+      ],
+      "href": "https://www.postgresql.org"
+    },
+    {
+      "name": "SQLite",
+      "icon": "sqlite",
+      "category": [
+        "backend"
+      ],
+      "href": "https://www.sqlite.org"
+    },
+    {
+      "name": "MySQL",
+      "icon": "mysql",
+      "category": [
+        "backend"
+      ],
+      "href": "https://www.mysql.com"
+    },
+    {
+      "name": "Redis",
+      "icon": "redis",
+      "category": [
+        "backend"
+      ],
+      "href": "https://redis.io"
     }
   ]
 }
