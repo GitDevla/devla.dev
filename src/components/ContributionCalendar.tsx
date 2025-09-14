@@ -16,9 +16,10 @@ export default async function ContributionCalendar() {
     }
   }
 
-  const highestCount = Math.max(
+  let highestCount = Math.max(
     ...githubContributions.map((day: any) => day.contributionCount),
   );
+  highestCount = Math.min(highestCount, 7);
   const totalContributions = githubContributions.reduce(
     (acc: number, day: any) => acc + day.contributionCount,
     0,
@@ -55,7 +56,7 @@ export default async function ContributionCalendar() {
               key={index}
               className={"aspect-square size-full rounded-sm"}
               style={{
-                backgroundColor: `color-mix(in hsl, rgb(var(--accentbackground)), rgb(var(--highlight)) ${(day.contributionCount / highestCount) * 100}%)`,
+                backgroundColor: `color-mix(in hsl, rgb(var(--accentbackground)), rgb(var(--highlight)) ${(Math.min(day.contributionCount / highestCount, 1)) * 100}%)`,
               }}
             >
               <Hover
