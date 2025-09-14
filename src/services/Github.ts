@@ -9,7 +9,7 @@ async function fetchRepositoriesFromGitHub() {
   };
   const body = `{
 	viewer {
-		repositories(first: 100, after: null,ownerAffiliations: OWNER
+		repositories(first: 100, after: null,ownerAffiliations:  [OWNER, ORGANIZATION_MEMBER]
 			privacy: PUBLIC) {
 			nodes {
 				name
