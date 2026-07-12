@@ -1,19 +1,23 @@
 interface IPostToPMusic {
-  title: string;
-  author_name: string;
-  author_url: string;
-  ytUrl: string;
-  thumbnail_url: string;
-  times: number;
+	yt_id: string;
+	video_title: string;
+	listen_count: string;
+	channel: Channel;
+}
+
+export interface Channel {
+	yt_id: string;
+	name: string;
 }
 
 interface IPostToPArtist {
-  name: string;
-  ytUrl: string;
-  thumbnail_url: string;
+	artist_id: string;
+	artist_name: string;
+	listen_count: string;
+	artist_profile_picture_url: string;
 }
 
 interface IPostToPGenre {
-  genre: string;
-  times: number;
+	genre_name: string;
+	listen_count: number;
 }

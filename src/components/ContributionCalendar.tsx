@@ -2,93 +2,97 @@ import { pullGithubContributions } from "@/services/Github";
 import Hover from "./Atoms/Hover";
 
 export default async function ContributionCalendar() {
-  let githubContributions = await pullGithubContributions();
+	const githubContributions = await pullGithubContributions();
 
-  // Start from the first Sunday
-  while (true) {
-    let current = githubContributions[0].date;
-    let date = new Date(current);
-    if (date.getDay() == 0) {
-      //Sunday
-      break;
-    } else {
-      githubContributions.shift();
-    }
-  }
+	// Start from the first Sunday
+	while (true) {
+		const current = githubContributions[0].date;
+		const date = new Date(current);
+		if (date.getDay() == 0) {
+			//Sunday
+			break;
+		} else {
+			githubContributions.shift();
+		}
+	}
 
-  let highestCount = Math.max(
-    ...githubContributions.map((day: any) => day.contributionCount),
-  );
-  highestCount = Math.min(highestCount, 7);
-  const totalContributions = githubContributions.reduce(
-    (acc: number, day: any) => acc + day.contributionCount,
-    0,
-  );
-  return (
-    <div className={"overflow-x-scroll md:overflow-visible"}>
-      <div
-        className={
-          "grid grid-cols-[auto_1fr] grid-rows-[auto_1fr] gap-2 w-full min-w-[768px]"
-        }
-      >
-        <div />
-        <div className={"flex justify-evenly"}>
-          {githubContributions
-            .filter((d: any) => d.date.split("-")[2] == "01")
-            .map((day: any, index: any) => (
-              <div key={index} className={"text-xs text-secondaryText"}>
-                {new Date(day.date).toLocaleString("default", {
-                  month: "short",
-                })}
-              </div>
-            ))}
-        </div>
-        <div
-          className={"flex flex-col justify-evenly text-sm text-secondaryText"}
-        >
-          <span>Mon</span>
-          <span>Wed</span>
-          <span>Fri</span>
-        </div>
-        <div className={"grid w-full grid-flow-col grid-rows-7 grid-cols-[repeat(53,1fr)] gap-1"}>
-          {githubContributions.map((day: any, index: any) => (
-            <div
-              key={index}
-              className={"aspect-square size-full rounded-sm"}
-              style={{
-                backgroundColor: `color-mix(in hsl, rgb(var(--accentbackground)), rgb(var(--highlight)) ${(Math.min(day.contributionCount / highestCount, 1)) * 100}%)`,
-              }}
-            >
-              <Hover
-                className={"!block size-full"}
-                hoverText={`${day.contributionCount == 0 ? "No" : day.contributionCount} contributions on ${day.date}`}
-              >
-                <div className={"size-full"} />
-              </Hover>
-            </div>
-          ))}
-        </div>
-      </div>
-      <div
-        className={
-          "flex items-center justify-between pt-2 text-sm text-secondaryText"
-        }
-      >
-        <div>{totalContributions} contributions in the last year</div>
-        <div className={"flex items-center gap-1"}>
-          <span>Less</span>
-          {[0, 25, 50, 75, 100].map((percent) => (
-            <div
-              key={percent}
-              className={"aspect-square size-3 rounded-sm"}
-              style={{
-                backgroundColor: `color-mix(in hsl, rgb(var(--accentbackground)), rgb(var(--highlight)) ${percent}%)`,
-              }}
-            />
-          ))}
-          <span>More</span>
-        </div>
-      </div>
-    </div>
-  );
+	let highestCount = Math.max(
+		...githubContributions.map((day: any) => day.contributionCount),
+	);
+	highestCount = Math.min(highestCount, 7);
+	const totalContributions = githubContributions.reduce(
+		(acc: number, day: any) => acc + day.contributionCount,
+		0,
+	);
+	return (
+		<div className={"overflow-x-scroll md:overflow-visible"}>
+			<div
+				className={
+					"grid grid-cols-[auto_1fr] grid-rows-[auto_1fr] gap-2 w-full min-w-[768px]"
+				}
+			>
+				<div />
+				<div className={"flex justify-evenly"}>
+					{githubContributions
+						.filter((d: any) => d.date.split("-")[2] == "01")
+						.map((day: any, index: any) => (
+							<div key={index} className={"text-xs text-secondaryText"}>
+								{new Date(day.date).toLocaleString("default", {
+									month: "short",
+								})}
+							</div>
+						))}
+				</div>
+				<div
+					className={"flex flex-col justify-evenly text-sm text-secondaryText"}
+				>
+					<span>Mon</span>
+					<span>Wed</span>
+					<span>Fri</span>
+				</div>
+				<div
+					className={
+						"grid w-full grid-flow-col grid-rows-7 grid-cols-[repeat(53,1fr)] gap-1"
+					}
+				>
+					{githubContributions.map((day: any, index: any) => (
+						<div
+							key={index}
+							className={"aspect-square size-full rounded-sm"}
+							style={{
+								backgroundColor: `color-mix(in hsl, rgb(var(--accentbackground)), rgb(var(--highlight)) ${Math.min(day.contributionCount / highestCount, 1) * 100}%)`,
+							}}
+						>
+							<Hover
+								className={"!block size-full"}
+								hoverText={`${day.contributionCount == 0 ? "No" : day.contributionCount} contributions on ${day.date}`}
+							>
+								<div className={"size-full"} />
+							</Hover>
+						</div>
+					))}
+				</div>
+			</div>
+			<div
+				className={
+					"flex items-center justify-between pt-2 text-sm text-secondaryText"
+				}
+			>
+				<div>{totalContributions} contributions in the last year</div>
+				<div className={"flex items-center gap-1"}>
+					<span>Less</span>
+					{[0, 25, 50, 75, 100].map((percent) => (
+						<div
+							key={percent}
+							className={"aspect-square size-3 rounded-sm"}
+							style={{
+								backgroundColor: `color-mix(in hsl, rgb(var(--accentbackground)), rgb(var(--highlight)) ${percent}%)`,
+							}}
+						/>
+					))}
+					<span>More</span>
+				</div>
+			</div>
+		</div>
+	);
 }

@@ -5,7 +5,18 @@ const folder = process.env.STATIC_PATH + "/blogs/";
 
 export async function fetchProjects() {
   const postMetadata = await fetchMarkdownPosts();
-  return postMetadata.filter((i) => i?.metadata.type == "project");
+  let projects = postMetadata.filter((i) => i?.metadata.type == "project");
+  projects = projects.sort((a, b) => {
+    const weightA = a?.metadata.weight || 9999;
+    const weightB = b?.metadata.weight || 9999;
+    if (weightA !== weightB) {
+      return weightA - weightB; // Lower weight first
+    }
+    const dateA = a?.metadata.date ? new Date(a.metadata.date).getTime() : 0;
+    const dateB = b?.metadata.date ? new Date(b.metadata.date).getTime() : 0;
+    return dateB - dateA; // Newer date first
+  });
+  return projects;
 }
 
 export async function fetchMarkdownPosts() {
@@ -20,7 +31,7 @@ export async function fetchMarkdownPosts() {
   return posts;
 }
 
-export async function getMD(slug: string):Promise<IMarkdown | null> {
+export async function getMD(slug: string): Promise<IMarkdown | null> {
   const file = `${folder}${slug}.md`;
   const fileExists = await fs
     .access(file)
@@ -48,6 +59,7 @@ export async function getMD(slug: string):Promise<IMarkdown | null> {
       lastUpdated: stats.mtime,
       created: stats.birthtime,
       visible: matterResult.data.visible || false,
+      weight: matterResult.data.weight || null,
     },
     content: matterResult.content,
   };

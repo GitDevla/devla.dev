@@ -1,17 +1,20 @@
 [
-  {
-    "ytUrl": "https://music.youtube.com/channel/UCln9P4Qm3-EAY4aiEPmRwEA",
-    "name": "Ado",
-    "thumbnail_url": "https://yt3.ggpht.com/I3ckNVLPQq04aQklOnRctTEnBjf7pkppVLV7WYe4Nb4g3sge1h-2IlXAvLnRGgrMkMfL4NadPQ=s88-c-k-c0x00ffffff-no-rj"
-  },
-  {
-    "ytUrl": "https://music.youtube.com/channel/UCln9P4Qm3-EAY4aiEPmRwEA",
-    "name": "Ado",
-    "thumbnail_url": "https://yt3.ggpht.com/I3ckNVLPQq04aQklOnRctTEnBjf7pkppVLV7WYe4Nb4g3sge1h-2IlXAvLnRGgrMkMfL4NadPQ=s88-c-k-c0x00ffffff-no-rj"
-  },
-  {
-    "ytUrl": "https://music.youtube.com/channel/UCln9P4Qm3-EAY4aiEPmRwEA",
-    "name": "Ado",
-    "thumbnail_url": "https://yt3.ggpht.com/I3ckNVLPQq04aQklOnRctTEnBjf7pkppVLV7WYe4Nb4g3sge1h-2IlXAvLnRGgrMkMfL4NadPQ=s88-c-k-c0x00ffffff-no-rj"
+	{
+		"artist_id": "UC7KzvEBzj7cjG7xHT5byb3g",
+		"artist_name": "8月",
+		"artist_profile_picture_url": "https://yt3.ggpht.com/xAsv-_HnwVJ67zbNem3kXa4yEaEHyp43DcQmMzzIusfryzW1a9uiXpWZX0ARbf1J6u2-yAgn=s800-c-k-c0x00ffffff-no-rj",
+		"listen_count": "31"
+	},
+	{
+		"artist_id": "UCjLEmnpCNeisMxy134KPwWw",
+		"artist_name": "Kobo Kanaeru Ch. hololive-ID",
+		"artist_profile_picture_url": "https://yt3.ggpht.com/XRCP2PC-lvvielp04Eq8KyBzgd3_bFc_DNfptN5s-ftd1v6SadGuMChY6Jm3elaqaK7xwE1B=s800-c-k-c0x00ffffff-no-rj",
+		"listen_count": "30"
+	},
+	{
+		"artist_id": "UCEAh-jw5U5L-Lx2zz0So-Eg",
+		"artist_name": "DECO*27 - Topic",
+		"artist_profile_picture_url": "https://yt3.ggpht.com/ytc/AIdro_kCM5A4TC5NoWlTRfc9CwhATeaUBFzeBTYcLI9PO0a5ZVU=s800-c-k-c0x00ffffff-no-rj",
+		"listen_count": "29"
   }
 ]

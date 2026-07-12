@@ -14,6 +14,7 @@ interface IMarkdown {
         lastUpdated: Date;
         created: Date;
         visible: boolean;
+        weight?: number;
     }
     content: string;
 };

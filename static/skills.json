@@ -237,6 +237,14 @@
         "backend"
       ],
       "href": "https://redis.io"
+    },
+    {
+      "name": "Blazor",
+      "icon": "blazor",
+      "category": [
+        "frontend"
+      ],
+      "href": "https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor"
     }
   ]
 }

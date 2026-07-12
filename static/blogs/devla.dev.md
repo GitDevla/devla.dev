@@ -4,12 +4,13 @@ subtitle: "My personal website & portfolio"
 coverImage: "https://noah.devla.dev/images/devla.dev.webp"
 type: ["project"]
 fromdate: "2024-06-29"
-todate: "present"
+todate: "2024-11-01"
 
 tryLink: "https://devla.dev"
 sourceLink: "https://github.com/GitDevla/devla.dev"
 tags: ["Next.js", "Tailwind CSS", "Docker", "Nginx", "Cloudflare"]
 visible: true
+weight: 2
 ---
 
 # devla.dev

@@ -19,6 +19,7 @@ tags:
     "Discord",
   ]
 visible: true
+weight: 1
 ---
 
 # PostToP Ecosystem
