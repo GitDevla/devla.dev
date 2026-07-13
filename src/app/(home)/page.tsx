@@ -99,7 +99,7 @@ export default async function Home() {
 							/>
 						</div>
 						<p className={"break-all text-sm md:text-base"}>
-							I'm a recent computer test science graduate
+							I'm a recent computer science graduate
 							<br />
 							who enjoys{" "}
 							<TypewriterIntro
