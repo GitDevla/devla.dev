@@ -8,6 +8,6 @@ export default function Robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: process.env.NEXT_PUBLIC_DOMAIN + "/sitemap.xml",
+    sitemap: "/sitemap.xml",
   };
 }
