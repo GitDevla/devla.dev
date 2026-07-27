@@ -25,6 +25,10 @@ export default async function Sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${domain}/music`,
       changeFrequency: "weekly",
     },
+    {
+      url: `${domain}/resume.pdf`,
+      changeFrequency: "weekly",
+    },
     ...posts,
   ];
 }

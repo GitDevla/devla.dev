@@ -1,5 +1,7 @@
 import { MetadataRoute } from "next";
 
+const public_domain = process.env.NEXT_PUBLIC_DOMAIN;
+
 export default function Robots(): MetadataRoute.Robots {
   return {
     rules: [
@@ -8,6 +10,6 @@ export default function Robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: "/sitemap.xml",
+    sitemap: `${public_domain}/sitemap.xml`,
   };
 }
