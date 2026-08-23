@@ -3,6 +3,7 @@
 
 import usePostToPLiveSocket from "@/hooks/usePostToPLiveSocket";
 import formatNERDisplay from "@/utils/formatNERDisplay";
+import YoutubeThumbnail from "../Image/YoutubeThumbnail";
 
 export default function DiscordListeningToCard({
 	className,
@@ -32,11 +33,9 @@ export default function DiscordListeningToCard({
 				className={`flex max-w-48 items-center overflow-hidden rounded-md bg-accentbackground bg-opacity-90 ${className}`}
 			>
 				{imageUrl && (
-					<img
-						src={imageUrl}
-						alt={"Activity"}
-						className={"aspect-square h-full rounded-md object-cover"}
-					/>
+					<div className="relative aspect-square h-full rounded-md object-cover">
+						<YoutubeThumbnail thumbnail_url={imageUrl} lowRes />
+					</div>
 				)}
 				<div className={"w-full overflow-hidden p-2"}>
 					<p className={"truncate text-sm font-semibold"}>Listening to</p>
