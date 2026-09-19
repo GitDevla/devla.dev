@@ -68,7 +68,7 @@ export default function CurrentlyListeningCard() {
 		return (
 			<div
 				className={
-					"card flex items-center justify-center py-8 text-secondaryText"
+					"card flex items-center justify-center py-8 text-muted"
 				}
 			>
 				{connected
@@ -103,7 +103,7 @@ export default function CurrentlyListeningCard() {
 						<YoutubeThumbnail thumbnail_url={thumbnailUrl} className={"p-0"} />
 						<div
 							className={
-								"absolute inset-0 bg-black/20 opacity-0 transition-opacity group-hover:opacity-100"
+								"absolute inset-0 bg-canvas/20 opacity-0 transition-opacity group-hover:opacity-100"
 							}
 						/>
 					</div>
@@ -111,12 +111,12 @@ export default function CurrentlyListeningCard() {
 
 				<div className={"flex flex-col justify-between gap-2"}>
 					<div className={"flex items-center justify-between gap-2"}>
-						<p className={"text-sm text-secondaryText"}>Currently Playing</p>
+						<p className={"text-sm text-muted"}>Currently Playing</p>
 						<div
 							className={`rounded-full px-2 py-1 text-xs font-semibold ${
 								isPlaying
-									? "bg-highlight bg-opacity-20 text-highlight"
-									: "bg-border text-secondaryText"
+									? "bg-primary/20 text-primary"
+									: "bg-border text-muted"
 							}`}
 						>
 							{isPaused ? "Paused" : "Playing"}
@@ -125,7 +125,7 @@ export default function CurrentlyListeningCard() {
 
 					<div>
 						<p className={"line-clamp-2 font-semibold"}>{display.title}</p>
-						<p className={"line-clamp-1 text-sm text-secondaryText"}>
+						<p className={"line-clamp-1 text-sm text-muted"}>
 							by {display.subtitle}
 						</p>
 					</div>
@@ -136,12 +136,12 @@ export default function CurrentlyListeningCard() {
 						>
 							<div
 								className={`h-full rounded-full transition-all duration-500 ${
-									isPaused ? "bg-secondaryText" : "bg-highlight"
+									isPaused ? "bg-muted" : "bg-primary"
 								}`}
 								style={{ width: `${progress}%` }}
 							/>
 						</div>
-						<div className={"flex justify-between text-xs text-secondaryText"}>
+						<div className={"flex justify-between text-xs text-muted"}>
 							<span>{formatTime(nowSeconds)}</span>
 							<span>{formatTime(video.duration)}</span>
 						</div>

@@ -15,7 +15,7 @@ export default function GitHistorySection({ history }: { history: GitHistory[] }
                                 <h4>Additions</h4>
                                 <ul>
                                     {i.additions.map((i, index) => (
-                                        <li key={index} className={"text-green-300"}>
+                                        <li key={index} className={"text-success"}>
                                             {i}
                                         </li>
                                     ))}
@@ -27,7 +27,7 @@ export default function GitHistorySection({ history }: { history: GitHistory[] }
                                 <h4>Deletions</h4>
                                 <ul>
                                     {i.deletions.map((i, index) => (
-                                        <li key={index} className={"text-red-300"}>
+                                        <li key={index} className={"text-danger"}>
                                             {i}
                                         </li>
                                     ))}
@@ -39,7 +39,7 @@ export default function GitHistorySection({ history }: { history: GitHistory[] }
                                 <h4>Changes</h4>
                                 <ul>
                                     {i.changes.map((i, index) => (
-                                        <li key={index} className={"text-blue-300"}>
+                                        <li key={index} className={"text-info"}>
                                             {i}
                                         </li>
                                     ))}

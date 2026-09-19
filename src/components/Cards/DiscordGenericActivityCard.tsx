@@ -17,7 +17,7 @@ export default function DiscordGenericActivityCard({
 	return (
 		activityD && (
 			<div
-				className={`flex max-w-48 items-center overflow-hidden rounded-md bg-accentbackground bg-opacity-90 ${className}`}
+				className={`flex max-w-48 items-center overflow-hidden rounded-md bg-surface/90 ${className}`}
 			>
 				{activityD.asset && (
 					<img
@@ -29,13 +29,13 @@ export default function DiscordGenericActivityCard({
 				<div className={"w-full overflow-hidden p-2"}>
 					<p className={"truncate text-sm font-semibold"}>{activityD.name}</p>
 					<p
-						className={"truncate text-xs text-gray-400"}
+						className={"truncate text-xs text-muted"}
 						title={activityD.description}
 					>
 						{activityD.description}
 					</p>
 					<p
-						className={"truncate text-xs text-gray-400"}
+						className={"truncate text-xs text-muted"}
 						title={activityD.details}
 					>
 						{activityD.details}

@@ -20,21 +20,21 @@ export default function SkillSection({
         <div
           onClick={() => setHoveredCategory("")}
           className={
-            "w-full max-w-28 cursor-pointer rounded-full bg-accentbackground p-4 text-center text-xs font-bold uppercase text-secondaryText"
+            "w-full max-w-28 cursor-pointer rounded-full bg-surface p-4 text-center text-xs font-bold uppercase text-muted"
           }
         >
-          <span className={!hoveredCategory ? "text-highlight" : ""}>All</span>
+          <span className={!hoveredCategory ? "text-primary" : ""}>All</span>
         </div>
         {categories.map((category, i) => (
           <div
             key={i}
             onClick={() => setHoveredCategory(category)}
             className={
-              "w-full max-w-28 cursor-pointer rounded-full bg-accentbackground p-4 text-center text-xs font-bold uppercase text-secondaryText"
+              "w-full max-w-28 cursor-pointer rounded-full bg-surface p-4 text-center text-xs font-bold uppercase text-muted"
             }
           >
             <span
-              className={hoveredCategory === category ? "text-highlight" : ""}
+              className={hoveredCategory === category ? "text-primary" : ""}
             >
               {category}
             </span>

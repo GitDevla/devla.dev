@@ -12,7 +12,7 @@ export default function ArtistCard({ artist }: { artist: IPostToPArtist }) {
 	return (
 		<div
 			className={
-				"group relative h-full w-full content-center overflow-hidden rounded-lg border border-gray-800 transition-transform hover:scale-105"
+				"group relative h-full w-full content-center overflow-hidden rounded-lg border border-border transition-transform hover:scale-105"
 			}
 		>
 			<Link href={`https://music.youtube.com/channel/${ytUrl}`} external>
@@ -21,7 +21,7 @@ export default function ArtistCard({ artist }: { artist: IPostToPArtist }) {
 						backgroundImage: `url(${thumbnail_url})`,
 					}}
 					className={
-						"absolute left-0 top-0 -z-10 size-full overflow-hidden bg-cover bg-center blur-sm brightness-50 filter transition-all group-hover:blur"
+						"absolute left-0 top-0 -z-10 size-full overflow-hidden bg-cover bg-center blur-xs brightness-50 filter transition-all group-hover:blur"
 					}
 				/>
 				<div
@@ -42,7 +42,7 @@ export default function ArtistCard({ artist }: { artist: IPostToPArtist }) {
 					<div className={"my-auto sm:px-6"}>
 						<h3
 							className={
-								"line-clamp-1 text-lg font-medium leading-6 text-white"
+								"line-clamp-1 text-lg font-medium leading-6 text-text"
 							}
 						>
 							{artist_name.replace(" - Topic", "")}

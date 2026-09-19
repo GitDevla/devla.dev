@@ -1,7 +1,8 @@
 import cron from "node-cron";
+import isProduction from "@/utils/isProd";
 
 export function register() {
-   if (process.env.NODE_ENV === "production") {
+   if (isProduction) {
     cron.schedule("0 5 * * 1", revalidateMusic);
  }
 }

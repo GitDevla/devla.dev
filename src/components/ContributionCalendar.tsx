@@ -36,7 +36,7 @@ export default async function ContributionCalendar() {
 					{githubContributions
 						.filter((d: any) => d.date.split("-")[2] == "01")
 						.map((day: any, index: any) => (
-							<div key={index} className={"text-xs text-secondaryText"}>
+							<div key={index} className={"text-xs text-muted"}>
 								{new Date(day.date).toLocaleString("default", {
 									month: "short",
 								})}
@@ -44,7 +44,7 @@ export default async function ContributionCalendar() {
 						))}
 				</div>
 				<div
-					className={"flex flex-col justify-evenly text-sm text-secondaryText"}
+					className={"flex flex-col justify-evenly text-sm text-muted"}
 				>
 					<span>Mon</span>
 					<span>Wed</span>
@@ -58,9 +58,9 @@ export default async function ContributionCalendar() {
 					{githubContributions.map((day: any, index: any) => (
 						<div
 							key={index}
-							className={"aspect-square size-full rounded-sm"}
+							className={"aspect-square size-full rounded-xs"}
 							style={{
-								backgroundColor: `color-mix(in hsl, rgb(var(--accentbackground)), rgb(var(--highlight)) ${Math.min(day.contributionCount / highestCount, 1) * 100}%)`,
+								backgroundColor: `color-mix(in hsl, var(--color-surface), var(--color-primary) ${Math.min(day.contributionCount / highestCount, 1) * 100}%)`,
 							}}
 						>
 							<Hover
@@ -75,7 +75,7 @@ export default async function ContributionCalendar() {
 			</div>
 			<div
 				className={
-					"flex items-center justify-between pt-2 text-sm text-secondaryText"
+					"flex items-center justify-between pt-2 text-sm text-muted"
 				}
 			>
 				<div>{totalContributions} contributions in the last year</div>
@@ -84,9 +84,9 @@ export default async function ContributionCalendar() {
 					{[0, 25, 50, 75, 100].map((percent) => (
 						<div
 							key={percent}
-							className={"aspect-square size-3 rounded-sm"}
+							className={"aspect-square size-3 rounded-xs"}
 							style={{
-								backgroundColor: `color-mix(in hsl, rgb(var(--accentbackground)), rgb(var(--highlight)) ${percent}%)`,
+								backgroundColor: `color-mix(in hsl, var(--color-surface), var(--color-primary) ${percent}%)`,
 							}}
 						/>
 					))}

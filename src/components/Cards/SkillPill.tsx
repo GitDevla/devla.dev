@@ -4,7 +4,7 @@ export default function SkillPill({ name }: Readonly<{ name: string }>) {
   return (
     <div
       className={
-        "mr-1 flex items-center gap-1 rounded-full border border-primaryText bg-accentbackground p-1 px-2 text-xs"
+        "mr-1 flex items-center gap-1 rounded-full border border-text bg-surface p-1 px-2 text-xs"
       }
     >
       <SimpleIcon

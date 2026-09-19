@@ -1,17 +1,93 @@
-:root.light {
-  --background: 244 244 242;
-  --accentbackground: 222 222 222;
-  --primaryText: 73 84 100;
-  --secondaryText: 17 24 39;
-  --highlight: 59 130 246;
-  --border: 229 231 235;
+@theme {
+  --color-*: initial;
+
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-inherit: inherit;
+
+  --color-canvas: #111827;
+  --color-surface: #1a2131;
+  --color-raised: #212939;
+  --color-border: #2d3546;
+  --color-text: #edfeff;
+  --color-muted: #adbcdd;
+  --color-primary: #60a5fa;
+  --color-secondary: #60c2e7;
+  --color-danger: #e56b50;
+  --color-warning: #ffd575;
+  --color-success: #88a739;
+  --color-info: #3795e0;
+  --color-on-primary: #111827;
+  --color-on-secondary: #111827;
+  --color-on-danger: #111827;
+  --color-on-warning: #111827;
+  --color-on-success: #111827;
+  --color-on-info: #111827;
 }
 
-:root {
-  --background: 17 24 39;
-  --accentbackground: 31 41 55;
-  --primaryText: 243 244 246;
-  --secondaryText: 172 179 193;
-  --highlight: 96 165 250;
-  --border: 55 65 81;
+@supports (color: oklch(0 0 0)) {
+  :root {
+    --color-canvas: oklch(21.01% 0.0318 264.66);
+    --color-surface: oklch(25.01% 0.0318 264.66);
+    --color-raised: oklch(28.01% 0.0318 264.66);
+    --color-border: oklch(33.01% 0.0318 264.66);
+    --color-text: oklch(99.47% 0.0494 265.09);
+    --color-muted: oklch(79.47% 0.0494 265.09);
+    --color-primary: oklch(71.37% 0.1434 254.62);
+    --color-secondary: oklch(76.98% 0.1059 224.96);
+    --color-danger: oklch(67% 0.1574 33.99);
+    --color-warning: oklch(89.38% 0.1259 83.62);
+    --color-success: oklch(68.37% 0.1416 123.91);
+    --color-info: oklch(65% 0.1416 246.45);
+    --color-on-primary: oklch(21.01% 0.0318 264.66);
+    --color-on-secondary: oklch(21.01% 0.0318 264.66);
+    --color-on-danger: oklch(21.01% 0.0318 264.66);
+    --color-on-warning: oklch(21.01% 0.0318 264.66);
+    --color-on-success: oklch(21.01% 0.0318 264.66);
+    --color-on-info: oklch(21.01% 0.0318 264.66);
+  }
+}
+
+:root.light {
+  --color-canvas: #e8eefc;
+  --color-surface: #dae1ef;
+  --color-raised: #d1d7e5;
+  --color-border: #c1c7d5;
+  --color-text: #2a3650;
+  --color-muted: #505d7a;
+  --color-primary: #0c58c8;
+  --color-secondary: #006469;
+  --color-danger: #a33931;
+  --color-warning: #825400;
+  --color-success: #3d6908;
+  --color-info: #006299;
+  --color-on-primary: #e8eefc;
+  --color-on-secondary: #e8eefc;
+  --color-on-danger: #e8eefc;
+  --color-on-warning: #e8eefc;
+  --color-on-success: #e8eefc;
+  --color-on-info: #e8eefc;
+}
+
+@supports (color: oklch(0 0 0)) {
+  :root.light {
+    --color-canvas: oklch(94.93% 0.02 264.66);
+    --color-surface: oklch(90.93% 0.02 264.66);
+    --color-raised: oklch(87.93% 0.02 264.66);
+    --color-border: oklch(82.93% 0.02 264.66);
+    --color-text: oklch(33.48% 0.0494 265.09);
+    --color-muted: oklch(48% 0.0494 265.09);
+    --color-primary: oklch(49% 0.188 259.81);
+    --color-secondary: oklch(45% 0.0935 199.41);
+    --color-danger: oklch(49.5% 0.1419 27.9);
+    --color-warning: oklch(48.5% 0.1135 77.08);
+    --color-success: oklch(47% 0.1277 132.54);
+    --color-info: oklch(47% 0.1277 237.36);
+    --color-on-primary: oklch(94.93% 0.02 264.66);
+    --color-on-secondary: oklch(94.93% 0.02 264.66);
+    --color-on-danger: oklch(94.93% 0.02 264.66);
+    --color-on-warning: oklch(94.93% 0.02 264.66);
+    --color-on-success: oklch(94.93% 0.02 264.66);
+    --color-on-info: oklch(94.93% 0.02 264.66);
+  }
 }

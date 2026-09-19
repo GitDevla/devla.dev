@@ -13,16 +13,16 @@ export default function DiscordStatusDot({
   let color;
   switch (discordData.status) {
     case "online":
-      color = "bg-green-500";
+      color = "bg-success";
       break;
     case "dnd":
-      color = "bg-red-500";
+      color = "bg-danger";
       break;
     case "idle":
-      color = "bg-yellow-500";
+      color = "bg-warning";
       break;
     default:
-      color = "bg-gray-500";
+      color = "bg-muted";
   }
   return (
     <Hover className={className} hoverText={discordData.status}>

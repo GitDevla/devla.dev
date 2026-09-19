@@ -21,11 +21,11 @@ export default function RepoCard({ repo }: Readonly<{ repo: IRepo }>) {
         <div className={"flex items-center"}>
           <h3 className={"line-clamp-1 text-lg font-bold"}>{repo.name}</h3>
           {repo.archived && (
-            <p className={"ml-1 text-secondaryText"}>(Archived)</p>
+            <p className={"ml-1 text-muted"}>(Archived)</p>
           )}
         </div>
 
-        <div className={"line-clamp-2 text-base text-secondaryText"}>
+        <div className={"line-clamp-2 text-base text-muted"}>
           {repo.description ? (
             <p className={""}>{repo.description}</p>
           ) : (
@@ -33,7 +33,7 @@ export default function RepoCard({ repo }: Readonly<{ repo: IRepo }>) {
           )}
         </div>
         <div>
-          <p className={"mt-3 text-xs text-secondaryText"}>
+          <p className={"mt-3 text-xs text-muted"}>
             Last Updated: {formatTimeAgo(repo.updated_at)}
           </p>
         </div>

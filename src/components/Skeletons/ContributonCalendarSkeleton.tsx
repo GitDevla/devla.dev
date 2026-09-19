@@ -9,7 +9,7 @@ export default function ContributionCalendarSkeleton() {
                 <div />
                 <div className={"flex justify-evenly"}>
                     {[...Array(12)].map((_, index) => (
-                        <div key={index} className={"text-xs text-secondaryText"}>
+                        <div key={index} className={"text-xs text-muted"}>
                             {new Date(`1980.${index + 1}.01`).toLocaleString("default", {
                                 month: "short",
                             })}
@@ -17,7 +17,7 @@ export default function ContributionCalendarSkeleton() {
                     ))}
                 </div>
                 <div
-                    className={"flex flex-col justify-evenly text-sm text-secondaryText"}
+                    className={"flex flex-col justify-evenly text-sm text-muted"}
                 >
                     <span>Mon</span>
                     <span>Wed</span>
@@ -27,14 +27,14 @@ export default function ContributionCalendarSkeleton() {
                     {[...Array(365)].map((_, i) => (
                         <div
                             key={i}
-                            className={"aspect-square size-full rounded-sm bg-accentbackground"}
+                            className={"aspect-square size-full rounded-xs bg-surface"}
                         />
                     ))}
                 </div>
             </div>
             <div
                 className={
-                    "flex items-center justify-between pt-2 text-sm text-secondaryText"
+                    "flex items-center justify-between pt-2 text-sm text-muted"
                 }
             >
                 <div>{100} contributions in the last year</div>
@@ -43,9 +43,9 @@ export default function ContributionCalendarSkeleton() {
                     {[0, 25, 50, 75, 100].map((percent) => (
                         <div
                             key={percent}
-                            className={"aspect-square size-3 rounded-sm"}
+                            className={"aspect-square size-3 rounded-xs"}
                             style={{
-                                backgroundColor: `color-mix(in hsl, rgb(var(--accentbackground)), rgb(var(--highlight)) ${percent}%)`,
+                                backgroundColor: `color-mix(in hsl, var(--color-surface), var(--color-primary) ${percent}%)`,
                             }}
                         />
                     ))}

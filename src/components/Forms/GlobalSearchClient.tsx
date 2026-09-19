@@ -107,7 +107,7 @@ export default function GlobalSearchClient({
 			<input
 				type={"text"}
 				className={
-					"hidden w-full rounded-lg bg-inherit p-2 outline-none sm:block"
+					"hidden w-full rounded-lg bg-inherit p-2 outline-hidden sm:block"
 				}
 				placeholder={"Search..."}
 				ref={inputRef}
@@ -119,7 +119,7 @@ export default function GlobalSearchClient({
 			{extended && (
 				<div
 					className={
-						"absolute z-50 max-h-[200px] w-full overflow-scroll rounded-lg rounded-t-none border border-t-0 border-accentbackground bg-background p-2"
+						"absolute z-50 max-h-[200px] w-full overflow-scroll rounded-lg rounded-t-none border border-t-0 border-surface bg-canvas p-2"
 					}
 				>
 					<ul className={"group"}>
@@ -129,7 +129,7 @@ export default function GlobalSearchClient({
 									key={i}
 									tabIndex={i}
 									onClick={() => navigateToPage(page)}
-									className={`mb-2 cursor-pointer rounded-lg bg-inherit p-2 ${focusedIndex === i ? "!bg-accentbackground" : ""} outline-none`}
+									className={`mb-2 cursor-pointer rounded-lg bg-inherit p-2 ${focusedIndex === i ? "bg-surface!" : ""} outline-hidden`}
 									onMouseOver={() => {
 										setMouseHover(true);
 										setFocusedIndex(i);
@@ -143,7 +143,7 @@ export default function GlobalSearchClient({
 								</li>
 							))
 						) : (
-							<li className={"mb-2 p-2 text-secondaryText"}>
+							<li className={"mb-2 p-2 text-muted"}>
 								No results found
 							</li>
 						)}

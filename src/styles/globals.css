@@ -1,4 +1,9 @@
-@import "./core.css";
-@import "./tailwind.css";
-@import "./typography.css";
+@import "tailwindcss";
+@import "./theme.css";
 @import "./colors.css";
+@import "./typography.css";
+@import "./core.css";
+
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where(.dark, .dark *));

@@ -75,12 +75,12 @@ export default function AboutPage() {
 					</p>
 					<p>
 						<span className={"inline-block scale-125"}>🛠️</span> I'm more of a{" "}
-						<span className={"quote italic text-secondaryText"}>
+						<span className={"quote italic text-muted"}>
 							Jack of all trades, master of <s>none</s>
 							<span className={"relative w-0"}>
 								<span
 									className={
-										"absolute -left-[calc(4ch_+_0.4rem)] -top-[0.2rem] box-border inline-block -rotate-[10deg] scale-90 bg-primaryText px-1 py-[1px] font-medium text-background"
+										"absolute -left-[calc(4ch_+_0.4rem)] -top-[0.2rem] box-border inline-block -rotate-[10deg] scale-90 bg-text px-1 py-[1px] font-medium text-canvas"
 									}
 								>
 									some
@@ -143,7 +143,7 @@ export default function AboutPage() {
 						/>
 					</a>
 					, or by filling out the form below.
-					<p className={"font-bold text-highlight"}>
+					<p className={"font-bold text-primary"}>
 						I'm not associated with the{" "}
 						<a
 							href={"https://www.linkedin.com/company/devla"}

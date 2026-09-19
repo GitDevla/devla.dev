@@ -27,7 +27,7 @@ export default function GoToTop() {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }}
       className={
-        "fixed bottom-4 right-9 z-50 h-12 w-12 rounded-full bg-accentbackground p-2 text-center transition-opacity"
+        "fixed bottom-4 right-9 z-50 h-12 w-12 rounded-full bg-surface p-2 text-center transition-opacity"
       }
       style={{
         opacity: visible ? 1 : 0,

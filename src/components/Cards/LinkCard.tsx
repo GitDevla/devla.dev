@@ -13,7 +13,7 @@ export default function LinkCard({
     <Link href={href}>
       <div className={"card h-full transition-colors"}>
         <h3 className={"font-semibold"}>{name}</h3>
-        <p className={"text-sm text-secondaryText"}>{desctiption}</p>
+        <p className={"text-sm text-muted"}>{desctiption}</p>
       </div>
     </Link>
   );

@@ -1,0 +1,42 @@
+@theme {
+  --font-sans: var(--font-recursive), ui-sans-serif, system-ui, sans-serif;
+  --font-display:
+    var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  --font-weight-normal: 300;
+
+  --ease-steps4: steps(4, jump-start);
+
+  --animate-blink: blinking 1.5s infinite;
+  --animate-infiniteScroll: infiniteScroll 25s linear infinite;
+  --animate-animateBackground: animateBackground 35s linear infinite;
+
+  @keyframes blinking {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes infiniteScroll {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(calc(-100% - 0.5rem));
+    }
+  }
+
+  @keyframes animateBackground {
+    0% {
+      background-position: 0px 0px;
+    }
+    100% {
+      background-position: 600px 0px;
+    }
+  }
+}

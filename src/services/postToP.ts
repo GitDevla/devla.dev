@@ -35,7 +35,7 @@ function getVideoURL(videoID: string) {
 }
 
 export async function pullPostToPArtists(): Promise<IPostToPArtist[]> {
-	// if (!isProduction) return await mockDataArtist();
+	if (!isProduction) return await mockDataArtist();
 
 	const lastWeekSunday = LastWeekSunday();
 	const lastWeekMonday = LastWeekMonday();
@@ -49,7 +49,7 @@ export async function pullPostToPArtists(): Promise<IPostToPArtist[]> {
 }
 
 export async function pullPostToPMusic(): Promise<IPostToPMusic[]> {
-	// if (!isProduction) return await mockDataMusic();
+	if (!isProduction) return await mockDataMusic();
 
 	const lastWeekSunday = LastWeekSunday();
 	const lastWeekMonday = LastWeekMonday();
@@ -63,8 +63,10 @@ export async function pullPostToPMusic(): Promise<IPostToPMusic[]> {
 	return data;
 }
 
-export async function pullPostToPGenres(): Promise<IPostToPGenre[]> {
-	// if (!isProduction) return await mockDataGenre();
+export async function pullPostToPGenres(): Promise<
+	{ genre: string; times: number }[]
+> {
+	if (!isProduction) return await mockDataGenre();
 
 	const lastWeekSunday = LastWeekSunday();
 	const lastWeekMonday = LastWeekMonday();

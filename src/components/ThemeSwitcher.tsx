@@ -10,7 +10,7 @@ export default function ThemeSwitcher() {
       onClick={() => setTheme(resolvedTheme === "light" ? "dark" : "light")}
     >
       <svg
-        className={"block fill-primaryText dark:hidden"}
+        className={"block fill-text dark:hidden"}
         fill={"currentColor"}
         viewBox={"0 0 20 20"}
       >
@@ -21,7 +21,7 @@ export default function ThemeSwitcher() {
         />
       </svg>
       <svg
-        className={"hidden fill-primaryText dark:block"}
+        className={"hidden fill-text dark:block"}
         fill={"currentColor"}
         viewBox={"0 0 20 20"}
       >

@@ -21,7 +21,7 @@ export default async function TopGenreShowcase() {
 				<div
 					key={i}
 					className={
-						"group relative cursor-pointer p-2 transition-all hover:z-10 hover:!w-[90%] dark:backdrop-invert"
+						"group relative cursor-pointer p-2 transition-all hover:z-10 hover:w-[90%]! dark:backdrop-invert"
 					}
 					style={{
 						width: `${genre.percentage}%`,
@@ -34,7 +34,7 @@ export default async function TopGenreShowcase() {
 									: "0",
 						borderRight:
 							i != genrePercentages.length - 1
-								? "1px solid rgb(var(--secondaryText))"
+								? "1px solid var(--color-muted)"
 								: "none",
 					}}
 				>

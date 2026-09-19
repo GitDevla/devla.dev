@@ -1,98 +1,107 @@
-.text-balance {
-  text-wrap: balance;
+@utility quote {
+  &::before {
+    content: "„";
+  }
+  &::after {
+    content: "“";
+  }
 }
 
-.card {
-  @apply block size-auto rounded-lg border border-border bg-accentbackground p-3 hover:bg-opacity-55;
-}
-
-.header {
-  @apply mb-3 font-bold uppercase;
-}
-
-.subheader {
-  @apply mb-2 text-base font-bold uppercase;
-}
-
-.link {
-  @apply underlinea underlinea-highlight text-highlight;
-}
-
-section {
-  @apply mb-7;
-}
-
-/* body::-webkit-scrollbar {
-  display: none;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-} */
-
-* {
-  scrollbar-color: rgb(var(--highlight)) rgb(var(--background));
-}
-*::-webkit-scrollbar-track {
-  background: rgb(var(--highlight));
-}
-*::-webkit-scrollbar-thumb {
-  background-color: rgb(var(--background));
-  border-radius: 20px;
-  border: 3px solid rgb(var(--highlight));
-}
-
-.page-transition {
-  @apply opacity-30;
-}
-.pause {
-  animation-play-state: paused;
-}
-
-blockquote {
-  @apply quote;
-}
-
-.quote::before {
-  content: "„";
-}
-
-.quote::after {
-  content: "“";
-}
-
-.underlinea {
+@utility underlinea {
   @apply relative;
+
+  &:after {
+    @apply absolute bottom-0 left-1/2 block h-[.05em] w-[80%] -translate-x-1/2 bg-text/90 bg-clip-content transition-all content-[""];
+  }
+
+  &:hover:after {
+    @apply w-full;
+  }
 }
 
-.underlinea:after {
-  @apply absolute bottom-0 left-1/2 block h-[.05em] w-[80%] -translate-x-1/2 bg-primaryText bg-opacity-90 bg-clip-content transition-all content-[""];
+@utility underlinea-w-0 {
+  &::after {
+    @apply w-0;
+  }
 }
 
-.underlinea-w-0::after {
-  @apply w-0;
+@utility underlinea-primary {
+  &::after {
+    @apply bg-primary;
+  }
 }
 
-.underlinea-highlight::after {
-  @apply bg-highlight;
-}
-.underlinea-secondaryText::after {
-  @apply bg-secondaryText;
-}
-.underlinea:hover:after {
-  @apply w-full;
+@utility underlinea-muted {
+  &::after {
+    @apply bg-muted;
+  }
 }
 
-ul.tree ul {
-  @apply ml-3;
+@layer base {
+  section {
+    @apply mb-7;
+  }
+
+  /* body::-webkit-scrollbar {
+    display: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  } */
+
+  * {
+    scrollbar-color: var(--color-primary) var(--color-canvas);
+  }
+  *::-webkit-scrollbar-track {
+    background: var(--color-primary);
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--color-canvas);
+    border-radius: 20px;
+    border: 3px solid var(--color-primary);
+  }
+
+  blockquote {
+    @apply quote;
+  }
+
+  ul.tree ul {
+    @apply ml-3;
+  }
+  ul.tree li {
+    @apply line-clamp-1 w-full border-l border-text px-2 font-mono break-all text-primary underline;
+  }
+  ul.tree li:last-child {
+    @apply border-l-0;
+  }
+  ul.tree li:before {
+    @apply relative top-[-0.3em] left-[-0.5em] inline-block h-[1em] w-3 border-b border-text content-[""];
+  }
+  ul.tree li:last-child:before {
+    @apply border-l border-text;
+  }
 }
-ul.tree li {
-  @apply line-clamp-1 w-full break-all border-l border-primaryText px-2 text-highlight underline;
-}
-ul.tree li:last-child {
-  @apply border-l-0;
-}
-ul.tree li:before {
-  @apply relative left-[-0.5em] top-[-0.3em] inline-block h-[1em] w-3 border-b border-primaryText content-[""];
-}
-ul.tree li:last-child:before {
-  @apply border-l border-primaryText;
+
+@layer components {
+  .card {
+    @apply block size-auto rounded-lg border border-border bg-surface p-3 hover:bg-surface/55;
+  }
+
+  .header {
+    @apply mb-3 font-bold tracking-wide uppercase;
+  }
+
+  .subheader {
+    @apply mb-2 font-bold tracking-wide text-base uppercase;
+  }
+
+  .link {
+    @apply underlinea underlinea-primary text-primary;
+  }
+
+  .page-transition {
+    @apply opacity-30;
+  }
+  .pause {
+    animation-play-state: paused;
+  }
 }

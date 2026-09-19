@@ -17,13 +17,13 @@ export default function MusicCard({
 	const thumbnail_url = `https://i.ytimg.com/vi/${video_id}/hqdefault.jpg`;
 	return (
 		<div
-			className={`group relative ${className} h-full w-full content-center overflow-hidden rounded-lg border border-gray-800 transition-transform hover:scale-105`}
+			className={`group relative ${className} h-full w-full content-center overflow-hidden rounded-lg border border-border transition-transform hover:scale-105`}
 		>
 			<Link href={ytUrl} external>
 				<YoutubeThumbnail
 					thumbnail_url={thumbnail_url}
 					className={
-						"-z-10 blur-sm brightness-50 filter transition-all group-hover:blur"
+						"-z-10 blur-xs brightness-50 filter transition-all group-hover:blur"
 					}
 					lowRes
 				/>
@@ -40,7 +40,7 @@ export default function MusicCard({
 						<YoutubeThumbnail thumbnail_url={thumbnail_url} lowRes={small} />
 						<div
 							className={
-								"absolute flex h-full w-full items-center justify-center text-6xl text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+								"absolute flex h-full w-full items-center justify-center text-6xl text-text opacity-0 transition-opacity duration-300 group-hover:opacity-100"
 							}
 						>
 							▶
@@ -48,17 +48,17 @@ export default function MusicCard({
 					</div>
 					<div className={"flex flex-col justify-center break-all"}>
 						<h3
-							className={`line-clamp-2 font-medium text-white ${
+							className={`line-clamp-2 font-medium text-text ${
 								small ? "text-base" : "text-lg"
 							}`}
 						>
 							{title}
 						</h3>
-						<p className={"mt-1 line-clamp-1 text-sm text-gray-400"}>
+						<p className={"mt-1 line-clamp-1 text-sm text-muted"}>
 							by {artist.replace(" - Topic", "")}
 						</p>
 					</div>
-					<div className={"absolute bottom-1 right-1 text-white"}>
+					<div className={"absolute bottom-1 right-1 text-text"}>
 						x{listen_count}
 					</div>
 				</div>

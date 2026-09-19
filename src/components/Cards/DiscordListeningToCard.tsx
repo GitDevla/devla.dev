@@ -30,7 +30,7 @@ export default function DiscordListeningToCard({
 		title &&
 		artist && (
 			<div
-				className={`flex max-w-48 items-center overflow-hidden rounded-md bg-accentbackground bg-opacity-90 ${className}`}
+				className={`flex max-w-48 items-center overflow-hidden rounded-md bg-surface/90 ${className}`}
 			>
 				{imageUrl && (
 					<div className="relative aspect-square h-full rounded-md object-cover">
@@ -43,7 +43,7 @@ export default function DiscordListeningToCard({
 						{display.title}
 					</p>
 					<p
-						className={"truncate text-xs text-gray-400"}
+						className={"truncate text-xs text-muted"}
 						title={display.subtitle}
 					>
 						by {display.subtitle}

@@ -22,7 +22,7 @@ export default function Hover({
       {isHovered && (
         <div
           className={
-            "pointer-events-none absolute -top-1 left-1/2 h-auto -translate-x-1/2 -translate-y-full whitespace-nowrap rounded-md border border-border bg-accentbackground px-2 py-1 text-sm opacity-95 transition-opacity first-letter:capitalize"
+            "pointer-events-none absolute -top-1 left-1/2 h-auto -translate-x-1/2 -translate-y-full whitespace-nowrap rounded-md border border-border bg-surface px-2 py-1 text-sm opacity-95 transition-opacity first-letter:capitalize"
           }
         >
           {hoverText}

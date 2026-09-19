@@ -14,13 +14,13 @@ export function BreadcrumbTitle() {
         <div key={index} className={"flex"}>
           <Link
             href={`/${paths.slice(1, index + 1).join("/")}`}
-            className={`mr-1 capitalize ${index !== paths.length - 1 && "underlinea underlinea-secondaryText underlinea-w-0"}`}
+            className={`mr-1 capitalize ${index !== paths.length - 1 && "underlinea underlinea-muted underlinea-w-0"}`}
             style={{
               fontWeight: index === paths.length - 1 ? "600" : "300",
               color:
                 index === paths.length - 1
-                  ? "rgb(var(--primaryText))"
-                  : "rgb(var(--secondaryText))",
+                  ? "var(--color-text)"
+                  : "var(--color-muted)",
             }}
           >
             {path}

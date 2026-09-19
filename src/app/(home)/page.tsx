@@ -95,7 +95,7 @@ export default async function Home() {
 						<div className={"flex items-center gap-2"}>
 							<h1 className={"text-2xl font-bold"}>Hi, I am Devla.</h1>
 							<DiscordStatusDot
-								className={"inline-block size-4 rounded-full bg-background"}
+								className={"inline-block size-4 rounded-full bg-canvas"}
 							/>
 						</div>
 						<p className={"break-all text-sm md:text-base"}>
@@ -122,7 +122,7 @@ export default async function Home() {
 					</div>
 					<blockquote
 						className={
-							"mt-4 text-xs italic text-secondaryText md:ml-2 md:text-sm"
+							"mt-4 text-xs italic text-muted md:ml-2 md:text-sm"
 						}
 					>
 						Let's fall and fall into the vortex of this hole-dwelling life.

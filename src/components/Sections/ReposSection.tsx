@@ -95,7 +95,7 @@ export default function ReposSection({ repos }: { repos: IRepo[] }) {
             ))}
           </div>
         ) : (
-          <p className={"text-center text-secondaryText"}>
+          <p className={"text-center text-muted"}>
             No repositories match the search
           </p>
         )}

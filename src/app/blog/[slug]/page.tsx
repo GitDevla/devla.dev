@@ -23,22 +23,20 @@ function generateJsonLd(blog: IMarkdown) {
     description: blog.metadata.subtitle,
     author: {
       "@type": "Person",
-      name: "David Pataki"
+      name: "David Pataki",
     },
     datePublished: blog.metadata.created,
     dateModified: blog.metadata.lastUpdated,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": "https://devla.dev/blog/" + blog.metadata.slug
+      "@id": "https://devla.dev/blog/" + blog.metadata.slug,
     },
     image: {
       "@type": "ImageObject",
       url: blog.metadata.coverImage,
-    }
+    },
   };
 }
-
-
 
 export async function generateStaticParams() {
   const postMetadata = await fetchProjects();
@@ -86,21 +84,15 @@ export default async function BlogPage(props: any) {
 
       <article
         className={
-          "prose mx-auto mt-8 max-w-[80ch] text-justify dark:prose-invert"
+          "mx-auto prose mt-8 max-w-[70ch] hyphens-auto dark:prose-invert prose-headings:font-display prose-headings:font-bold"
         }
       >
         <ReadTime content={post.content} />
         <Markdown>{post.content}</Markdown>
         <hr />
         <div className={"flex justify-between"}>
-          <span>
-            Created:{" "}
-            {formatTimeAgo(post.metadata.created)}
-          </span>
-          <span>
-            Last Updated:{" "}
-            {formatTimeAgo(post.metadata.lastUpdated)}
-          </span>
+          <span>Created: {formatTimeAgo(post.metadata.created)}</span>
+          <span>Last Updated: {formatTimeAgo(post.metadata.lastUpdated)}</span>
         </div>
         {/* <GitHistorySection history={history} /> */}
       </article>

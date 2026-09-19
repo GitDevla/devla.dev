@@ -11,7 +11,7 @@ export default async function ProjectCard({ post }: { post: any }) {
   return (
     <div
       className={
-        "group relative mt-6 grid w-full overflow-hidden rounded-md p-4 shadow-sm sm:grid-cols-[4fr_1fr] sm:even:grid-cols-[1fr_4fr]"
+        "group relative mt-6 grid w-full overflow-hidden rounded-md p-4 shadow-xs sm:grid-cols-[4fr_1fr] sm:even:grid-cols-[1fr_4fr]"
       }
     >
       <div
@@ -19,7 +19,7 @@ export default async function ProjectCard({ post }: { post: any }) {
           "order-2 flex flex-col p-5 group-even:items-end sm:order-1 sm:group-even:order-2"
         }
       >
-        <p className={"mb-1 text-sm text-secondaryText"}>
+        <p className={"mb-1 text-sm text-muted"}>
           {metadata.date
             ? metadata.date
             : `${metadata.fromdate} - ${metadata.todate}`}
@@ -46,7 +46,7 @@ export default async function ProjectCard({ post }: { post: any }) {
             {metadata.title}
           </h2>
         </div>
-        <p className={"mb-4 text-primaryText sm:text-secondaryText"}>
+        <p className={"mb-4 text-text sm:text-muted"}>
           {metadata.subtitle}
         </p>
         <div
@@ -57,7 +57,7 @@ export default async function ProjectCard({ post }: { post: any }) {
           <Link href={`/blog/${metadata.slug}`}>
             <div
               className={
-                "flex gap-2 rounded-md bg-highlight p-2 transition-colors hover:bg-opacity-100 sm:bg-opacity-50"
+                "flex gap-2 rounded-md bg-primary p-2 transition-colors sm:bg-primary/50 sm:hover:bg-primary"
               }
             >
               Read
@@ -75,7 +75,7 @@ export default async function ProjectCard({ post }: { post: any }) {
             <Link href={metadata.tryLink}>
               <div
                 className={
-                  "flex gap-2 rounded-md bg-accentbackground p-2 transition-colors hover:bg-opacity-100 sm:bg-opacity-50"
+                  "flex gap-2 rounded-md bg-surface p-2 transition-colors sm:bg-surface/50 sm:hover:bg-surface"
                 }
               >
                 Try
@@ -94,7 +94,7 @@ export default async function ProjectCard({ post }: { post: any }) {
             <Link href={metadata.sourceLink}>
               <div
                 className={
-                  "flex gap-2 rounded-md bg-accentbackground p-2 transition-colors hover:bg-opacity-100 sm:bg-opacity-50"
+                  "flex gap-2 rounded-md bg-surface p-2 transition-colors sm:bg-surface/50 sm:hover:bg-surface"
                 }
               >
                 Source
