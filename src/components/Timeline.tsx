@@ -66,7 +66,12 @@ export default async function Timeline({ source }: { source: string }) {
           />
           <h3 className={"text-lg font-semibold text-text"}>
             {group.link ? (
-              <a className={"link"} href={group.link}>
+              <a
+                className={"link"}
+                href={group.link}
+                target={"_blank"}
+                rel={"noopener noreferrer"}
+              >
                 {group.location}
               </a>
             ) : (

@@ -44,11 +44,18 @@ export default function AboutPage() {
 						<a
 							className={"link"}
 							href={"https://www.google.com/maps/place/Hungary/"}
+							target={"_blank"}
+							rel={"noopener noreferrer"}
 						>
 							Hungary
 						</a>{" "}
 						who recently graduated with a BSc in Computer Science from the{" "}
-						<a className={"link"} href={"https://inf.unideb.hu/"}>
+						<a
+							className={"link"}
+							href={"https://inf.unideb.hu/"}
+							target={"_blank"}
+							rel={"noopener noreferrer"}
+						>
 							University of Debrecen
 						</a>
 						.
@@ -108,7 +115,12 @@ export default function AboutPage() {
 						{/* resume */}
 						<span className={"inline-block scale-125"}>📄</span> You can check
 						out my
-						<a href={"/resume.pdf"} className={"link"}>
+						<a
+							href={"/resume.pdf"}
+							className={"link"}
+							target={"_blank"}
+							rel={"noopener noreferrer"}
+						>
 							{" "}
 							resume
 						</a>{" "}
@@ -143,6 +155,7 @@ export default function AboutPage() {
 						href={`https://discordredirect.discordsafe.com/users/${process.env.NEXT_PUBLIC_DISCORD_ID}`}
 						className={"link"}
 						target={"_blank"}
+						rel={"noopener noreferrer"}
 					>
 						@Devla
 						<SimpleIcon
@@ -156,8 +169,8 @@ export default function AboutPage() {
 						<a
 							href={"https://www.linkedin.com/company/devla"}
 							target={"_blank"}
-							className={"underline"}
-							rel="noopener"
+							className={"underline underline-offset-[0.2em]"}
+							rel={"noopener noreferrer"}
 						>
 							Devla
 						</a>{" "}

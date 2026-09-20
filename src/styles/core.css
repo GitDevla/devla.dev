@@ -14,7 +14,8 @@
     @apply absolute bottom-0 left-1/2 block h-[.05em] w-[80%] -translate-x-1/2 bg-text/90 bg-clip-content transition-all content-[""];
   }
 
-  &:hover:after {
+  &:hover:after,
+  &:focus-visible:after {
     @apply w-full;
   }
 }
@@ -40,6 +41,10 @@
 @layer base {
   section {
     @apply mb-8;
+  }
+
+  :where(a, button, summary, [tabindex]):focus-visible {
+    @apply rounded-xs outline-2 outline-offset-2 outline-primary;
   }
 
   /* body::-webkit-scrollbar {
@@ -86,7 +91,11 @@
 
 @layer components {
   .card {
-    @apply block size-auto rounded-lg border border-border bg-surface p-4 hover:bg-surface/55;
+    @apply block size-auto rounded-lg border border-border bg-surface p-4 transition-colors hover:border-primary/40 hover:bg-surface/55;
+  }
+
+  a:focus-visible .card {
+    @apply border-primary/40 bg-surface/55;
   }
 
   .header {
@@ -98,7 +107,16 @@
   }
 
   .link {
-    @apply underlinea underlinea-primary text-primary;
+    @apply text-primary underline decoration-primary/40 decoration-[0.08em] underline-offset-[0.2em] transition-[color,text-decoration-color,text-underline-offset] duration-200;
+  }
+
+  .link:hover,
+  .link:focus-visible {
+    @apply decoration-primary underline-offset-[0.3em];
+  }
+
+  .link[target="_blank"]::after {
+    @apply ml-[0.15em] inline-block align-baseline text-[0.7em] content-["\2197"];
   }
 
   .page-transition {

@@ -52,6 +52,15 @@
 }
 
 @layer utilities {
+  .prose a {
+    @apply decoration-primary/40 decoration-[0.08em] underline-offset-[0.2em] transition-[color,text-decoration-color,text-underline-offset] duration-200;
+  }
+
+  .prose a:hover,
+  .prose a:focus-visible {
+    @apply decoration-primary underline-offset-[0.3em];
+  }
+
   .prose {
     --tw-prose-body: var(--color-text);
     --tw-prose-headings: var(--color-text);

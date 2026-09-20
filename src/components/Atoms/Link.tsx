@@ -27,6 +27,7 @@ export default function Link({
                 className={className}
                 href={href}
                 target={"_blank"}
+                rel={"noopener noreferrer"}
                 {...props}
             >
                 {children}
