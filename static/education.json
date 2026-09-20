@@ -1,22 +1,32 @@
 [
   {
-    "from": "2026",
-    "to": "present",
-    "location": "Digital Solutions Kft., Hungary",
-    "description": "Currently working full-time as a Blazor/C# developer"
-  },
-  {
-    "from": "2023",
-    "to": "2026",
     "location": "University of Debrecen, Hungary",
-    "description": "Bachelor's degree in Computer Science",
-    "link": "https://inf.unideb.hu/"
+    "link": "https://inf.unideb.hu/",
+    "entries": [
+      {
+        "from": "2026-09",
+        "to": "present",
+        "title": "Master of Science in Computer Science",
+        "description": ""
+      },
+      {
+        "from": "2023-09",
+        "to": "2026-06",
+        "title": "Bachelor of Science in Computer Science",
+        "description": ""
+      }
+    ]
   },
   {
-    "from": "2018",
-    "to": "2023",
     "location": "DSZC Beregszászi Pál (Vocational) High School, Hungary",
-    "description": "Qualifications as a System administrator & Software Developer\nSpecialized in Cisco networking, C#, PHP, JavaScript, MySQL, HTML5, CSS3, Linux",
-    "link": "https://www.dszcberegszaszi.hu/"
+    "link": "https://www.dszcberegszaszi.hu/",
+    "entries": [
+      {
+        "from": "2018-09",
+        "to": "2023-06",
+        "title": "System administrator & Software Developer qualifications",
+        "description": "Specialized in Cisco networking, C#, PHP, JavaScript, MySQL, HTML5, CSS3, Linux"
+      }
+    ]
   }
 ]

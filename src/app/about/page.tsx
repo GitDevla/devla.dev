@@ -117,8 +117,16 @@ export default function AboutPage() {
 				</section>
 			</div>
 			<section>
-				<h2 className={"subheader"}>Education/Experience</h2>
-				<Timeline />
+				<div className={"grid gap-8 md:grid-cols-2"}>
+					<div>
+						<h2 className={"subheader"}>Education</h2>
+						<Timeline source={"education.json"} />
+					</div>
+					<div>
+						<h2 className={"subheader"}>Experience</h2>
+						<Timeline source={"experience.json"} />
+					</div>
+				</div>
 			</section>
 			<section className={"mt-16"}>
 				<h2 id={"contact"} className={"subheader"}>
