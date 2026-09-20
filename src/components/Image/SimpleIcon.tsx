@@ -13,6 +13,10 @@ function typoFix(name: string) {
       return "html5";
     case "css":
       return "css";
+    case "java":
+      return "coffeescript";
+    case "makefile":
+      return "gnu";
     case "shell":
       return "gnubash";
     case "dockerfile":
