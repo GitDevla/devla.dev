@@ -24,6 +24,9 @@ const mono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
 });
 
+const MASK =
+  "linear-gradient(to right, black, rgb(0 0 0 / 0.45) calc(50% - 36rem), transparent calc(50% - 28rem), transparent calc(50% + 28rem), rgb(0 0 0 / 0.45) calc(50% + 36rem), black)";
+
 export const metadata: Metadata = {
   title: {
     template: "Devla | %s",
@@ -61,11 +64,21 @@ export default function RootLayout({
     >
       <body
         className={
-          "mx-auto min-h-screen max-w-4xl animate-animateBackground bg-canvas px-4 bg-blend-difference transition-colors min-[912px]:px-0"
+          "mx-auto min-h-screen max-w-4xl bg-canvas px-4 transition-colors min-[912px]:px-0"
         }
-        style={{ backgroundImage: "url('/bg.svg')" }}
         suppressHydrationWarning
       >
+        <div
+          aria-hidden
+          className={
+            "pointer-events-none fixed inset-0 -z-10 animate-animateBackground bg-canvas bg-blend-difference"
+          }
+          style={{
+            backgroundImage: "url('/bg.svg')",
+            maskImage: MASK,
+            WebkitMaskImage: MASK,
+          }}
+        />
         <ThemeProvider>
           <Header />
           <DiscordContext>
