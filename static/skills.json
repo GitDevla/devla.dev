@@ -42,15 +42,6 @@
       "href": "https://expressjs.com"
     },
     {
-      "name": "Rust",
-      "icon": "rust",
-      "category": [
-        "languages",
-        "backend"
-      ],
-      "href": "https://www.rust-lang.org"
-    },
-    {
       "name": "C#",
       "icon": "dotnet",
       "category": [
@@ -207,6 +198,14 @@
       "href": "https://www.tensorflow.org"
     },
     {
+      "name": "PyTorch",
+      "icon": "pytorch",
+      "category": [
+        "backend"
+      ],
+      "href": "https://pytorch.org"
+    },
+    {
       "name": "PostgreSQL",
       "icon": "postgresql",
       "category": [
@@ -245,6 +244,14 @@
         "frontend"
       ],
       "href": "https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor"
+    },
+    {
+      "name": "Traefik",
+      "icon": "traefikproxy",
+      "category": [
+        "devops"
+      ],
+      "href": "https://traefik.io"
     }
   ]
 }
