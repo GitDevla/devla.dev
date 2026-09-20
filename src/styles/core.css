@@ -125,4 +125,16 @@
   .pause {
     animation-play-state: paused;
   }
+
+  .spotlight a {
+    @apply transition-opacity duration-300;
+  }
+
+  .spotlight:where(:has(a:hover), :has(a:focus-visible)) a {
+    @apply opacity-35;
+  }
+
+  .spotlight a:where(:hover, :focus-visible) {
+    @apply opacity-100;
+  }
 }

@@ -20,7 +20,7 @@ export default function TechSkillShowcase({ tech }: { tech: any[] }) {
   return (
     <div
       className={
-        "group w-full overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]"
+        "spotlight w-full overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]"
       }
     >
       {parts.map((part, i) => (
@@ -36,7 +36,7 @@ function CaruselRow({ tech }: { tech: any[] }) {
     <div className={"mb-2 flex gap-2"}>
       {[1, 2].map((_, i) => (
         <div
-          className={"group-hover:pause flex animate-infiniteScroll gap-2"}
+          className={"flex animate-infiniteScroll gap-2"}
           style={{ animationDuration: `${animationDuration}s` }}
           key={i}
         >
