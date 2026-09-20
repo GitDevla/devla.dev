@@ -1,0 +1,88 @@
+{
+  "data": {
+    "viewer": {
+      "repositories": {
+        "nodes": [
+          {
+            "name": "devla.dev",
+            "languages": {
+              "edges": [
+                {
+                  "size": 115213,
+                  "node": { "name": "TypeScript", "color": "#3178c6" }
+                },
+                {
+                  "size": 2447,
+                  "node": { "name": "CSS", "color": "#663399" }
+                },
+                {
+                  "size": 2371,
+                  "node": { "name": "Dockerfile", "color": "#384d54" }
+                },
+                {
+                  "size": 942,
+                  "node": { "name": "JavaScript", "color": "#f1e05a" }
+                }
+              ]
+            },
+            "defaultBranchRef": {
+              "target": {
+                "history": {
+                  "nodes": [
+                    {
+                      "messageHeadline": "chore: fix yt thumbnail at /",
+                      "additions": 4,
+                      "deletions": 5,
+                      "committedDate": "2026-08-23T17:29:49Z",
+                      "url": "https://github.com/GitDevla/devla.dev/commit/ff4ee63bad26ebf0e660a94769ebfaa94860751f"
+                    },
+                    {
+                      "messageHeadline": "chore: update packages",
+                      "additions": 3235,
+                      "deletions": 3408,
+                      "committedDate": "2026-08-23T17:27:50Z",
+                      "url": "https://github.com/GitDevla/devla.dev/commit/2df36a75f55b76f6ef11232cdfb43f91ebff9313"
+                    },
+                    {
+                      "messageHeadline": "dara",
+                      "additions": 8,
+                      "deletions": 2,
+                      "committedDate": "2026-07-27T11:34:52Z",
+                      "url": "https://github.com/GitDevla/devla.dev/commit/1a5413e567b7722933c062a11b337742496001b8"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "name": "GitDevla",
+            "languages": { "edges": [] },
+            "defaultBranchRef": {
+              "target": {
+                "history": {
+                  "nodes": [
+                    {
+                      "messageHeadline": "Modify Now Playing badge for transparency",
+                      "additions": 1,
+                      "deletions": 1,
+                      "committedDate": "2026-08-21T22:21:20Z",
+                      "url": "https://github.com/GitDevla/GitDevla/commit/b76e8c1d44368c9e129bc1ea4e32458ea760df57"
+                    },
+                    {
+                      "messageHeadline": "Revise README.md for clarity and updates",
+                      "additions": 24,
+                      "deletions": 26,
+                      "committedDate": "2026-08-21T16:28:49Z",
+                      "url": "https://github.com/GitDevla/GitDevla/commit/c37f898b71c390a7c77e6e6db9188891d72c91aa"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

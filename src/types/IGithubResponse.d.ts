@@ -40,3 +40,37 @@ export interface IGithubResponse {
     };
   };
 }
+
+export interface IGithubCommitsResponse {
+  data: {
+    viewer: {
+      repositories: {
+        nodes: Array<{
+          name: string;
+          languages: {
+            edges: Array<{
+              size: number;
+              node: {
+                name: string;
+                color?: string;
+              };
+            }>;
+          };
+          defaultBranchRef: {
+            target: {
+              history: {
+                nodes: Array<{
+                  messageHeadline: string;
+                  additions: number;
+                  deletions: number;
+                  committedDate: string;
+                  url: string;
+                }>;
+              };
+            };
+          } | null;
+        }>;
+      };
+    };
+  };
+}

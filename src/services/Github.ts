@@ -1,4 +1,7 @@
-import { IGithubResponse } from "@/types/IGithubResponse";
+import {
+  IGithubCommitsResponse,
+  IGithubResponse,
+} from "@/types/IGithubResponse";
 import isProduction from "@/utils/isProd";
 import { readJSON } from "@/utils/ReadJSON";
 
@@ -144,4 +147,115 @@ function parseGithubData(data: IGithubResponse) {
     });
   }
   return repos;
+}
+
+const RECENT_COMMIT_COUNT = 5;
+
+async function fetchRecentCommitsFromGithub() {
+  const header = {
+    Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+    "Content-Type": "application/json",
+  };
+  const body = `{
+	viewer {
+		repositories(first: 20, ownerAffiliations: [OWNER, ORGANIZATION_MEMBER]
+			privacy: PUBLIC, orderBy: {field: PUSHED_AT, direction: DESC}) {
+			nodes {
+				name
+				languages(first: 5, orderBy: {field: SIZE, direction: DESC}) {
+					edges {
+						size
+						node {
+							name
+							color
+						}
+					}
+				}
+				defaultBranchRef {
+					target {
+						... on Commit {
+							history(first: ${RECENT_COMMIT_COUNT}) {
+								nodes {
+									messageHeadline
+									additions
+									deletions
+									committedDate
+									url
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+  `;
+  const githubresp = await fetch("https://api.github.com/graphql", {
+    method: "POST",
+    headers: header,
+    body: JSON.stringify({ query: body }),
+  });
+  return githubresp;
+}
+
+export async function pullGithubRecentCommits() {
+  if (!isProduction) return await mockCommitData();
+
+  const githubresp = await fetchRecentCommitsFromGithub();
+  const data = (await githubresp.json()) as IGithubCommitsResponse;
+  return parseGithubCommits(data);
+}
+
+async function mockCommitData() {
+  const data = (await readJSON(
+    "src/services/mockData/fakeGithubCommits.json",
+  )) as IGithubCommitsResponse;
+
+  return parseGithubCommits(data);
+}
+
+function parseGithubCommits(
+  data: IGithubCommitsResponse,
+): IRecentCommitActivity {
+  const repos = data.data.viewer.repositories.nodes.filter(
+    (repo) => repo.defaultBranchRef,
+  );
+
+  const commits = repos
+    .flatMap((repo) =>
+      repo.defaultBranchRef!.target.history.nodes.map((commit) => ({
+        repo: repo.name,
+        message: commit.messageHeadline,
+        href: commit.url,
+        additions: commit.additions,
+        deletions: commit.deletions,
+        committed_at: new Date(commit.committedDate),
+      })),
+    )
+    .sort((a, b) => b.committed_at.getTime() - a.committed_at.getTime())
+    .slice(0, RECENT_COMMIT_COUNT);
+
+  const shownRepos = new Set(commits.map((commit) => commit.repo));
+  const bytesPerLanguage = new Map<string, ICommitLanguage>();
+  for (const repo of repos) {
+    if (!shownRepos.has(repo.name)) continue;
+    for (const language of repo.languages.edges) {
+      const known = bytesPerLanguage.get(language.node.name);
+      if (known) {
+        known.bytes += language.size;
+        continue;
+      }
+      bytesPerLanguage.set(language.node.name, {
+        name: language.node.name,
+        color: language.node.color || "var(--color-muted)",
+        bytes: language.size,
+      });
+    }
+  }
+  const languages = [...bytesPerLanguage.values()].sort(
+    (a, b) => b.bytes - a.bytes,
+  );
+
+  return { commits, languages };
 }
