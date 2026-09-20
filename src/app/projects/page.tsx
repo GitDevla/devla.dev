@@ -20,9 +20,11 @@ export default async function ProjectsPage() {
         {postMetadata.length === 0 && (
           <p className={"text-center text-muted"}>No projects found</p>
         )}
-        {postMetadata.map((post, i) => (
-          <ProjectCard post={post} key={i} />
-        ))}
+        <div className={"space-y-6"}>
+          {postMetadata.map((post, i) => (
+            <ProjectCard post={post} key={i} />
+          ))}
+        </div>
       </div>
     </>
   );

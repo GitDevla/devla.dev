@@ -16,7 +16,7 @@ export default async function TopGenreShowcase() {
 
 	const genrePercentages = genreToPercentages(genreData);
 	return (
-		<div className={"mt-6 flex w-full rounded-lg"}>
+		<div className={"flex w-full rounded-lg"}>
 			{genrePercentages.map((genre, i) => (
 				<div
 					key={i}

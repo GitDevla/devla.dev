@@ -11,12 +11,12 @@ export default async function ProjectCard({ post }: { post: any }) {
   return (
     <div
       className={
-        "group relative mt-6 grid w-full overflow-hidden rounded-md p-4 shadow-xs sm:grid-cols-[4fr_1fr] sm:even:grid-cols-[1fr_4fr]"
+        "group relative grid w-full overflow-hidden rounded-md p-4 shadow-xs sm:grid-cols-[4fr_1fr] sm:even:grid-cols-[1fr_4fr]"
       }
     >
       <div
         className={
-          "order-2 flex flex-col p-5 group-even:items-end sm:order-1 sm:group-even:order-2"
+          "order-2 flex flex-col p-6 group-even:items-end sm:order-1 sm:group-even:order-2"
         }
       >
         <p className={"mb-1 text-sm text-muted"}>
@@ -42,13 +42,11 @@ export default async function ProjectCard({ post }: { post: any }) {
               </Hover>
             ))}
           </div>
-          <h2 className={"whitespace-nowrap text-xl font-bold"}>
+          <h2 className={"text-xl font-bold whitespace-nowrap"}>
             {metadata.title}
           </h2>
         </div>
-        <p className={"mb-4 text-text sm:text-muted"}>
-          {metadata.subtitle}
-        </p>
+        <p className={"mb-4 text-text sm:text-muted"}>{metadata.subtitle}</p>
         <div
           className={
             "mt-4 flex gap-4 text-sm font-semibold group-even:flex-row-reverse"
@@ -57,7 +55,7 @@ export default async function ProjectCard({ post }: { post: any }) {
           <Link href={`/blog/${metadata.slug}`}>
             <div
               className={
-                "flex gap-2 rounded-md bg-primary p-2 transition-colors sm:bg-primary/50 sm:hover:bg-primary"
+                "flex gap-2 rounded-md bg-primary p-2 text-on-primary transition-colors sm:bg-primary/50 sm:hover:bg-primary"
               }
             >
               Read
@@ -114,7 +112,7 @@ export default async function ProjectCard({ post }: { post: any }) {
       <div className={"order-1 sm:order-2 sm:group-even:order-1"}>
         <Image
           className={
-            "-bottom-4 right-[-5%] aspect-video h-24 w-full rounded-t-xl object-cover object-top shadow-2xl transition sm:absolute sm:h-auto sm:w-80 sm:rounded-xl sm:group-even:left-[-5%] sm:group-hover:-translate-x-3 sm:group-hover:translate-y-3 sm:group-hover:-rotate-2 sm:group-even:group-hover:translate-x-3 sm:group-even:group-hover:translate-y-3 sm:group-even:group-hover:rotate-2"
+            "right-[-5%] -bottom-4 aspect-video h-24 w-full rounded-t-xl object-cover object-top shadow-2xl transition sm:absolute sm:h-auto sm:w-80 sm:rounded-xl sm:group-even:left-[-5%] sm:group-hover:-translate-x-3 sm:group-hover:translate-y-3 sm:group-hover:-rotate-2 sm:group-even:group-hover:translate-x-3 sm:group-even:group-hover:translate-y-3 sm:group-even:group-hover:rotate-2"
           }
           src={metadata.coverImage || "https://placehold.co/160x90"}
           width={160}

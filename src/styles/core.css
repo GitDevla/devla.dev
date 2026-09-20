@@ -39,7 +39,7 @@
 
 @layer base {
   section {
-    @apply mb-7;
+    @apply mb-8;
   }
 
   /* body::-webkit-scrollbar {
@@ -49,15 +49,15 @@
   } */
 
   * {
-    scrollbar-color: var(--color-primary) var(--color-canvas);
+    scrollbar-color: var(--color-border) var(--color-canvas);
   }
   *::-webkit-scrollbar-track {
-    background: var(--color-primary);
+    background: var(--color-canvas);
   }
   *::-webkit-scrollbar-thumb {
-    background-color: var(--color-canvas);
+    background-color: var(--color-border);
     border-radius: 20px;
-    border: 3px solid var(--color-primary);
+    border: 3px solid var(--color-canvas);
   }
 
   blockquote {
@@ -65,33 +65,36 @@
   }
 
   ul.tree ul {
-    @apply ml-3;
+    @apply ml-4;
+  }
+  ul.tree li a {
+    @apply text-primary underline;
   }
   ul.tree li {
-    @apply line-clamp-1 w-full border-l border-text px-2 font-mono break-all text-primary underline;
+    @apply line-clamp-1 w-full border-l border-border px-2 font-mono break-all;
   }
   ul.tree li:last-child {
     @apply border-l-0;
   }
   ul.tree li:before {
-    @apply relative top-[-0.3em] left-[-0.5em] inline-block h-[1em] w-3 border-b border-text content-[""];
+    @apply relative top-[-0.3em] left-[-0.5em] inline-block h-[1em] w-3 border-b border-border content-[""];
   }
   ul.tree li:last-child:before {
-    @apply border-l border-text;
+    @apply border-l border-border;
   }
 }
 
 @layer components {
   .card {
-    @apply block size-auto rounded-lg border border-border bg-surface p-3 hover:bg-surface/55;
+    @apply block size-auto rounded-lg border border-border bg-surface p-4 hover:bg-surface/55;
   }
 
   .header {
-    @apply mb-3 font-bold tracking-wide uppercase;
+    @apply mb-4 font-bold tracking-wide uppercase;
   }
 
   .subheader {
-    @apply mb-2 font-bold tracking-wide text-base uppercase;
+    @apply mb-2 text-lg font-bold tracking-wide uppercase;
   }
 
   .link {

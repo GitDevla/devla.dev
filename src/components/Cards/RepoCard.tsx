@@ -33,7 +33,7 @@ export default function RepoCard({ repo }: Readonly<{ repo: IRepo }>) {
           )}
         </div>
         <div>
-          <p className={"mt-3 text-xs text-muted"}>
+          <p className={"mt-4 text-xs text-muted"}>
             Last Updated: {formatTimeAgo(repo.updated_at)}
           </p>
         </div>

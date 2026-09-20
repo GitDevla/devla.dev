@@ -1,7 +1,7 @@
 import Link from "@/components/Atoms/Link";
 
 export default function BlogNavBar({ prev, next }: { prev: IMarkdown | null, next: IMarkdown | null }) {
-    return <div className={"grid grid-cols-3 justify-items-center px-5"}>
+    return <div className={"grid grid-cols-3 justify-items-center px-6"}>
         <div>
             {prev && (
                 <Link

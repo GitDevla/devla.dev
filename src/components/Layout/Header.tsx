@@ -7,7 +7,7 @@ import Link from "../Atoms/Link";
 
 export default function Header() {
   return (
-    <nav className={"mb-5 flex items-center justify-between p-3 md:px-5"}>
+    <nav className={"mb-6 flex items-center justify-between p-4 md:px-6"}>
       <div className={"flex items-center gap-2"}>
         <Link href={"/"}>
           <Image

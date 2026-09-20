@@ -80,7 +80,7 @@ export default function AboutPage() {
 							<span className={"relative w-0"}>
 								<span
 									className={
-										"absolute -left-[calc(4ch_+_0.4rem)] -top-[0.2rem] box-border inline-block -rotate-[10deg] scale-90 bg-text px-1 py-[1px] font-medium text-canvas"
+										"absolute -left-[calc(4ch_+0.1rem)] -top-[0.3rem] box-border inline-block -rotate-[10deg] scale-90 bg-text px-1 py-[1px] font-medium text-canvas"
 									}
 								>
 									some

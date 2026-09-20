@@ -98,7 +98,7 @@ export default async function Home() {
 								className={"inline-block size-4 rounded-full bg-canvas"}
 							/>
 						</div>
-						<p className={"break-all text-sm md:text-base"}>
+						<p className={"break-words text-sm md:text-base"}>
 							I'm a recent computer science graduate
 							<br />
 							who enjoys{" "}
@@ -134,7 +134,7 @@ export default async function Home() {
 			{pages.map((group, i) => (
 				<section key={i}>
 					<h2 className={"subheader"}>{group.group}</h2>
-					<div className={"grid grid-cols-1 gap-x-3 gap-y-3 md:grid-cols-2"}>
+					<div className={"grid grid-cols-1 gap-4 md:grid-cols-2"}>
 						{group.pages.map((page, i) => (
 							<LinkCard key={i} {...page} />
 						))}

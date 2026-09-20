@@ -16,11 +16,11 @@ export default function SkillSection({
   return (
     <section>
       <h2 className={"subheader"}>Tech Stack</h2>
-      <div className={"mb-5 flex w-full flex-wrap justify-evenly gap-y-1"}>
+      <div className={"mb-6 flex w-full flex-wrap justify-evenly gap-y-1"}>
         <div
           onClick={() => setHoveredCategory("")}
           className={
-            "w-full max-w-28 cursor-pointer rounded-full bg-surface p-4 text-center text-xs font-bold uppercase text-muted"
+            "w-full max-w-28 cursor-pointer rounded-full bg-surface p-4 text-center text-xs font-bold text-muted uppercase"
           }
         >
           <span className={!hoveredCategory ? "text-primary" : ""}>All</span>
@@ -30,7 +30,7 @@ export default function SkillSection({
             key={i}
             onClick={() => setHoveredCategory(category)}
             className={
-              "w-full max-w-28 cursor-pointer rounded-full bg-surface p-4 text-center text-xs font-bold uppercase text-muted"
+              "w-full max-w-28 cursor-pointer rounded-full bg-surface p-4 text-center text-xs font-bold text-muted uppercase"
             }
           >
             <span
@@ -41,11 +41,11 @@ export default function SkillSection({
           </div>
         ))}
       </div>
-      <div className={"h-[200px] overflow-clip"}>
+      <div className={"min-h-[200px] overflow-clip"}>
         {hoveredCategory ? (
           <div
             className={
-              "grid grid-cols-3 gap-x-2 gap-y-2 overflow-hidden md:grid-cols-4 lg:grid-cols-5"
+              "grid grid-cols-3 gap-2 overflow-hidden md:grid-cols-4 lg:grid-cols-5"
             }
           >
             {techStack.map(

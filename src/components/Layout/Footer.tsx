@@ -2,7 +2,7 @@ import Link from "../Atoms/Link";
 
 export default function Footer() {
 	return (
-		<footer className={"sticky top-[100vh] mb-5 mt-40"}>
+		<footer className={"sticky top-[100vh] mb-6 mt-40"}>
 			<p>
 				This website is open-source on{" "}
 				<Link

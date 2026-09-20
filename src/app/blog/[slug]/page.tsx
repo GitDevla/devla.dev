@@ -84,7 +84,7 @@ export default async function BlogPage(props: any) {
 
       <article
         className={
-          "mx-auto prose mt-8 max-w-[70ch] hyphens-auto dark:prose-invert prose-headings:font-display prose-headings:font-bold"
+          "mx-auto prose mt-8 max-w-[70ch] hyphens-auto prose-headings:font-display prose-headings:font-bold"
         }
       >
         <ReadTime content={post.content} />

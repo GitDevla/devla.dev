@@ -89,7 +89,7 @@ export default function ReposSection({ repos }: { repos: IRepo[] }) {
       </div>
       <div>
         {shownRepos.length > 0 ? (
-          <div className={"grid grid-cols-1 gap-x-4 gap-y-5 md:grid-cols-2"}>
+          <div className={"grid grid-cols-1 gap-x-4 gap-y-6 md:grid-cols-2"}>
             {shownRepos.map((repo, i) => (
               <RepoCard repo={repo} key={i} />
             ))}

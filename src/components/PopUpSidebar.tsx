@@ -13,7 +13,7 @@ export default function PopUpSidebar({
 
   return (
     <nav
-      className={`fixed left-0 top-0 h-screen w-screen ${!isOpen && "-translate-x-full"} z-50 bg-surface/80 pl-5 pt-5 backdrop-blur-xs transition-transform sm:w-[30%] sm:max-w-[300px]`}
+      className={`fixed top-0 left-0 h-screen w-screen ${!isOpen && "-translate-x-full"} z-50 bg-raised/80 pt-6 pl-6 backdrop-blur-xs transition-transform sm:w-[30%] sm:max-w-[300px]`}
     >
       <div className={"flex items-center justify-between"}>
         <h1 className={"text-lg font-bold"}>{title}</h1>
@@ -31,7 +31,7 @@ export default function PopUpSidebar({
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={
-          "absolute right-0 top-16 z-50 h-12 w-12 translate-x-1/2 rounded-full bg-surface"
+          "absolute top-16 right-0 z-50 h-12 w-12 translate-x-1/2 rounded-full bg-raised"
         }
       >
         {isOpen ? "<" : ">"}

@@ -5,7 +5,7 @@ export default async function TopMusicShowcase() {
   const musicData = await pullPostToPMusic();
   return (
     <div
-      className={"grid grid-cols-1 gap-5 md:grid-cols-[5fr_4fr] md:grid-rows-3"}
+      className={"grid grid-cols-1 gap-6 md:grid-cols-[5fr_4fr] md:grid-rows-3"}
     >
       <MusicCard
         music={musicData[0]}
